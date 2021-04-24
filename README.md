@@ -1,6 +1,3 @@
-# Gymer_DDL
- all for gym all for ddl
-
 # DB 
 + KhachHang (MaKhachHang, CMND, Ten, SDT, DiaChi, NamSinh,GioiTinh)
 + The (MaThe, TrangThai, NgayBatDau, DichVu)
@@ -11,4 +8,20 @@
 + HoaDonHang (MaHoaDonHang, Ngay, NguoiLap, TenKH, SDT, CMND, MaHang, Gia, TenHang, SoLuong)
 + HoaDonNhap (MaDonNHap, Ngay, NguoiLap, TenSP, NhaCungCap, Gia, SoLuong, MaSP)
 + DichVu (MaDV, Ten, ThoiGian, Gia)
-+ 
+
+
+# Chuẩn hóa
++ KhachHang (MaKH, Ten, SDT, DiaChi, NamSinh, GioiTinh, CMND)
++ The (MaThe, MaKH, TrangThai, NgayBD, MaDichVu)
++ CTThe (MaThe, ThoiDiemSuDung, )
++ CTDichVu (MaDV, Ten, ThoiGian, Gia)
++ NhanVien (MaNV, CMND, DiaChi ,SDT, ViTri, NamSinh, GioiTinh)
++ Login (MaNV, TK, MK)
++ HangHoa (MaHang, Ten, Gia, HSD, SoLuong)
++ ThietBi (MaTB, Ten, NSX, SoLuong, TinhTrang, NgayNhap, GiaNhap)
++ HoaDonTap (MaHoaDon, Ngay, MaNV, MaKH)
++ CTHoaDonTap (MaKH, MaDV, TenKH, Gia, SDT, NamSinh, CMND, GioiTinh)
++ HoaDonHang (MaHDH, Ngay, MaNV, MaKH)
++ CTHoaDonHang (MaHDH, MaKH, MaHang, SDT, CMND,  Gia, TenHang, SoLuong)
++ HoaDonNhap (MaDonNHap, Ngay, MaNV)
++ CTHoaDonNhap (MaDonNhap, MaSP, TenSP, NhaCungCap, Gia, SoLuong)

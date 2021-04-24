@@ -8,7 +8,7 @@ package gymer.database;
 import java.sql.*;
 
 public class MySqlConnect {
-    private String DB_URL = "jdbc:mysql://localhost:3306/testdb";
+    private String DB_URL;
     // change the user name here
     static private String USER_NAME;
     // change the pass word here
@@ -16,7 +16,13 @@ public class MySqlConnect {
     MySqlConnect () {
         this.USER_NAME = "";
         this.PASSWORD = "";
+        this.DB_URL = "";
     }
+    
+    public void setDB_URL (String DB_URL) {
+        this.DB_URL = DB_URL;
+    }
+
     public void setLoginInformation (String USER_NAME,String PASSWORD){
         this.USER_NAME = USER_NAME;
         this.PASSWORD = PASSWORD;
@@ -28,6 +34,7 @@ public class MySqlConnect {
             Class.forName ("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
             conn.close();
+            System.out.println("Connected");
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -43,7 +43,7 @@ public class MySqlConnect {
             return false;
         }
     }
-    public ResultSet SQLexe (String SQL) {
+    public ResultSet SQLQuery (String SQL) {
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
@@ -52,6 +52,12 @@ public class MySqlConnect {
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
+        }
+    }
+    public void SQLUpdate (String SQL){
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(SQL);
         }
     }
     

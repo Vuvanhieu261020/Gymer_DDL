@@ -20,7 +20,7 @@
 + HangHoa (MaHang, Ten, Gia, HSD, SoLuong, DVT)
 + ThietBi (MaTB, Ten, NSX, SoLuong, TinhTrang, NgayNhap, GiaNhap)
 + HoaDonTap (MaHoaDon, Ngay, MaNV, MaKH)
-+ CTHoaDonTap (MaKH, MaDV, TenKH, Gia, SDT, NamSinh, CMND, GioiTinh)
++ CTHoaDonTap (MaKH, MaDV, Gia)
 + HoaDonHang (MaHDH, Ngay, MaNV, TenKH, SDT)
 + CTHoaDonHang (MaHDH,TenHang, SoLuong, DVT)
 + HoaDonNhap (MaDonNHap, Ngay, MaNV)

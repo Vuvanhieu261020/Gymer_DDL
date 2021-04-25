@@ -13,10 +13,12 @@ public class MySqlConnect {
     static private String USER_NAME;
     // change the pass word here
     private String PASSWORD;
+    Connection conn;
     MySqlConnect () {
         this.USER_NAME = "";
         this.PASSWORD = "";
         this.DB_URL = "";
+        this.conn = null;
     }
     
     public void setDB_URL (String DB_URL) {
@@ -28,7 +30,7 @@ public class MySqlConnect {
         this.PASSWORD = PASSWORD;
     }
     public boolean connecttoDB (){
-        Connection conn = null;
+        conn = null;
         try {
             // connnect to database
             Class.forName ("com.mysql.jdbc.Driver");
@@ -39,6 +41,23 @@ public class MySqlConnect {
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
+        }
+    }
+    public ResultSet SQLQuery (String SQL) {
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            conn.close();
+            return rs;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    public void SQLUpdate (String SQL){
+        try {
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(SQL);
         }
     }
     

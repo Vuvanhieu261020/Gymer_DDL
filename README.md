@@ -15,7 +15,7 @@
 + The (MaThe, MaKH, TrangThai, NgayBD, MaDichVu)
 + CTThe (MaThe, ThoiDiemSuDung, )
 + CTDichVu (MaDV, Ten, ThoiGian, Gia)
-+ NhanVien (MaNV, CMND, DiaChi ,SDT, ViTri, NamSinh, GioiTinh)
++ NhanVien (MaNV, Ten, CMND, DiaChi ,SDT, ViTri, NamSinh, GioiTinh)
 + Login (MaNV, TK, MK)
 + HangHoa (MaHang, Ten, Gia, HSD, SoLuong)
 + ThietBi (MaTB, Ten, NSX, SoLuong, TinhTrang, NgayNhap, GiaNhap)

@@ -20,14 +20,11 @@ public class MySqlConnect {
         this.DB_URL = "";
         this.conn = null;
     }
-    
-    public void setDB_URL (String DB_URL) {
-        this.DB_URL = DB_URL;
-    }
 
-    public void setLoginInformation (String USER_NAME,String PASSWORD){
+    public void setConnection (String DB_URL,String USER_NAME,String PASSWORD){
         this.USER_NAME = USER_NAME;
         this.PASSWORD = PASSWORD;
+        this.DB_URL = DB_URL;
     }
     public boolean connecttoDB (){
         conn = null;
@@ -54,11 +51,4 @@ public class MySqlConnect {
             return null;
         }
     }
-    public void SQLUpdate (String SQL){
-        try {
-            Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery(SQL);
-        }
-    }
-    
 }

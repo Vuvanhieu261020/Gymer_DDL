@@ -13,30 +13,22 @@ import java.security.NoSuchAlgorithmException;
  * @author luyen
  */
 public class HashPassword {
-    public static String Hash (String Input){
-        String generatedPassword = null;
+    public static String Hash(String input)
+    {
         try {
-            // Create MessageDigest instance for MD5
+  
+            
             MessageDigest md = MessageDigest.getInstance("MD5");
-            //Add password bytes to digest
-            md.update(Input.getBytes());
-            //Get the hash's bytes 
-            byte[] bytes = md.digest();
-            //This bytes[] has bytes in decimal format;
-            //Convert it to hexadecimal format
-            StringBuilder sb = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++)
-            {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            String hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
             }
-            //Get complete hashed password in hex format
-            generatedPassword = sb.toString();
-            return generatedPassword;
+            return hashtext;
         } 
-        catch (NoSuchAlgorithmException e) 
-        {
-            e.printStackTrace();
-            return null;
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
         }
     }
 }

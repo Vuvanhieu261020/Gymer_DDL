@@ -14,7 +14,7 @@ public class Regex {
         }
         return false;
     }
-    public static boolean EmailChecl (String Input){
+    public static boolean EmailCheck (String Input){
         Pattern ptn = Pattern.compile(".+@.+");
         Matcher mc = ptn.matcher(Input);
         if (mc.find()){

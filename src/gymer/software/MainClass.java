@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package gymer.software;
-
+import gymer.software.LoginForm;
+import gymer.software.MainForm;
 /**
  *
  * @author luyen
  */
-public class mainclass {
-    public static void main (String[] args){
-        System.out.println("he");
-    }
+public class MainClass {
+    MainForm mf = new MainForm();
+    LoginForm lg = new LoginForm();
 }

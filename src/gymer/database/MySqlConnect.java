@@ -10,11 +10,11 @@ import java.sql.*;
 public class MySqlConnect {
     private String DB_URL;
     // change the user name here
-    static private String USER_NAME;
+    private String USER_NAME;
     // change the pass word here
     private String PASSWORD;
     Connection conn;
-    MySqlConnect () {
+    public MySqlConnect () {
         this.USER_NAME = "";
         this.PASSWORD = "";
         this.DB_URL = "";

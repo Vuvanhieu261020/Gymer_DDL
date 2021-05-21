@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fbd9f78-bca6-4ada-a7aa-6b87e52aa434" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gymer/database/MySqlConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/database/MySqlConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/software/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/software/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/software/MainForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/software/MainForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/software/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/software/MainForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621141062394</updated>
       <workItem from="1621141065722" duration="70000" />
+      <workItem from="1621327937610" duration="106000" />
     </task>
     <servers />
   </component>

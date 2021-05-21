@@ -11,6 +11,10 @@ import gymer.software.MainForm;
  * @author luyen
  */
 public class MainClass {
-    MainForm mf = new MainForm();
-    LoginForm lg = new LoginForm();
+    public static void main(String[] args){
+        LoginForm lgf = new LoginForm();
+        lgf.show();
+        MainForm mf = new MainForm();
+        mf.show();
+    }
 }

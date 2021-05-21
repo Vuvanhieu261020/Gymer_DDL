@@ -9,37 +9,26 @@ import java.sql.*;
 
 public class MySqlConnect {
     private String DB_URL;
-    // change the user name here
     private String USER_NAME;
-    // change the pass word here
     private String PASSWORD;
     Connection conn;
     public MySqlConnect () {
-        this.USER_NAME = "";
-        this.PASSWORD = "";
-        this.DB_URL = "";
+        // change user name here
+        this.USER_NAME = "root";
+        // change password here
+        this.PASSWORD = "22112000";
+        this.DB_URL = "jdbc:mysql://localhost:3306/testdb";
         this.conn = null;
-    }
-
-    public void setConnection (String DB_URL,String USER_NAME,String PASSWORD){
-        this.USER_NAME = USER_NAME;
-        this.PASSWORD = PASSWORD;
-        this.DB_URL = DB_URL;
-    }
-    public boolean connecttoDB (){
-        conn = null;
         try {
             // connnect to database
             Class.forName ("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
             conn.close();
-            System.out.println("Connected");
-            return true;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return false;
         }
     }
+
     public ResultSet SQLQuery (String SQL) {
         try {
             Statement stmt = conn.createStatement();
@@ -49,6 +38,19 @@ public class MySqlConnect {
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
+        }
+    }
+    
+    public boolean ExeSQL (String SQL){
+        boolean rs;
+        try {
+            Statement stm = conn.createStatement();
+            rs = stm.execute(SQL);
+            return rs;
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            return false;
         }
     }
 }

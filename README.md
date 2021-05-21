@@ -1,7 +1,7 @@
 # Intro
-Dồ án OOP nhóm 11 lớp 63it2 DHXD
-Đề tài quản lý phòng tập Gym
-Xây dựng theo mô hình DAO
++ Đồ án OOP nhóm 11 lớp 63it2 DHXD
++ Đề tài quản lý phòng tập Gym
++ Xây dựng theo mô hình DAO
 
 # Chuẩn hóa Database
 + KhachHang (MaKH, Ten, SDT, DiaChi, NamSinh, GioiTinh, CMND)

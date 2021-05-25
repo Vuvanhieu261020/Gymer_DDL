@@ -15,7 +15,7 @@ public interface MemberCardDAO {
     public boolean insert(MemberCard Input);
     public boolean delete(String ID);
     public boolean update(MemberCard Input);
-    public MemberCard findByID(String ID);
-    public MemberCard findByName(String Name);
+    public List<MemberCard> findByID(String ID);
+    public List<MemberCard> findByName(String Name);
     public boolean checkValid (String ID);
 }

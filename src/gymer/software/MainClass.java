@@ -4,17 +4,13 @@
  * and open the template in the editor.
  */
 package gymer.software;
-import gymer.software.LoginForm;
-import gymer.software.MainForm;
+
 /**
  *
  * @author luyen
  */
 public class MainClass {
     public static void main(String[] args){
-        LoginForm lgf = new LoginForm();
-        lgf.show();
-        MainForm mf = new MainForm();
-        mf.show();
+        System.out.print("anh yeu em");
     }
 }

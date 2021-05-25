@@ -6,24 +6,41 @@
 package gymer.DAO;
 import gymer.DAO.MemberCardDAO;
 import gymer.entities.MemberCard;
-import gymer.database.MySqlConnect;
 import java.util.List;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import gymer.database.DButil;
 /**
  *
  * @author luyen
  */
 public class MemberCardImp implements MemberCardDAO{
-    MySqlConnect conn = new MySqlConnect();
+    
 
+    
+    // khoi tao cac cau lenh SQL phuc vu cho cac ham tuong ung
+    
+    
+    private static final String DELETE = "delete from tbl_the where MaThe=?";
+    private static final String FIND_ALL = "select tbl_the.MaThe, tbl_the.TrangThai, tbl_the.NgayBD, tbl_dichvu.Ten from tbl_the inner join tbl_dichvu on tbl_the.MaDV = tbl_dichvu.MaDV inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH";
+    private static final String FIND_BY_ID = "select tbl_the.MaThe, tbl_the.TrangThai, tbl_the.NgayBD, tbl_dichvu.Ten from tbl_the inner join tbl_dichvu on tbl_the.MaDV = tbl_dichvu.MaDV inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.MaThe=?";
+    private static final String FIND_BY_NAME = "select tbl_the.MaThe, tbl_the.TrangThai, tbl_the.NgayBD, tbl_dichvu.Ten from tbl_the inner join tbl_dichvu on tbl_the.MaDV = tbl_dichvu.MaDV inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten=?";
+    private static final String INSERT = "insert into tbl_the(MaThe, MaKH, TrangThai, NgayBD, MaDV) values(?, ?, ?, ?, ?)";
+    private static final String UPDATE = "update tbl_the set MaKH=?, TrangThai=?, NgayBD=?, MaDV=? where MaThe=?";
+    private static final String CHECK_VALID = "select TrangThai from tbl_the where MaThe=?";
+    
     @Override
     public List<MemberCard> getAll() {
+        
+        // khoi tao list cac thuc the se luu
         List<MemberCard> data = null;
-        ResultSet rs = conn.SQLQuery("select * from tbl_The");
+        // khoi tao doi tuong cau lenh
+        PreparedStatement stmt = null;
+        Connection conn = null;
         try {
-            while(rs.next()){
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_ALL);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
                 MemberCard mb = new MemberCard();
                 mb.setID(rs.getString("MaThe"));
                 mb.setMaDV(rs.getString("MaDV"));
@@ -31,50 +48,171 @@ public class MemberCardImp implements MemberCardDAO{
                 mb.setStartDate(rs.getString("NgayBD"));
                 mb.setStatus(rs.getBoolean("TrangThai"));
                 data.add(mb);
-                return data;
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(MemberCardImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
         }
         return data;
     }
 
     @Override
     public boolean insert(MemberCard Input) {
-        String SQL =  'insert into tbl_The (MaThe, MaKH, TrangThai, NgayBD, MaDV) values (' 
-            + Input.getCardID() + ',' 
-            + Input.getMaKH() + ','
-            + Input.getStatus() + ','
-            + Input.getStartDate() + ','
-            + Input.getMaDV() + ')';
-                    
-                    
-                    
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        boolean result = false;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(INSERT);
+            stmt.setString(1, Input.getCardID());
+            stmt.setString(2, Input.getMaDV());
+            stmt.setBoolean(3, Input.getStatus());
+            stmt.setString(4, Input.getStartDate());
+            stmt.setString(5, Input.getMaDV());
+            result = stmt.execute();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+        return result;
     }
 
     @Override
     public boolean delete(String ID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        boolean result = false;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(DELETE);
+            stmt.setString(1, ID);
+            result = stmt.execute();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+        return result;
     }
 
     @Override
     public boolean update(MemberCard Input) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        boolean result = false;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(INSERT);
+            stmt.setString(5, Input.getCardID());
+            stmt.setString(1, Input.getMaDV());
+            stmt.setBoolean(2, Input.getStatus());
+            stmt.setString(3, Input.getStartDate());
+            stmt.setString(4, Input.getMaDV());
+            result = stmt.execute();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+        return result;
     }
 
     @Override
-    public MemberCard findByID(String ID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<MemberCard> findByID(String ID) {
+        List<MemberCard> data = null;
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_ID);
+            stmt.setString(1, ID);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                MemberCard mb = new MemberCard();
+                mb.setID(rs.getString("MaThe"));
+                mb.setMaDV(rs.getString("MaDV"));
+                mb.setMaKH(rs.getString("MaKH"));
+                mb.setStartDate(rs.getString("NgayBD"));
+                mb.setStatus(rs.getBoolean("TrangThai"));
+                data.add(mb);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+        return data;
     }
 
     @Override
-    public MemberCard findByName(String Name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<MemberCard> findByName(String Name) {
+        List<MemberCard> data = null;
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_ID);
+            stmt.setString(1, Name);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                MemberCard mb = new MemberCard();
+                mb.setID(rs.getString("MaThe"));
+                mb.setMaDV(rs.getString("MaDV"));
+                mb.setMaKH(rs.getString("MaKH"));
+                mb.setStartDate(rs.getString("NgayBD"));
+                mb.setStatus(rs.getBoolean("TrangThai"));
+                data.add(mb);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+        return data;
     }
 
     @Override
     public boolean checkValid(String ID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        boolean result = false;
+        ResultSet rs = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(CHECK_VALID);
+            stmt.setString(1,ID);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                result = rs.getBoolean("TrangThai");
+            }
+        }  
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+        return result;
     }
-    
 }

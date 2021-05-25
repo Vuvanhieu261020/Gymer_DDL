@@ -9,6 +9,9 @@ package gymer.entities;
  *
  * @author luyen
  */
+
+
+// class nay de tao ra thuc the , de luu tru, van can` them 1 list de lam chi the
 public class MemberCard {
     private String MaThe;
     private String MaKH;

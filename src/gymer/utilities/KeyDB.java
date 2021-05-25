@@ -9,13 +9,19 @@ import java.util.Calendar;
  *
  * @author luyen
  */
+
+
+// class nay dung de tao key trong db
+
+
 public class KeyDB {
     
     public static String genKey (){
         Calendar cal = Calendar.getInstance();
         long timeNumber = cal.getTimeInMillis();
         Long longLong = new Long(timeNumber);
-        String key = longLong.toString();
+        // sub string de la 7 vi neu return ca? longlong thi` qua dai`
+        String key = longLong.toString().substring(7);
         return key;
     }
     

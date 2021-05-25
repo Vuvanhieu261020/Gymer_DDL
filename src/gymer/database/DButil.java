@@ -9,7 +9,7 @@ import java.sql.*;
  */
 public class DButil {
     // change DB url here
-    public static String DB_URL = "jdbc:mysql://localhost:3306/testdb";
+    public static String DB_URL = "jdbc:mysql://localhost:3306/gymer_oop";
     // change Password here
     public static String Password = "3222513";
     // change user name here
@@ -20,7 +20,7 @@ public class DButil {
     public static Connection getConnection (){
         Connection conn = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, UserName, Password);
             return conn;
         }

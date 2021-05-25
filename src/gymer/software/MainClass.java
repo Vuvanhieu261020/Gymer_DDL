@@ -18,7 +18,7 @@ public class MainClass {
         
         
         // test code
-        
+        // test git
         /*MemberCardImp mbi = new MemberCardImp();
         MemberCard mb = new MemberCard();
         mb.setID(KeyDB.genKey());

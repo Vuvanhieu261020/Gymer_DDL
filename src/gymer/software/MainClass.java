@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package gymer.software;
-import gymer.entities.MemberCard;
-import gymer.DAO.MemberCardImp;
+import gymer.DAO.*;
+import gymer.entities.*;
 import gymer.utilities.KeyDB;
 import java.util.List;
-
+import gymer.GUI.*;
 /**
  *
  * @author luyen
@@ -34,6 +34,27 @@ public class MainClass {
             System.out.println(mm.getCardID());
         }*/
         
-        System.out.println("Anh yeu Em");
+        /*System.out.println("Anh yeu Em");
+        
+        Customer cs = new Customer();
+        CustomerImp csi = new CustomerImp();
+        cs.setID(KeyDB.genKey());
+        cs.setCMND("031500003515");
+        cs.setAddress("40/80 Hoang Dao Thanh");
+        cs.setSDT("22112000");
+        cs.setYearofBirh(2000);
+        cs.setSex(true);
+        cs.setName("Doan Thi Bich Ngoc");
+        boolean check = csi.insert(cs);
+        
+        List<Customer> data;
+        data = csi.getAll();
+        for (Customer mm : data){
+            System.out.println(mm.getID());
+        }*/
+        
+        MainForm mf = new MainForm ();
+        mf.setVisible(true);
+        
     }
 }

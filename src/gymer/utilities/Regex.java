@@ -6,6 +6,16 @@
 package gymer.utilities;
 import java.util.regex.*;
 public class Regex {
+    
+    public static boolean AlphabetCheck (String Input){
+        Pattern ptn = Pattern.compile("[A-z]+");
+        Matcher mc = ptn.matcher(Input);
+        if (mc.find()){
+            return true;
+        }
+        return false;
+    }
+    
     public static boolean NumericCheck (String Input){
         Pattern ptn = Pattern.compile("[0-9]+");
         Matcher mc = ptn.matcher(Input);

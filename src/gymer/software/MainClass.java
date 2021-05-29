@@ -9,6 +9,7 @@ import gymer.entities.*;
 import gymer.utilities.KeyDB;
 import java.util.List;
 import gymer.GUI.*;
+import gymer.utilities.Regex;
 /**
  *
  * @author luyen
@@ -53,8 +54,11 @@ public class MainClass {
             System.out.println(mm.getID());
         }*/
         
-        MainForm mf = new MainForm ();
-        mf.setVisible(true);
+        /*MainForm mf = new MainForm ();
+        mf.setVisible(true);*/
+        
+        String number = "04515662";
+        System.out.println(Regex.NumericCheck(number));
         
     }
 }

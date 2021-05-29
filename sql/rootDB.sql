@@ -1,3 +1,7 @@
+create database gymer_oop
+
+go
+
 create table tbl_KhachHang (
 	MaKH int not null,
     Ten nvarchar(256) not null,
@@ -5,7 +9,7 @@ create table tbl_KhachHang (
     SDT varchar(10) not null,
     DiaChi nvarchar(512),
     NamSinh int not null,
-    GioTinh boolean not null,
+    GioiTinh boolean not null,
     primary key (MaKH)
 );
 create table tbl_DichVu (
@@ -22,14 +26,11 @@ create table tbl_The (
     NgayBD date not null,
     MaDV int not null,
     primary key (MaThe),
-    foreign key (MaThe) references tbl_DichVu (MaDV),
     foreign key (MaKH) references tbl_KhachHang (MaKH)
 );
 create table tbl_CTThe (
-	MaCT int not null,
     MaThe int not null,
     ThoiDiemSuDung datetime,
-    primary key (MaCT),
     foreign key (MaThe) references tbl_The (MaThe)
 );
 create table tbl_NhanVien (
@@ -96,7 +97,6 @@ create table tbl_HoaDonNhap (
     foreign key (MaNV) references tbl_NhanVien(MaNV)
 );
 create table tbl_CTHDNhap (
-	id int not null,
     MaHoaDonNhap int not null,
     MaHang int not null,
     TenHang nvarchar(256) not null,
@@ -104,26 +104,23 @@ create table tbl_CTHDNhap (
     Gia int not null,
     SoLuong int not null,
     DVT nvarchar(10) not null,
-    primary key (id),
     foreign key (MaHoaDonNhap) references tbl_HoaDonNhap (MaHoaDonNhap),
     foreign key (MaHang) references tbl_HangHoa (MaHang)
 );
 create table tbl_CTHDHang (
 	MaHoaDonHang int not null,
-    id int not null,
     MaHang int not null,
     TenHang nvarchar (256) not null,
     SoLuong int not null,
     Gia int not null,
     DVT nvarchar(10),
-    primary key (id),
     foreign key (MaHoaDonHang) references tbl_HoaDonHang (MaHoaDonHang),
     foreign key (MaHang) references tbl_HangHoa (MaHang)
 );
 create table tbl_CTHDTap (
-	MaHoaDonTap int not null,
+    MaHoaDonTap int not null,
     MaDV int not null,
     Gia int not null,
-    primary key (MaHoaDonTap),
-    foreign key (MaDV) references tbl_DichVu
+    foreign key (MaDV) references tbl_DichVu(MaDV),
+    foreign key (MaHoaDonTap) references tbl_HoaDonTap(MaHoaDonTap)
 );

@@ -201,16 +201,22 @@ public class MemberCardImp implements MemberCardDAO{
         PreparedStatement stmt = null;
         Connection conn = null;
         ResultSet rs = null;
+        boolean checker = false;
         try {
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(CHECK_VALID);
             stmt.setString(1,ID);
             rs = stmt.executeQuery();
             while(rs.next()){
-                if(rs.getBoolean("TrangThai"))
-                {
-                    return true;
+                if (rs.getBoolean("TrangThai")){
+                    checker = true;
                 }
+            }
+            if (checker){
+                return true;
+            }
+            else {
+                return false;
             }
         }  
         catch (Exception e){

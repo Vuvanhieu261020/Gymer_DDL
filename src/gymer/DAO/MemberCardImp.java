@@ -9,6 +9,7 @@ import gymer.entities.MemberCard;
 import java.util.List;
 import java.sql.*;
 import gymer.database.DButil;
+import java.util.ArrayList;
 /**
  *
  * @author luyen
@@ -32,7 +33,7 @@ public class MemberCardImp implements MemberCardDAO{
     public List<MemberCard> getAll() {
         
         // khoi tao list cac thuc the se luu
-        List<MemberCard> data = null;
+        List<MemberCard> data = new ArrayList<MemberCard>();
         // khoi tao doi tuong cau lenh
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -49,15 +50,16 @@ public class MemberCardImp implements MemberCardDAO{
                 mb.setStatus(rs.getBoolean("TrangThai"));
                 data.add(mb);
             }
+            return data;
         }
         catch (Exception e){
             e.printStackTrace();
+            return null;
         }
         finally {
             DButil.closeConn(conn);
             DButil.closeStm(stmt);
         }
-        return data;
     }
 
     @Override
@@ -74,43 +76,43 @@ public class MemberCardImp implements MemberCardDAO{
             stmt.setString(4, Input.getStartDate());
             stmt.setString(5, Input.getMaDV());
             result = stmt.execute();
+            return true;
         }
         catch (Exception e){
             e.printStackTrace();
+            return false;
         }
         finally {
             DButil.closeConn(conn);
             DButil.closeStm(stmt);
         }
-        return result;
     }
 
     @Override
     public boolean delete(String ID) {
         PreparedStatement stmt = null;
         Connection conn = null;
-        boolean result = false;
         try {
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(DELETE);
             stmt.setString(1, ID);
-            result = stmt.execute();
+            stmt.execute();
+            return true;
         }
         catch (Exception e){
             e.printStackTrace();
+            return false;
         }
         finally {
             DButil.closeConn(conn);
             DButil.closeStm(stmt);
         }
-        return result;
     }
 
     @Override
     public boolean update(MemberCard Input) {
         PreparedStatement stmt = null;
         Connection conn = null;
-        boolean result = false;
         try {
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(INSERT);
@@ -119,21 +121,22 @@ public class MemberCardImp implements MemberCardDAO{
             stmt.setBoolean(2, Input.getStatus());
             stmt.setString(3, Input.getStartDate());
             stmt.setString(4, Input.getMaDV());
-            result = stmt.execute();
+            stmt.execute();
+            return true;
         }
         catch (Exception e){
             e.printStackTrace();
+            return false;
         }
         finally {
             DButil.closeConn(conn);
             DButil.closeStm(stmt);
         }
-        return result;
     }
 
     @Override
     public List<MemberCard> findByID(String ID) {
-        List<MemberCard> data = null;
+        List<MemberCard> data = new ArrayList<MemberCard>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -150,20 +153,21 @@ public class MemberCardImp implements MemberCardDAO{
                 mb.setStatus(rs.getBoolean("TrangThai"));
                 data.add(mb);
             }
+            return data;
         }
         catch (Exception e){
             e.printStackTrace();
+            return null;
         }
         finally {
             DButil.closeConn(conn);
             DButil.closeStm(stmt);
         }
-        return data;
     }
 
     @Override
     public List<MemberCard> findByName(String Name) {
-        List<MemberCard> data = null;
+        List<MemberCard> data = new ArrayList<MemberCard>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -180,22 +184,22 @@ public class MemberCardImp implements MemberCardDAO{
                 mb.setStatus(rs.getBoolean("TrangThai"));
                 data.add(mb);
             }
+            return data;
         }
         catch (Exception e){
             e.printStackTrace();
+            return null;
         }
         finally {
             DButil.closeConn(conn);
             DButil.closeStm(stmt);
         }
-        return data;
     }
 
     @Override
     public boolean checkValid(String ID) {
         PreparedStatement stmt = null;
         Connection conn = null;
-        boolean result = false;
         ResultSet rs = null;
         try {
             conn = DButil.getConnection();
@@ -203,16 +207,19 @@ public class MemberCardImp implements MemberCardDAO{
             stmt.setString(1,ID);
             rs = stmt.executeQuery();
             while(rs.next()){
-                result = rs.getBoolean("TrangThai");
+                if(rs.getBoolean("TrangThai"))
+                {
+                    return true;
+                }
             }
         }  
         catch (Exception e){
             e.printStackTrace();
+            return false;
         }
         finally {
             DButil.closeConn(conn);
             DButil.closeStm(stmt);
         }
-        return result;
     }
 }

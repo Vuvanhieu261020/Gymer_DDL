@@ -40,11 +40,11 @@ public class MainClass {
         CustomerImp csi = new CustomerImp();
         cs.setID(KeyDB.genKey());
         cs.setCMND("031500003515");
-        cs.setAddress("40/80 Hoang Dao Thanh");
+        cs.setAddress("massachussett");
         cs.setSDT("22112000");
         cs.setYearofBirh(2000);
         cs.setSex(true);
-        cs.setName("Doan Thi Bich Ngoc");
+        cs.setName("dtbn");
         boolean check = csi.insert(cs);
         
         List<Customer> data;

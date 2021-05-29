@@ -5,6 +5,10 @@
  */
 package gymer.entities;
 
+import java.util.List;
+import gymer.entities.MemberCar_Detail;
+import java.util.ArrayList;
+
 /**
  *
  * @author luyen
@@ -13,6 +17,8 @@ package gymer.entities;
 
 // class nay de tao ra thuc the , de luu tru, van can` them 1 list de lam chi the
 public class MemberCard {
+    
+    private List<MemberCar_Detail> Detail; 
     private String MaThe;
     private String MaKH;
     private boolean Status;
@@ -20,6 +26,7 @@ public class MemberCard {
     private String MaDV;
     
     public MemberCard() {
+        this.Detail = new ArrayList<MemberCar_Detail>();
         this.MaThe = "";
         this.MaKH = "";
         this.Status = false;
@@ -65,6 +72,14 @@ public class MemberCard {
 
     public void setMaDV(String MaDV) {
         this.MaDV = MaDV;
+    }
+
+    public List<MemberCar_Detail> getDetail() {
+        return Detail;
+    }
+
+    public void setDetail(List<MemberCar_Detail> Detail) {
+        this.Detail = Detail;
     }
     
 }

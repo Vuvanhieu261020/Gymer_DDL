@@ -6,6 +6,7 @@
 package gymer.DAO;
 import java.util.List;
 import gymer.entities.MemberCard;
+import gymer.entities.MemberCar_Detail;
 /**
  *
  * @author luyen
@@ -18,4 +19,5 @@ public interface MemberCardDAO {
     public List<MemberCard> findByID(String ID);
     public List<MemberCard> findByName(String Name);
     public boolean checkValid (String ID);
+    public MemberCard getDetails (MemberCard Input);
 }

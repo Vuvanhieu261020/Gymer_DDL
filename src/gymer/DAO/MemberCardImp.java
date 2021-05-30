@@ -10,6 +10,7 @@ import java.util.List;
 import java.sql.*;
 import gymer.database.DButil;
 import java.util.ArrayList;
+import gymer.entities.MemberCar_Detail;
 /**
  *
  * @author luyen
@@ -21,13 +22,14 @@ public class MemberCardImp implements MemberCardDAO{
     // khoi tao cac cau lenh SQL phuc vu cho cac ham tuong ung
     
     
-    private static final String DELETE = "delete from tbl_the where MaThe=?";
-    private static final String FIND_ALL = "select tbl_the.MaThe, tbl_the.TrangThai, tbl_the.NgayBD, tbl_dichvu.Ten from tbl_the inner join tbl_dichvu on tbl_the.MaDV = tbl_dichvu.MaDV inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH";
-    private static final String FIND_BY_ID = "select tbl_the.MaThe, tbl_the.TrangThai, tbl_the.NgayBD, tbl_dichvu.Ten from tbl_the inner join tbl_dichvu on tbl_the.MaDV = tbl_dichvu.MaDV inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.MaThe=?";
+    private static final String DELETE = "delete from tbl_The where MaThe=?";
+    private static final String FIND_ALL = "select * from tbl_The";
+    private static final String FIND_BY_ID = "select * from tbl_The";
     private static final String FIND_BY_NAME = "select tbl_the.MaThe, tbl_the.TrangThai, tbl_the.NgayBD, tbl_dichvu.Ten from tbl_the inner join tbl_dichvu on tbl_the.MaDV = tbl_dichvu.MaDV inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten=?";
     private static final String INSERT = "insert into tbl_the(MaThe, MaKH, TrangThai, NgayBD, MaDV) values(?, ?, ?, ?, ?)";
     private static final String UPDATE = "update tbl_the set MaKH=?, TrangThai=?, NgayBD=?, MaDV=? where MaThe=?";
     private static final String CHECK_VALID = "select TrangThai from tbl_the where MaThe=?";
+    private static final String GET_DETAIL = "select ThoiDiemSuDung from tbl_ctthe where MaThe=? order by ThoiDiemSuDung desc";
     
     @Override
     public List<MemberCard> getAll() {
@@ -222,6 +224,35 @@ public class MemberCardImp implements MemberCardDAO{
         catch (Exception e){
             e.printStackTrace();
             return false;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+
+    @Override
+    public MemberCard getDetails(MemberCard Input) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        List<MemberCar_Detail> data = new ArrayList<MemberCar_Detail>();
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(GET_DETAIL);
+            stmt.setString(1, Input.getCardID());
+            rs = stmt.executeQuery();
+            while (rs.next()){
+                MemberCar_Detail mbd = new MemberCar_Detail(Input.getCardID());
+                mbd.setTime(rs.getString("ThoiDiemSuDung"));
+                data.add(mbd);
+            }
+            Input.setDetail(data);
+            return Input;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
         finally {
             DButil.closeConn(conn);

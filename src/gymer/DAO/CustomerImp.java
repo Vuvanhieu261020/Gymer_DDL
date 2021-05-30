@@ -5,7 +5,7 @@
  */
 
 
-// Truong GioiTinh bi ghi nham thanh GioTinh
+// Truong GioiTinh bi ghi nham thanh GioiTinh
 
 
 package gymer.DAO;
@@ -14,6 +14,7 @@ import gymer.entities.Customer;
 import java.util.List;
 import java.sql.*;
 import gymer.database.DButil;
+import gymer.entities.MemberCard;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +27,7 @@ public class CustomerImp implements CustomerDAO{
     private static final String DELETE = "delete from tbl_khachhang where MaKH=?";
     private static final String FIND_ALL = "select * from tbl_khachhang";
     private static final String FIND_BY_NAME = "select * from tbl_khachhang";
-    private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioTinh) values(?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "update tbl_khachhang set Ten=?, CMND=?, SDT=?, DiChi=?, NamSinh=?, GioiTinh=? where MaKH=?";
     
     
@@ -46,7 +47,7 @@ public class CustomerImp implements CustomerDAO{
                 cs.setName(rs.getString("Ten"));
                 cs.setSDT(rs.getString("SDT"));
                 cs.setAddress(rs.getString("DiaChi"));
-                cs.setSex(rs.getBoolean("GioTinh"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
                 data.add(cs);
             }
             return data;
@@ -153,7 +154,7 @@ public class CustomerImp implements CustomerDAO{
                 cs.setName(rs.getString("Ten"));
                 cs.setSDT(rs.getString("SDT"));
                 cs.setAddress(rs.getString("DiaChi"));
-                cs.setSex(rs.getBoolean("GioTinh"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
                 data.add(cs);
             }
             return data;
@@ -186,7 +187,7 @@ public class CustomerImp implements CustomerDAO{
                 cs.setName(rs.getString("Ten"));
                 cs.setSDT(rs.getString("SDT"));
                 cs.setAddress(rs.getString("DiaChi"));
-                cs.setSex(rs.getBoolean("GioTinh"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
                 data.add(cs);
             }
             return data;
@@ -200,5 +201,4 @@ public class CustomerImp implements CustomerDAO{
             DButil.closeStm(stmt);
         }
     }
-    
 }

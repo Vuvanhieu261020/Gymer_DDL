@@ -35,7 +35,7 @@ public class MainClass {
             System.out.println(mm.getCardID());
         }*/
         
-        /*System.out.println("Anh yeu Em");
+        System.out.println("Anh yeu Em");
         
         Customer cs = new Customer();
         CustomerImp csi = new CustomerImp();
@@ -52,7 +52,7 @@ public class MainClass {
         data = csi.getAll();
         for (Customer mm : data){
             System.out.println(mm.getID());
-        }*/
+        }
         
         /*MainForm mf = new MainForm ();
         mf.setVisible(true);*/

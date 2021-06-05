@@ -22,7 +22,7 @@ public class Equipment {
         this.MaTB = "";
         this.Ten = "";
         this.NSX = "";
-        this.SoLuong = 0d;
+        this.SoLuong = 0;
         this.TinhTrang = "";
         this.NgayNhap = "";
         this.GiaNhap = 0;

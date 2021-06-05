@@ -13,13 +13,9 @@ import java.util.List;
  * @author luyen
  */
 public interface EquimentDAO {
-    public List<Equipment> getAll();
-    public boolean insert(Equipment Input);
-    public boolean delete(String ID);
-    public boolean update(Equipment Input);
     public List<Equipment> findByName(String Name);
     public List<Equipment> getBrokenList();
     public List<Equipment> getAvailableList();
-    public List<Equipment> reportbyDate();
+    public List<Equipment> reportbyDate(String Date);
     public List<Equipment> reportbyDateDiff(String startDate, String endDate);
 }

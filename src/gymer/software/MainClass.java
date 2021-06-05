@@ -6,10 +6,12 @@
 package gymer.software;
 import gymer.DAO.*;
 import gymer.entities.*;
-import gymer.utilities.KeyDB;
+import gymer.utilities.*;
 import java.util.List;
 import gymer.GUI.*;
-import gymer.utilities.Regex;
+
+
+
 /**
  *
  * @author luyen
@@ -41,15 +43,15 @@ public class MainClass {
         CustomerImp csi = new CustomerImp();
         cs.setID(KeyDB.genKey());
         cs.setCMND("031500003515");
-        cs.setAddress("massachussett");
+        cs.setAddress("40/80 Hoàng Đạo Thành");
         cs.setSDT("22112000");
         cs.setYearofBirh(2000);
         cs.setSex(true);
-        cs.setName("dtbn");
+        cs.setName("Đoàn Thị Bích Ngọc");
         boolean check = csi.insert(cs);
         
         List<Customer> data;
-        data = csi.getAll();
+        data = csi.findByName("Đồng Xuân Luyện");
         for (Customer mm : data){
             System.out.println(mm.getID());
         }
@@ -57,8 +59,8 @@ public class MainClass {
         /*MainForm mf = new MainForm ();
         mf.setVisible(true);*/
         
-        String number = "04515662";
-        System.out.println(Regex.NumericCheck(number));
-        
+        /*String number = "04515662";
+        System.out.println(Regex.NumericCheck(number));*/
+        //System.out.println(HashPassword.Hash("luyen3222513"));
     }
 }

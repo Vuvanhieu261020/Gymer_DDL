@@ -229,6 +229,7 @@ public class MemberCardImp implements MemberCardDAO{
             DButil.closeConn(conn);
             DButil.closeStm(stmt);
         }
+        return false;
     }
 
     @Override

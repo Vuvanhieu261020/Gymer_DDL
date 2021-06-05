@@ -35,7 +35,7 @@ public class MainClass {
         }*/
         
         
-        /*
+        
         System.out.println("Anh yeu Em");
         Customer cs = new Customer();
         CustomerImp csi = new CustomerImp();
@@ -45,17 +45,16 @@ public class MainClass {
         cs.setSDT("22112000");
         cs.setYearofBirh(2000);
         cs.setSex(true);
-        cs.setName("dtbn");
+        cs.setName("hhhh");
         boolean check = csi.insert(cs);
         
         List<Customer> data;
         data = csi.getAll();
         for (Customer mm : data){
             System.out.println(mm.getID());
-        }*/
+        }
         
         MainForm mf = new MainForm ();
         mf.setVisible(true);
-        
     }
 }

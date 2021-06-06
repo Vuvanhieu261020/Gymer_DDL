@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -25,6 +26,7 @@ import javax.swing.table.TableModel;
 public class MainForm extends javax.swing.JFrame {
     private CustomerImp dao=new CustomerImp() ;
     private Customer cs = new Customer();
+    private static int count = 0;
     //String strFind="";
     /**
      * Creates new form MainForm
@@ -661,6 +663,11 @@ public class MainForm extends javax.swing.JFrame {
 
         pane2.setBackground(new java.awt.Color(255, 255, 255));
         pane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pane2MouseClicked(evt);
+            }
+        });
         pane2.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 pane2ComponentShown(evt);
@@ -673,20 +680,91 @@ public class MainForm extends javax.swing.JFrame {
 
         jTextField1.setForeground(new java.awt.Color(102, 102, 102));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Trần Đăng Hùng");
         jTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTextField1PropertyChange(evt);
+            }
+        });
 
         jLabel24.setText("Mã khách hàng");
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         jLabel26.setText("Địa chỉ");
+
+        jTextField3.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField3CaretUpdate(evt);
+            }
+        });
+        jTextField3.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+                jTextField3AncestorRemoved(evt);
+            }
+        });
+        jTextField3.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTextField3InputMethodTextChanged(evt);
+            }
+        });
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel27.setText("SĐT");
 
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+
         jLabel28.setText("CMND");
 
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
         jLabel29.setText("Giới tính");
+
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
 
         jLabel30.setText("Tuổi");
 
@@ -816,12 +894,27 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
         jLabel36.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel36MouseClicked(evt);
+            }
+        });
 
         jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_add.png"))); // NOI18N
         jLabel38.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel38MouseClicked(evt);
+            }
+        });
 
         jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
         jLabel39.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel39MouseClicked(evt);
+            }
+        });
 
         txtFind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1219,6 +1312,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void tb_hoivienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_hoivienMouseClicked
         // TODO add your handling code here:
+        count = 0;
         int index = tb_hoivien.getSelectedRow();
         TableModel model = tb_hoivien.getModel();
         // ten
@@ -1226,15 +1320,16 @@ public class MainForm extends javax.swing.JFrame {
         cs.setName(jTextField1.getText());
         // MaKH
         jTextField2.setText(model.getValueAt(index, 0).toString());
-        cs.setID(jTextField1.getText());
+        cs.setID(jTextField2.getText());
         // address
         jTextField3.setText(model.getValueAt(index, 6).toString());
-        cs.setAddress(jTextField1.getText());
+        cs.setAddress(jTextField3.getText());
         // sdt
         jTextField4.setText(model.getValueAt(index, 2).toString());
-        cs.setSDT(jTextField1.getText());
+        cs.setSDT(jTextField4.getText());
         // cmnd
         jTextField5.setText(model.getValueAt(index, 3).toString());
+        cs.setCMND(jTextField5.getText());
         // GioiTinh 
         if (model.getValueAt(index, 5).toString().equals("true")){
             jTextField6.setText("Nam");
@@ -1254,45 +1349,176 @@ public class MainForm extends javax.swing.JFrame {
         if (Regex.NumericCheck(txtFind.getText())){
             Find_bySDTCustomer();
         }
-        else {
+        if (Regex.AlphabetCheck(txtFind.getText())) {
             Find_byNameCustomer();
         }
     }//GEN-LAST:event_buttonFindMouseClicked
 
+    private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
+        // TODO add your handling code here:
+        count = 0;
+        String message = "Bạn có chắc muỗn xóa " + jTextField1.getText() + "?";
+        int checker = JOptionPane.showConfirmDialog(null, message);
+        if (checker == JOptionPane.YES_OPTION){
+            if (dao.delete(cs.getID())){
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                Show_Customer();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Xóa thất bại vui lòng thử lại");
+            }
+        }
+    }//GEN-LAST:event_jLabel39MouseClicked
+
+    private void pane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pane2MouseClicked
+        // TODO add your handling code here:
+        Show_Customer();
+    }//GEN-LAST:event_pane2MouseClicked
+
+    private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
+        // TODO add your handling code here:
+        count = 0;
+        cs.setName(jTextField1.getText());
+        // MaKH
+        cs.setID(jTextField2.getText());
+        // address
+        cs.setAddress(jTextField3.getText());
+        // sdt
+        cs.setSDT(jTextField4.getText());
+        // cmnd
+        cs.setCMND(jTextField5.getText());
+        // GioiTinh 
+        if (jTextField6.getText().equals("Nam")){
+            cs.setSex(true);
+        }
+        else {
+            cs.setSex(false);
+        }
+        // nam sinh
+        cs.setYearofBirh(Integer.parseInt(jTextField7.getText()));
+        
+        int checker = JOptionPane.showConfirmDialog(null, "Mọi thông tin chỉnh sửa đã đúng ?");
+        if (checker == JOptionPane.YES_OPTION){
+            if (dao.update(cs)){
+                JOptionPane.showMessageDialog(null, "Thành Công");
+                Show_Customer();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Sửa thất bại vui lòng thử lại");
+            }
+        }
+    }//GEN-LAST:event_jLabel36MouseClicked
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTextField1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField1PropertyChange
+
+    }//GEN-LAST:event_jTextField1PropertyChange
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jTextField3AncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextField3AncestorRemoved
+
+    }//GEN-LAST:event_jTextField3AncestorRemoved
+
+    private void jTextField3InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField3InputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3InputMethodTextChanged
+
+    private void jTextField3CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField3CaretUpdate
+
+    }//GEN-LAST:event_jTextField3CaretUpdate
+
+    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
+        count ++;
+        if (count % 2 != 0){
+            jTextField2.setText(KeyDB.genKey());
+            jTextField1.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField3.setText("");
+        }
+        if (count % 2 == 0) {
+            if (jTextField1.getText().equals("")
+                && jTextField3.getText().equals("")
+                && jTextField4.getText().equals("")
+                && jTextField5.getText().equals("")
+                && jTextField6.getText().equals("")
+                && jTextField7.getText().equals("")
+                ){
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì");
+        }
+            else {
+                cs.setName(jTextField1.getText());
+            // MaKH
+                cs.setID(jTextField2.getText());
+            // address
+                cs.setAddress(jTextField3.getText());
+            // sdt
+                cs.setSDT(jTextField4.getText());
+            // cmnd
+                cs.setCMND(jTextField5.getText());
+            // GioiTinh 
+                if (jTextField6.getText().equals("Nam")){
+                    cs.setSex(true);
+                }
+                else {
+                    cs.setSex(false);
+                }
+            // nam sinh
+                cs.setYearofBirh(Integer.parseInt(jTextField7.getText()));
+                if (dao.insert(cs)){
+                    JOptionPane.showMessageDialog(null, "Thành Công");
+                    Show_Customer();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Thêm thất bại vui lòng thử lại");
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_jLabel38MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+    /*public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainForm().setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFind;

@@ -29,6 +29,7 @@ public class CustomerImp implements CustomerDAO{
     private static final String FIND_BY_SDT = "select * from tbl_khachhang where SDT=?";
     private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "update tbl_khachhang set Ten=?, CMND=?, SDT=?, DiaChi=?, NamSinh=?, GioiTinh=? where MaKH=?";
+    private static final String COUNT = "select count(*) as coo from tbl_khachhang";
     
     
     @Override
@@ -196,6 +197,29 @@ public class CustomerImp implements CustomerDAO{
         catch (Exception e){
             e.printStackTrace();
             return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    public String getTotal (){
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        String number = "";
+        try {
+      
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(COUNT);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                number = rs.getString("coo");
+            }
+            return number;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "";
         }
         finally {
             DButil.closeConn(conn);

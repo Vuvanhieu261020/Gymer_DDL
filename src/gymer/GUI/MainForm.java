@@ -77,6 +77,7 @@ public class MainForm extends javax.swing.JFrame {
             dataRow[6]=cus.getAddress();
             tbModel.addRow(dataRow);
         }
+        jTextField9.setText(dao.getTotal());
     }
     public void Find_byNameCustomer(){
         DefaultTableModel tbModel= (DefaultTableModel) tb_hoivien.getModel();
@@ -92,6 +93,7 @@ public class MainForm extends javax.swing.JFrame {
             dataRow[6]=cus.getAddress();
             tbModel.addRow(dataRow);
         }
+        jTextField9.setText(Integer.toString(tbModel.getRowCount()));
     }
     
     public void Find_bySDTCustomer(){
@@ -108,6 +110,7 @@ public class MainForm extends javax.swing.JFrame {
             dataRow[6]=cus.getAddress();
             tbModel.addRow(dataRow);
         }
+        jTextField9.setText(Integer.toString(tbModel.getRowCount()));
     }
     
     
@@ -881,6 +884,11 @@ public class MainForm extends javax.swing.JFrame {
         jTextField10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField10.setText("1000");
         jTextField10.setBorder(null);
+        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField10ActionPerformed(evt);
+            }
+        });
 
         jLabel34.setText("Active");
         jLabel34.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -948,20 +956,14 @@ public class MainForm extends javax.swing.JFrame {
                         .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel33))
+                        .addGap(27, 27, 27)
                         .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pane2Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel34))
-                            .addGroup(pane2Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34))
+                        .addGap(27, 27, 27)
                         .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pane2Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel35))
-                            .addGroup(pane2Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel35)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pane2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1002,15 +1004,14 @@ public class MainForm extends javax.swing.JFrame {
                             .addGroup(pane2Layout.createSequentialGroup()
                                 .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel33))
+                                .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel33)
+                                    .addComponent(jLabel34)))
                             .addGroup(pane2Layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
-                                .addComponent(jLabel34))
-                            .addGroup(pane2Layout.createSequentialGroup()
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel35))))
                     .addGroup(pane2Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
@@ -1508,6 +1509,10 @@ public class MainForm extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jLabel38MouseClicked
+
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10ActionPerformed
 
     /**
      * @param args the command line arguments

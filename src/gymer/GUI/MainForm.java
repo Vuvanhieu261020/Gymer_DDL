@@ -9,20 +9,23 @@ import gymer.DAO.CustomerDAO;
 import gymer.DAO.CustomerImp;
 import gymer.entities.Customer;
 import java.awt.Color;
+import gymer.utilities.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author Linh
  */
 public class MainForm extends javax.swing.JFrame {
-    CustomerImp dao=new CustomerImp() ;
-    String strFind="";
+    private CustomerImp dao=new CustomerImp() ;
+    private Customer cs = new Customer();
+    //String strFind="";
     /**
      * Creates new form MainForm
      */
@@ -62,24 +65,51 @@ public class MainForm extends javax.swing.JFrame {
         DefaultTableModel tbModel= (DefaultTableModel) tb_hoivien.getModel();
         tbModel.setRowCount(0);
         for(Customer cus: dao.getAll() ){
-            Object dataRow[]=new Object[3];
+            Object dataRow[]=new Object[7];
             dataRow[0]=cus.getID();
             dataRow[1]=cus.getName();
             dataRow[2]=cus.getSDT();
+            dataRow[3]=cus.getCMND();
+            dataRow[4]=cus.getYearofBirh();
+            dataRow[5]=cus.getSex();
+            dataRow[6]=cus.getAddress();
             tbModel.addRow(dataRow);
         }
     }
-    public void Find_Customer(){
+    public void Find_byNameCustomer(){
         DefaultTableModel tbModel= (DefaultTableModel) tb_hoivien.getModel();
         tbModel.setRowCount(0);
-        for(Customer cus: dao.findByName(strFind) ){
-            Object dataRow[]=new Object[3];
+        for(Customer cus: dao.findByName(txtFind.getText()) ){
+            Object dataRow[]=new Object[7];
             dataRow[0]=cus.getID();
             dataRow[1]=cus.getName();
             dataRow[2]=cus.getSDT();
+            dataRow[3]=cus.getCMND();
+            dataRow[4]=cus.getYearofBirh();
+            dataRow[5]=cus.getSex();
+            dataRow[6]=cus.getAddress();
             tbModel.addRow(dataRow);
         }
     }
+    
+    public void Find_bySDTCustomer(){
+        DefaultTableModel tbModel= (DefaultTableModel) tb_hoivien.getModel();
+        tbModel.setRowCount(0);
+        for(Customer cus: dao.findBySDT(txtFind.getText()) ){
+            Object dataRow[]=new Object[7];
+            dataRow[0]=cus.getID();
+            dataRow[1]=cus.getName();
+            dataRow[2]=cus.getSDT();
+            dataRow[3]=cus.getCMND();
+            dataRow[4]=cus.getYearofBirh();
+            dataRow[5]=cus.getSex();
+            dataRow[6]=cus.getAddress();
+            tbModel.addRow(dataRow);
+        }
+    }
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -138,8 +168,6 @@ public class MainForm extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_hoivien = new javax.swing.JTable();
@@ -228,7 +256,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel7.setText("Quét ra vào");
+        jLabel7.setText("Thẻ");
 
         javax.swing.GroupLayout jp1Layout = new javax.swing.GroupLayout(jp1);
         jp1.setLayout(jp1Layout);
@@ -247,7 +275,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -315,7 +343,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -351,7 +379,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -386,7 +414,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -420,7 +448,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -456,7 +484,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -650,7 +678,7 @@ public class MainForm extends javax.swing.JFrame {
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
-        jLabel24.setText("Mã thẻ");
+        jLabel24.setText("Mã khách hàng");
 
         jLabel26.setText("Địa chỉ");
 
@@ -658,11 +686,9 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel28.setText("CMND");
 
-        jLabel29.setText("Gói");
+        jLabel29.setText("Giới tính");
 
-        jLabel30.setText("Ngày bắt đầu");
-
-        jLabel31.setText("Ngày hết hạn");
+        jLabel30.setText("Tuổi");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -670,12 +696,6 @@ public class MainForm extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jLabel25))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -688,25 +708,25 @@ public class MainForm extends javax.swing.JFrame {
                                     .addComponent(jLabel30)
                                     .addComponent(jLabel24))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel31)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                    .addComponent(jTextField2)
+                                    .addComponent(jTextField4)
+                                    .addComponent(jTextField5)
+                                    .addComponent(jTextField6)
+                                    .addComponent(jTextField7)))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel25)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -732,10 +752,6 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -744,32 +760,37 @@ public class MainForm extends javax.swing.JFrame {
 
         tb_hoivien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã thẻ", "Họ và tên", "SĐT"
+                "Mã khách hàng", "Họ và tên", "SĐT", "CMND", "Năm Sinh", "Giới tính", "Địa chỉ"
             }
         ));
+        tb_hoivien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_hoivienMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_hoivien);
 
         jLabel33.setText("Hội viên");
@@ -811,6 +832,11 @@ public class MainForm extends javax.swing.JFrame {
         buttonFind.setBackground(new java.awt.Color(255, 255, 255));
         buttonFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
         buttonFind.setBorderPainted(false);
+        buttonFind.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonFindMouseClicked(evt);
+            }
+        });
         buttonFind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonFindActionPerformed(evt);
@@ -839,12 +865,11 @@ public class MainForm extends javax.swing.JFrame {
                         .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pane2Layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
-                                .addComponent(jLabel35)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel35))
                             .addGroup(pane2Layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pane2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel32)
@@ -854,7 +879,7 @@ public class MainForm extends javax.swing.JFrame {
                         .addComponent(buttonFind, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
                     .addGroup(pane2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                         .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pane2Layout.createSequentialGroup()
                                 .addComponent(jLabel38)
@@ -882,26 +907,22 @@ public class MainForm extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pane2Layout.createSequentialGroup()
-                                .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pane2Layout.createSequentialGroup()
-                                        .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel33))
-                                    .addGroup(pane2Layout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jLabel34)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel33))
+                            .addGroup(pane2Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel34))
                             .addGroup(pane2Layout.createSequentialGroup()
                                 .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel35)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE))))
+                                .addComponent(jLabel35))))
                     .addGroup(pane2Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(buttonFind, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(buttonFind, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(pane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1190,13 +1211,53 @@ public class MainForm extends javax.swing.JFrame {
 
     private void buttonFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFindActionPerformed
         // TODO add your handling code here:
-        strFind=txtFind.getText();
-        Find_Customer();
     }//GEN-LAST:event_buttonFindActionPerformed
 
     private void txtFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFindActionPerformed
+
+    private void tb_hoivienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_hoivienMouseClicked
+        // TODO add your handling code here:
+        int index = tb_hoivien.getSelectedRow();
+        TableModel model = tb_hoivien.getModel();
+        // ten
+        jTextField1.setText(model.getValueAt(index, 1).toString());
+        cs.setName(jTextField1.getText());
+        // MaKH
+        jTextField2.setText(model.getValueAt(index, 0).toString());
+        cs.setID(jTextField1.getText());
+        // address
+        jTextField3.setText(model.getValueAt(index, 6).toString());
+        cs.setAddress(jTextField1.getText());
+        // sdt
+        jTextField4.setText(model.getValueAt(index, 2).toString());
+        cs.setSDT(jTextField1.getText());
+        // cmnd
+        jTextField5.setText(model.getValueAt(index, 3).toString());
+        // GioiTinh 
+        if (model.getValueAt(index, 5).toString().equals("true")){
+            jTextField6.setText("Nam");
+            cs.setSex(true);
+        }
+        else {
+            jTextField6.setText("Nữ");
+            cs.setSex(false);
+        }
+        // nam sinh
+        jTextField7.setText(model.getValueAt(index, 4).toString());
+        cs.setYearofBirh(Integer.parseInt(jTextField7.getText()));
+    }//GEN-LAST:event_tb_hoivienMouseClicked
+
+    private void buttonFindMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonFindMouseClicked
+        // TODO add your handling code here:
+        if (Regex.NumericCheck(txtFind.getText())){
+            Find_bySDTCustomer();
+        }
+        else {
+            Find_byNameCustomer();
+        }
+    }//GEN-LAST:event_buttonFindMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1259,7 +1320,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -1291,7 +1351,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel jp1;
     private javax.swing.JPanel jp2;

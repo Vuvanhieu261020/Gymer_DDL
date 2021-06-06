@@ -22,7 +22,6 @@ import java.util.ArrayList;
  * @author luyen
  */
 public class CustomerImp implements CustomerDAO{
-
     
     private static final String DELETE = "delete from tbl_khachhang where MaKH=?";
     private static final String FIND_ALL = "select * from tbl_khachhang";
@@ -176,8 +175,9 @@ public class CustomerImp implements CustomerDAO{
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
+      
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(FIND_BY_NAME);
+            stmt = conn.prepareStatement(FIND_BY_SDT);
             stmt.setString(1, SDT);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){

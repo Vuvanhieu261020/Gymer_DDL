@@ -39,6 +39,8 @@ public class MainClass {
         
         System.out.println("Anh yeu Em");
         
+        
+        System.out.println("Anh yeu Em");
         Customer cs = new Customer();
         CustomerImp csi = new CustomerImp();
         cs.setID(KeyDB.genKey());

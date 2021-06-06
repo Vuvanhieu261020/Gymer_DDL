@@ -44,15 +44,15 @@ public class MainClass {
         CustomerImp csi = new CustomerImp();
         cs.setID(KeyDB.genKey());
         cs.setCMND("031500003515");
-        cs.setAddress("40/80 Hoàng Đạo Thành");
+        cs.setAddress("oxford");
         cs.setSDT("22112000");
         cs.setYearofBirh(2000);
         cs.setSex(true);
-        cs.setName("Đoàn Thị Bích Ngọc");
+        cs.setName("steven haweye");
         boolean check = csi.insert(cs);
         
         List<Customer> data;
-        data = csi.findByName("Đồng Xuân Luyện");
+        data = csi.findByName("dtbn");
         for (Customer mm : data){
             System.out.println(mm.getID());
         }

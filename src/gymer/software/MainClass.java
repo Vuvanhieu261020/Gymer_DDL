@@ -45,11 +45,11 @@ public class MainClass {
         CustomerImp csi = new CustomerImp();
         cs.setID("713747");
         cs.setCMND("031500003515");
-        cs.setAddress("40/80 Hoàng Đạo Thành");
+        cs.setAddress("oxford");
         cs.setSDT("221124540");
         cs.setYearofBirh(2040);
         cs.setSex(true);
-        cs.setName("Đoàn Thị Bích Ngọc");
+        cs.setName("stven haweye");
         boolean check = csi.update(cs);
         
         List<Customer> data;

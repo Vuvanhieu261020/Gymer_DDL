@@ -37,25 +37,28 @@ public class MainClass {
             System.out.println(mm.getCardID());
         }*/
         
+        //System.out.println("Anh yeu Em");
         
-        /*
-        System.out.println("Anh yeu Em");
-        Customer cs = new Customer();
+        
+        //System.out.println("Anh yeu Em");
+        /*Customer cs = new Customer();
         CustomerImp csi = new CustomerImp();
-        cs.setID(KeyDB.genKey());
+        cs.setID("713747");
         cs.setCMND("031500003515");
         cs.setAddress("oxford");
-        cs.setSDT("22112000");
-        cs.setYearofBirh(2000);
+        cs.setSDT("221124540");
+        cs.setYearofBirh(2040);
         cs.setSex(true);
-        cs.setName("steven haweye");
-        boolean check = csi.insert(cs);
+        cs.setName("stven haweye");
+        boolean check = csi.update(cs);
         
         List<Customer> data;
         data = csi.findByName("dtbn");
         for (Customer mm : data){
             System.out.println(mm.getID());
-        }
+        }*/
+        MainForm mf = new MainForm();
+        mf.setVisible(true);
         
         /*MainForm mf = new MainForm ();
         mf.setVisible(true);*/

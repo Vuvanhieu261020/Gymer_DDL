@@ -22,13 +22,14 @@ import java.util.ArrayList;
  * @author luyen
  */
 public class CustomerImp implements CustomerDAO{
-
     
     private static final String DELETE = "delete from tbl_khachhang where MaKH=?";
     private static final String FIND_ALL = "select * from tbl_khachhang";
     private static final String FIND_BY_NAME = "select * from tbl_khachhang where Ten=?";
+    private static final String FIND_BY_SDT = "select * from tbl_khachhang where SDT=?";
     private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE = "update tbl_khachhang set Ten=?, CMND=?, SDT=?, DiChi=?, NamSinh=?, GioiTinh=? where MaKH=?";
+    private static final String UPDATE = "update tbl_khachhang set Ten=?, CMND=?, SDT=?, DiaChi=?, NamSinh=?, GioiTinh=? where MaKH=?";
+    private static final String COUNT = "select count(*) as coo from tbl_khachhang";
     
     
     @Override
@@ -116,14 +117,14 @@ public class CustomerImp implements CustomerDAO{
         Connection conn = null;
         try {
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(INSERT);
-            stmt.setString(7, Input.getID());
+            stmt = conn.prepareStatement(UPDATE);
             stmt.setString(1, Input.getName());
             stmt.setString(2, Input.getCMND());
             stmt.setString(3, Input.getSDT());
             stmt.setString(4, Input.getAddress());
             stmt.setInt(5, Input.getYearofBirh());
             stmt.setBoolean(6, Input.getSex());
+            stmt.setString(7, Input.getID());
             stmt.execute();
             return true;
         }
@@ -176,8 +177,9 @@ public class CustomerImp implements CustomerDAO{
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
+      
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(FIND_BY_NAME);
+            stmt = conn.prepareStatement(FIND_BY_SDT);
             stmt.setString(1, SDT);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
@@ -195,6 +197,29 @@ public class CustomerImp implements CustomerDAO{
         catch (Exception e){
             e.printStackTrace();
             return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    public String getTotal (){
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        String number = "";
+        try {
+      
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(COUNT);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                number = rs.getString("coo");
+            }
+            return number;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "";
         }
         finally {
             DButil.closeConn(conn);

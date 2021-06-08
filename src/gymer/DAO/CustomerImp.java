@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class CustomerImp implements CustomerDAO{
     
     private static final String DELETE = "delete from tbl_khachhang where MaKH=?";
+    private static final String DELETECARD = "delete from tbl_The where MaKH=?";
     private static final String FIND_ALL = "select * from tbl_khachhang";
     private static final String FIND_BY_NAME = "select * from tbl_khachhang where Ten=?";
     private static final String FIND_BY_SDT = "select * from tbl_khachhang where SDT=?";
@@ -48,6 +49,7 @@ public class CustomerImp implements CustomerDAO{
                 cs.setName(rs.getString("Ten"));
                 cs.setSDT(rs.getString("SDT"));
                 cs.setAddress(rs.getString("DiaChi"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
                 cs.setSex(rs.getBoolean("GioiTinh"));
                 data.add(cs);
             }
@@ -97,6 +99,8 @@ public class CustomerImp implements CustomerDAO{
         try {
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(DELETE);
+            stmt.setString(1, ID);
+            stmt = conn.prepareStatement(DELETECARD);
             stmt.setString(1, ID);
             stmt.execute();
             return true;
@@ -156,6 +160,7 @@ public class CustomerImp implements CustomerDAO{
                 cs.setSDT(rs.getString("SDT"));
                 cs.setAddress(rs.getString("DiaChi"));
                 cs.setSex(rs.getBoolean("GioiTinh"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
                 data.add(cs);
             }
             return data;
@@ -190,6 +195,7 @@ public class CustomerImp implements CustomerDAO{
                 cs.setSDT(rs.getString("SDT"));
                 cs.setAddress(rs.getString("DiaChi"));
                 cs.setSex(rs.getBoolean("GioiTinh"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
                 data.add(cs);
             }
             return data;
@@ -197,29 +203,6 @@ public class CustomerImp implements CustomerDAO{
         catch (Exception e){
             e.printStackTrace();
             return null;
-        }
-        finally {
-            DButil.closeConn(conn);
-            DButil.closeStm(stmt);
-        }
-    }
-    public String getTotal (){
-        PreparedStatement stmt = null;
-        Connection conn = null;
-        String number = "";
-        try {
-      
-            conn = DButil.getConnection();
-            stmt = conn.prepareStatement(COUNT);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()){
-                number = rs.getString("coo");
-            }
-            return number;
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return "";
         }
         finally {
             DButil.closeConn(conn);

@@ -28,6 +28,7 @@ public class MemberCardImp implements MemberCardDAO{
     private static final String FIND_BY_ID = "select * from tbl_The";
     private static final String FIND_BY_NAME = "select tbl_the.MaThe, tbl_the.TrangThai, tbl_the.NgayBD, tbl_dichvu.Ten from tbl_the inner join tbl_dichvu on tbl_the.MaDV = tbl_dichvu.MaDV inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten=?";
     private static final String INSERT = "insert into tbl_the(MaThe, MaKH, TrangThai, NgayBD, MaDV) values(?, ?, ?, ?, ?)";
+    private static final String INSERTDT = "insert into tbl_ctthe(MaThe, ThoiDiemSuDung) values(?, ?)";
     private static final String UPDATE = "update tbl_the set MaKH=?, TrangThai=?, NgayBD=?, MaDV=? where MaThe=?";
     private static final String CHECK_VALID = "select TrangThai from tbl_the where MaThe=?";
     private static final String GET_DETAIL = "select ThoiDiemSuDung from tbl_ctthe where MaThe=? order by ThoiDiemSuDung desc";
@@ -229,7 +230,7 @@ public class MemberCardImp implements MemberCardDAO{
     }
 
     @Override
-    public boolean checkValid(String ID) {
+    public boolean checkValid(String ID, String Time) {
         PreparedStatement stmt = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -241,7 +242,18 @@ public class MemberCardImp implements MemberCardDAO{
             rs = stmt.executeQuery();
             while(rs.next()){
                 if (rs.getBoolean("TrangThai")){
-                    checker = true;
+                    try {
+                        conn = DButil.getConnection();
+                        stmt = conn.prepareStatement(INSERTDT);
+                        stmt.setString(1, ID);
+                        stmt.setString(2, Time);
+                        stmt.execute();
+                        checker = true;
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                        return false;
+                    }
                 }
             }
             if (checker){

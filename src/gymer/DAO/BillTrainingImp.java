@@ -7,7 +7,7 @@ package gymer.DAO;
 import java.util.*;
 import gymer.database.DButil;
 import gymer.entities.*;
-import gymer.utilities.HashPassword;
+import gymer.utilities.*;
 import java.sql.*;
 /**
  *
@@ -26,7 +26,7 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
     private static final String INSERTBILL = "insert into tbl_hoadontap(MaHoaDonTap, Ngay, MaNV, MaKH, TongTien) values(?, ?, ?, ?, ?)";
     private static final String INSERTDETALS = "insert into tbl_cthdtap(MaHoaDonTap, MaDV) values(?, ?)";
     private static final String GETDETAILS = "select MaDV, tbl_dichvu.Ten, tbl_dichvu.Gia, tbl_dichvu.ThoiGian from tbl_cthdtap inner join tbl_dichvu on tbl_cthdtap.MaDV = tbl_dichvu.MaDV where tbl_cthdtap.MaHaoDonTap=?";
-    
+    private static final String RPDATEDIFF = "select * from tblHoaDonTap where Ngay between ? and ?";
     
     @Override
     public List<BillTraining> getAll() {
@@ -256,6 +256,36 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
                 cs.setTen(rs.getString("Ten"));
                 cs.setGia(rs.getInt("Gia"));
                 cs.setThoiGian(rs.getInt("ThoiGian"));
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<BillTraining> reportDateDiff(String date1, String date2) {
+        List<BillTraining> data = new ArrayList<BillTraining>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(RPDATEDIFF);
+            stmt.setString(1, date1);
+            stmt.setString(2, DateTime.plusDate(date2,1));
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                BillTraining cs = new BillTraining();
+                cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
+                cs.setNgay(rs.getString("Ngay"));
+                cs.setMaKH(rs.getString("MaKH"));
+                cs.setMaNV(rs.getString("MaNV"));
+                cs.setTongTien(rs.getInt("TongTien"));
             }
             return data;
         }

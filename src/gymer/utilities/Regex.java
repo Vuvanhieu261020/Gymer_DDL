@@ -32,4 +32,12 @@ public class Regex {
         }
         return false;
     }
+    public static boolean SDTCheck (String Input){
+        Pattern ptn = Pattern.compile("[0-9]{10}");
+        Matcher mc = ptn.matcher(Input);
+        if (mc.find()){
+            return true;
+        }
+        return false;
+    }
 }

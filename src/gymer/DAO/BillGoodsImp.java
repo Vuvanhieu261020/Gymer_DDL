@@ -7,7 +7,7 @@ package gymer.DAO;
 import java.util.*;
 import gymer.database.DButil;
 import gymer.entities.*;
-import gymer.utilities.HashPassword;
+import gymer.utilities.*;
 import java.sql.*;
 /**
  *
@@ -25,6 +25,7 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     private static final String INSERTBILL = "insert into tbl_hoadonhang(MaHoaDonHang, Ngay, TenKH, SDT, MaNV, TongTien) values(?, ?, ?, ?, ?, ?)";
     private static final String INSERTDETALS = "insert into tbl_cthdhang(MaHoaDonHang, MaHang, SoLuong) values(?, ?, ?)";
     private static final String GETDETAILS = "select MaHang, TenHang, Gia, SoLuong, DVT from tbl_cthdhang inner join tbl_hanghoa on tbl_cthdhang.MaHang = tbl_hanghoa.MaHang where tbl_cthdhang.MaHaoDonHang=?";
+    private static final String RPDATEDIFF = "select * from tblHoaDonHang where Ngay between ? and ?";
     
     
     @Override
@@ -275,5 +276,35 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             DButil.closeStm(stmt);
         }
     }
+    public List<BillGoods> reportDateDiff(String date1, String date2) {
+        List<BillGoods> data = new ArrayList<BillGoods>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(RPDATEDIFF);
+            stmt.setString(1, date1);
+            stmt.setString(2, DateTime.plusDate(date2,1));
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                BillGoods cs = new BillGoods();
+                cs.setMaHoaDonHang(rs.getString("MaHoaDonHang"));
+                cs.setNgay(rs.getString("Ngay"));
+                cs.setTenKH(rs.getString("TenKH"));
+                cs.setSDT(rs.getString("SDT"));
+                cs.setTongTien(rs.getInt("TongTien"));
+                cs.setMaNV(rs.getString("MaNV"));
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    } 
     
 }

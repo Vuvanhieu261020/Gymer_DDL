@@ -13,23 +13,24 @@ import java.sql.*;
  *
  * @author luyen
  */
-public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
+public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
+
     
-    private static final String DELETEBILL = "delete from tbl_hoadonhang where MaHoaDonHang=?";
-    private static final String DELETEDETAILS = "delete from tbl_cthdhang where MaHoaDonHang=?";
-    private static final String FIND_ALL = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV";
-    private static final String FIND_BY_IDNV = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where MaNV=?";
-    private static final String FIND_BY_SDT = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.SDT=? ";
-    private static final String FIND_BY_MAHD = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.MaHoaDonHang=?";
-    private static final String FIND_BY_TEN = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.Ten=? ";
-    private static final String INSERTBILL = "insert into tbl_hoadonhang(MaHoaDonHang, Ngay, TenKH, SDT, MaNV, TongTien) values(?, ?, ?, ?, ?, ?)";
-    private static final String INSERTDETALS = "insert into tbl_cthdhang(MaHoaDonHang, MaHang, SoLuong) values(?, ?, ?)";
-    private static final String GETDETAILS = "select MaHang, TenHang, Gia, SoLuong, DVT from tbl_cthdhang inner join tbl_hanghoa on tbl_cthdhang.MaHang = tbl_hanghoa.MaHang where tbl_cthdhang.MaHaoDonHang=?";
+    private static final String DELETEBILL = "delete from tbl_hoadontap where MaHoaDonTap=?";
+    private static final String DELETEDETAILS = "delete from tbl_cthdtap where MaHoaDonTap=?";
+    private static final String FIND_ALL = "select MaHoaDonTap, Ngay, MaNV, MaKH, TongTien from tbl_hoadontap";
+    private static final String FIND_BY_IDNV = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_nhanvien on tbl_hoadontap.MaNV = tbl_nhanvien.MaNV where tbl_nhanvien.Ten=?";
+    private static final String FIND_BY_SDT = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH where tbl_khachhang.SDT=? ";
+    private static final String FIND_BY_MAHD = "select MaHoaDonTap, Ngay, MaNV, MaKH, TongTien from tbl_hoadontap where MaHoaDonTap=?";
+    private static final String FIND_BY_TEN = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten=? ";
+    private static final String INSERTBILL = "insert into tbl_hoadontap(MaHoaDonTap, Ngay, MaNV, MaKH, TongTien) values(?, ?, ?, ?, ?)";
+    private static final String INSERTDETALS = "insert into tbl_cthdtap(MaHoaDonTap, MaDV) values(?, ?)";
+    private static final String GETDETAILS = "select MaDV, tbl_dichvu.Ten, tbl_dichvu.Gia, tbl_dichvu.ThoiGian from tbl_cthdtap inner join tbl_dichvu on tbl_cthdtap.MaDV = tbl_dichvu.MaDV where tbl_cthdtap.MaHaoDonTap=?";
     
     
     @Override
-    public List<BillGoods> getAll() {
-        List<BillGoods> data = new ArrayList<BillGoods>();
+    public List<BillTraining> getAll() {
+        List<BillTraining> data = new ArrayList<BillTraining>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -37,13 +38,12 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             stmt = conn.prepareStatement(FIND_ALL);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
-                BillGoods cs = new BillGoods();
-                cs.setMaHoaDonHang(rs.getString("MaHoaDonHang"));
+                BillTraining cs = new BillTraining();
+                cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
                 cs.setNgay(rs.getString("Ngay"));
-                cs.setTenKH(rs.getString("TenKH"));
-                cs.setSDT(rs.getString("SDT"));
-                cs.setTongTien(rs.getInt("TongTien"));
+                cs.setMaKH(rs.getString("MaKH"));
                 cs.setMaNV(rs.getString("MaNV"));
+                cs.setTongTien(rs.getInt("TongTien"));
             }
             return data;
         }
@@ -58,25 +58,23 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     }
 
     @Override
-    public boolean insert(BillGoods input) {
+    public boolean insert(BillTraining input) {
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
             //MaHoaDonHang, Ngay, TenKH, SDT, MaNV, TongTien
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(INSERTBILL);
-            stmt.setString(1, input.getMaHoaDonHang());
-            stmt.setString(2, input.getNgay());
-            stmt.setString(3, input.getTenKH());
-            stmt.setString(4, input.getSDT());
-            stmt.setString(5, input.getMaNV());
-            stmt.setInt(6, input.getTongTien());
-            stmt.execute();
             stmt = conn.prepareStatement(INSERTDETALS);
-            for (BillGoods_Details dt : input.getDetails()){
-                stmt.setString(1, dt.getMaHD());
-                stmt.setString(2, dt.getMaHang());
-                stmt.setInt(3, dt.getSoLuong());
+            stmt.setString(1, input.getMaHoaDonTap());
+            stmt.setString(2, input.getNgay());
+            stmt.setString(3, input.getMaNV());
+            stmt.setString(4, input.getMaKH());
+            stmt.setInt(5, input.getTongTien());
+            stmt.execute();
+            stmt = conn.prepareStatement(INSERTBILL);
+            for (BillTraning_Details dt : input.getDetails()){
+                stmt.setString(1, dt.getMaHoaDonTap());
+                stmt.setString(2, dt.getMaDV());
                 stmt.execute();
             }
             return true;
@@ -92,9 +90,9 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     }
 
     @Override
-    public boolean update(BillGoods input) {
-        // do nothing
-        return false;
+    // do nothing
+    public boolean update(BillTraining input) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -103,10 +101,10 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
         Connection conn = null;
         try {
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(DELETEDETAILS);
+            stmt = conn.prepareStatement(DELETEBILL);
             stmt.setString(1, ID);
             stmt.execute();
-            stmt = conn.prepareStatement(DELETEBILL);
+            stmt = conn.prepareStatement(DELETEDETAILS);
             stmt.setString(1, ID);
             stmt.execute();
             return true;
@@ -122,8 +120,8 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     }
 
     @Override
-    public List<BillGoods> findByIDNV(String ID) {
-        List<BillGoods> data = new ArrayList<BillGoods>();
+    public List<BillTraining> findByIDNV(String ID) {
+        List<BillTraining> data = new ArrayList<BillTraining>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -132,13 +130,12 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             stmt.setString(1, ID);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
-                BillGoods cs = new BillGoods();
-                cs.setMaHoaDonHang(rs.getString("MaHoaDonHang"));
+                BillTraining cs = new BillTraining();
+                cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
                 cs.setNgay(rs.getString("Ngay"));
-                cs.setTenKH(rs.getString("TenKH"));
-                cs.setSDT(rs.getString("SDT"));
-                cs.setTongTien(rs.getInt("TongTien"));
+                cs.setMaKH(rs.getString("MaKH"));
                 cs.setMaNV(rs.getString("MaNV"));
+                cs.setTongTien(rs.getInt("TongTien"));
             }
             return data;
         }
@@ -153,8 +150,8 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     }
 
     @Override
-    public List<BillGoods> findByTenKhach(String Name) {
-        List<BillGoods> data = new ArrayList<BillGoods>();
+    public List<BillTraining> findByTenKhach(String Name) {
+        List<BillTraining> data = new ArrayList<BillTraining>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -163,13 +160,12 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             stmt.setString(1, Name);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
-                BillGoods cs = new BillGoods();
-                cs.setMaHoaDonHang(rs.getString("MaHoaDonHang"));
+                BillTraining cs = new BillTraining();
+                cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
                 cs.setNgay(rs.getString("Ngay"));
-                cs.setTenKH(rs.getString("TenKH"));
-                cs.setSDT(rs.getString("SDT"));
-                cs.setTongTien(rs.getInt("TongTien"));
+                cs.setMaKH(rs.getString("MaKH"));
                 cs.setMaNV(rs.getString("MaNV"));
+                cs.setTongTien(rs.getInt("TongTien"));
             }
             return data;
         }
@@ -184,8 +180,8 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     }
 
     @Override
-    public List<BillGoods> findByMaHD(String MaHD) {
-        List<BillGoods> data = new ArrayList<BillGoods>();
+    public List<BillTraining> findByMaHD(String MaHD) {
+        List<BillTraining> data = new ArrayList<BillTraining>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -194,13 +190,12 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             stmt.setString(1, MaHD);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
-                BillGoods cs = new BillGoods();
-                cs.setMaHoaDonHang(rs.getString("MaHoaDonHang"));
+                BillTraining cs = new BillTraining();
+                cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
                 cs.setNgay(rs.getString("Ngay"));
-                cs.setTenKH(rs.getString("TenKH"));
-                cs.setSDT(rs.getString("SDT"));
-                cs.setTongTien(rs.getInt("TongTien"));
+                cs.setMaKH(rs.getString("MaKH"));
                 cs.setMaNV(rs.getString("MaNV"));
+                cs.setTongTien(rs.getInt("TongTien"));
             }
             return data;
         }
@@ -215,8 +210,8 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     }
 
     @Override
-    public List<BillGoods> findBySDT(String SDT) {
-        List<BillGoods> data = new ArrayList<BillGoods>();
+    public List<BillTraining> findBySDT(String SDT) {
+        List<BillTraining> data = new ArrayList<BillTraining>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -225,13 +220,12 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             stmt.setString(1, SDT);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
-                BillGoods cs = new BillGoods();
-                cs.setMaHoaDonHang(rs.getString("MaHoaDonHang"));
+                BillTraining cs = new BillTraining();
+                cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
                 cs.setNgay(rs.getString("Ngay"));
-                cs.setTenKH(rs.getString("TenKH"));
-                cs.setSDT(rs.getString("SDT"));
-                cs.setTongTien(rs.getInt("TongTien"));
+                cs.setMaKH(rs.getString("MaKH"));
                 cs.setMaNV(rs.getString("MaNV"));
+                cs.setTongTien(rs.getInt("TongTien"));
             }
             return data;
         }
@@ -246,8 +240,8 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     }
 
     @Override
-    public List<BillGoods_Details> getDetails(String MaHD) {
-        List<BillGoods_Details> data = new ArrayList<BillGoods_Details>();
+    public List<BillTraning_Details> getDetails(String MaHD) {
+        List<BillTraning_Details> data = new ArrayList<BillTraning_Details>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -256,13 +250,12 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             stmt.setString(1, MaHD);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
-                BillGoods_Details cs = new BillGoods_Details();
-                cs.setMaHD(rs.getString(MaHD));
-                cs.setMaHang(rs.getString("MaHang"));
-                cs.setTenHang(rs.getString("TenHang"));
+                BillTraning_Details cs = new BillTraning_Details();
+                cs.setMaHoaDonTap(MaHD);
+                cs.setMaDV(rs.getString("MaDV"));
+                cs.setTen(rs.getString("Ten"));
                 cs.setGia(rs.getInt("Gia"));
-                cs.setSoLuong(rs.getInt("SoLuong"));
-                cs.setDVT(rs.getString("SVT"));
+                cs.setThoiGian(rs.getInt("ThoiGian"));
             }
             return data;
         }

@@ -72,8 +72,24 @@ public class MainClass {
             System.out.println(mm.getMaDV());
         }*/
         
-        MainForm mf = new MainForm ();
-        mf.setVisible(true);
+        /*MainForm mf = new MainForm ();
+        mf.setVisible(true);*/
+        
+        
+        // Employee 
+        
+        Employee em = new Employee();
+        EmployeeImp emi = new EmployeeImp();
+        
+        em.setMaNV("720967");
+        em.setAddress("40/80 Hoàn Đạo Thành");
+        em.setSDT("0822208880");
+        em.setTen("dtbn");
+        em.setSex(true);
+        em.setCMND("1154545515");
+        em.setViTri("Mẹ");
+        em.setYearofBirh(2000);
+        emi.updatePass(em, currentPasword, newPassword);
         
         
         // test Ulity

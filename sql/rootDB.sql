@@ -75,6 +75,7 @@ create table tbl_HoaDonTap (
     Ngay date not null,
     MaNV int not null,
     MaKH int not null,
+    TongTien int not null,
     primary key (MaHoaDonTap),
     foreign key (MaNV) references tbl_NhanVien(MaNV),
     foreign key (MaKH) references tbl_KhachHang(MaKH)
@@ -118,7 +119,6 @@ create table tbl_CTHDHang (
 create table tbl_CTHDTap (
     MaHoaDonTap int not null,
     MaDV int not null,
-    Gia int not null,
     foreign key (MaDV) references tbl_DichVu(MaDV),
     foreign key (MaHoaDonTap) references tbl_HoaDonTap(MaHoaDonTap)
 );

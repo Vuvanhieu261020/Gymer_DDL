@@ -17,7 +17,8 @@ import java.sql.*;
 public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
 
 
-    private static final String DELETE = "delete from tbl_nhanvien where MaNV=?";
+    private static final String DELETENV = "delete from tbl_nhanvien where MaNV=?";
+    private static final String DELETELG = "delete from tbl_login where MaNV=?";
     private static final String FIND_ALL = "select * from tbl_nhanvien";
     private static final String FIND_BY_NAME = "select * from tbl_nhanvien where Ten=? ";
     private static final String FIND_BY_SDT = "select * from tbl_nhanvien where SDT=? ";
@@ -25,8 +26,8 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
     private static final String INSERTNV = "insert into tbl_nhanvien(MaNV, Ten, CMND, SDT, ViTri, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String INSERTLG = "insert into tbl_login(MaNV, TK, hashed_code) values(?, ?, ?)";
     private static final String UPDATEPASSWORD = "update tbl_login set hashed_code=? where TK=?";
-    private static final String UPDATE = "update tbl_nhanvien set SDT=?, ViTri=?, DiaChi=?, Gia where MaNV=?";
-    private static final String INIT = "select * from tbl_nhanvien inner join tbl_login where tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.ID=? and tbl_login.hased_code=?";
+    private static final String UPDATE = "update tbl_nhanvien set SDT=?, ViTri=?, DiaChi=? where MaNV=?";
+    private static final String INIT = "select * from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? and tbl_login.hashed_code=?";
 
     
     @Override
@@ -106,7 +107,7 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
             stmt.setString(1, input.getSDT());
             stmt.setString(2, input.getAddress());
             stmt.setString(3, input.getViTri());
-            stmt.setString(5, input.getMaNV());
+            stmt.setString(4, input.getMaNV());
             stmt.execute();
             return true;
         }
@@ -126,7 +127,10 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
         Connection conn = null;
         try {
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(DELETE);
+            stmt = conn.prepareStatement(DELETELG);
+            stmt.setString(1, ID);
+            stmt.execute();
+            stmt = conn.prepareStatement(DELETENV);
             stmt.setString(1, ID);
             stmt.execute();
             return true;
@@ -264,7 +268,7 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
                 Result.setAddress(rs.getString("DiaChi"));
                 Result.setYearofBirh(rs.getInt("NamSinh"));
                 Result.setSex(rs.getBoolean("GioiTinh"));
-                Result.setIdLogin(rs.getString("ID"));
+                Result.setIdLogin(rs.getString("TK"));
                 Result.setHspass(rs.getString("hashed_code"));
                 Result.setSDT(rs.getString("SDT"));
             }

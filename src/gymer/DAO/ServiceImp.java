@@ -83,7 +83,7 @@ public class ServiceImp implements UCRD<Service> {
         Connection conn = null;
         try {
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(INSERT);
+            stmt = conn.prepareStatement(UPDATE);
             stmt.setString(4, input.getMaDV());
             stmt.setString(1, input.getTen());
             stmt.setInt(2, input.getThoiGian());

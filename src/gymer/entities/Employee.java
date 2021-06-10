@@ -11,6 +11,8 @@ package gymer.entities;
  */
 public class Employee {
     
+    private String IdLogin;
+    private String hspass;
     private String MaNV;
     private String Ten;
     private String CMND;
@@ -29,7 +31,25 @@ public class Employee {
         this.YearofBirh = 0;
         this.Sex = true;
         this.ViTri = "";
+        this.IdLogin = "";
+        hspass = "";
     }    
+
+    public String getIdLogin() {
+        return IdLogin;
+    }
+
+    public void setIdLogin(String IdLogin) {
+        this.IdLogin = IdLogin;
+    }
+
+    public String getHspass() {
+        return hspass;
+    }
+
+    public void setHspass(String hspass) {
+        this.hspass = hspass;
+    }
     
     public String getMaNV() {
         return MaNV;
@@ -79,7 +99,7 @@ public class Employee {
         this.YearofBirh = YearofBirh;
     }
 
-    public boolean isSex() {
+    public boolean getSex() {
         return Sex;
     }
 

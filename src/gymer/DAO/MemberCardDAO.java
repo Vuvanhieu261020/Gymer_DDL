@@ -18,6 +18,6 @@ public interface MemberCardDAO {
     public boolean update(MemberCard Input);
     public List<MemberCard> findByID(String ID);
     public List<MemberCard> findByName(String Name);
-    public boolean checkValid (String ID);
+    public boolean checkValid (String ID, String Time);
     public MemberCard getDetails (MemberCard Input);
 }

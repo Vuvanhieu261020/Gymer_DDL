@@ -37,6 +37,7 @@ create table tbl_NhanVien (
 	MaNV int not null,
     Ten nvarchar (256) not null,
     CMND varchar(15) not null,
+    SDT varchar(10) not null,
     DiaChi nvarchar (512) not null,
     ViTri nvarchar (30) not null,
     NamSinh int not null,
@@ -45,7 +46,7 @@ create table tbl_NhanVien (
 );
 create table tbl_Login (
 	MaNV int not null,
-    TK varchar (30) not null,
+    TK varchar (30) UNIQUE not null,
     hashed_code varchar (50) not null,
     primary key (TK),
     foreign key (MaNV) references tbl_NhanVien (MaNV)
@@ -54,7 +55,7 @@ create table tbl_HangHoa (
 	MaHang int not null,
     Ten nvarchar (256) not null,
     Gia int not null,
-    SoLuong float not null,
+    SoLuong int not null,
     DVT nvarchar(10) not null,
     HSD date not null,
     primary key (MaHang)
@@ -74,6 +75,7 @@ create table tbl_HoaDonTap (
     Ngay date not null,
     MaNV int not null,
     MaKH int not null,
+    TongTien int not null,
     primary key (MaHoaDonTap),
     foreign key (MaNV) references tbl_NhanVien(MaNV),
     foreign key (MaKH) references tbl_KhachHang(MaKH)
@@ -110,17 +112,13 @@ create table tbl_CTHDNhap (
 create table tbl_CTHDHang (
 	MaHoaDonHang int not null,
     MaHang int not null,
-    TenHang nvarchar (256) not null,
     SoLuong int not null,
-    Gia int not null,
-    DVT nvarchar(10),
     foreign key (MaHoaDonHang) references tbl_HoaDonHang (MaHoaDonHang),
     foreign key (MaHang) references tbl_HangHoa (MaHang)
 );
 create table tbl_CTHDTap (
     MaHoaDonTap int not null,
     MaDV int not null,
-    Gia int not null,
     foreign key (MaDV) references tbl_DichVu(MaDV),
     foreign key (MaHoaDonTap) references tbl_HoaDonTap(MaHoaDonTap)
 );

@@ -78,7 +78,7 @@ public class MainClass {
         
         // Employee 
         
-        Employee em = new Employee();
+        /*Employee em = new Employee();
         EmployeeImp emi = new EmployeeImp();
         
         em.setMaNV("720967");
@@ -89,13 +89,18 @@ public class MainClass {
         em.setCMND("1154545515");
         em.setViTri("Mẹ");
         em.setYearofBirh(2000);
-        emi.updatePass(em, currentPasword, newPassword);
+        emi.updatePass(em, currentPasword, newPassword);*/
+        
         
         
         // test Ulity
         //String number = "04515662";
         //System.out.println(Regex.NumericCheck(number));
         //System.out.println(HashPassword.Hash("luyen3222513"));
-        
+        //System.out.println(getDate.getTime());
+        //String ip = ExcelFiles.createFile("Bao Cao");
+        //ExcelFiles.writeFile(ip);
+        CustomerImp emi = new CustomerImp();
+        ExcelFiles.createRPCustomer(emi.getAll(), "dasd.xlsx");
     }
 }

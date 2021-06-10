@@ -6,6 +6,7 @@
 package gymer.DAO;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import gymer.utilities.*;
 import gymer.DAO.EquimentDAO;
 import gymer.database.DButil;
 import gymer.entities.Customer;
@@ -271,24 +272,11 @@ public class EquipmentImp implements UCRD<Equipment>, EquimentDAO{
         List<Equipment> data = new ArrayList<Equipment>();
         PreparedStatement stmt = null;
         Connection conn = null;
-        Calendar cld = Calendar.getInstance();
-        Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyyy/MM/dd");
-        try {
-            date = ft.parse(endDate);
-        } catch (ParseException ex) {
-            Logger.getLogger(EquipmentImp.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        cld.setTime(date);
-        cld.add(Calendar.DATE, 1);
-        date = cld.getTime();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
-        String newEndDate = formatter.format(date);  
         try {
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(FIND_BY_DATE_DIFF);
             stmt.setString(1, startDate);
-            stmt.setString(2,newEndDate);
+            stmt.setString(2, DateTime.plusDate(endDate,1));
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Equipment cs = new Equipment();

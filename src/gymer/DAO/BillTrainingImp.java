@@ -22,11 +22,12 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
     private static final String FIND_BY_IDNV = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_nhanvien on tbl_hoadontap.MaNV = tbl_nhanvien.MaNV where tbl_nhanvien.Ten=?";
     private static final String FIND_BY_SDT = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH where tbl_khachhang.SDT=? ";
     private static final String FIND_BY_MAHD = "select MaHoaDonTap, Ngay, MaNV, MaKH, TongTien from tbl_hoadontap where MaHoaDonTap=?";
-    private static final String FIND_BY_TEN = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten=? ";
+    private static final String FIND_BY_TEN = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten like concat('%',?,'%') ";
     private static final String INSERTBILL = "insert into tbl_hoadontap(MaHoaDonTap, Ngay, MaNV, MaKH, TongTien) values(?, ?, ?, ?, ?)";
     private static final String INSERTDETALS = "insert into tbl_cthdtap(MaHoaDonTap, MaDV) values(?, ?)";
     private static final String GETDETAILS = "select MaDV, tbl_dichvu.Ten, tbl_dichvu.Gia, tbl_dichvu.ThoiGian from tbl_cthdtap inner join tbl_dichvu on tbl_cthdtap.MaDV = tbl_dichvu.MaDV where tbl_cthdtap.MaHaoDonTap=?";
     private static final String RPDATEDIFF = "select * from tblHoaDonTap where Ngay between ? and ?";
+    private static final String FIND ="select tbl_hoadontap.MaHoaDonTap, tbl_hoadontap.Ngay, tbl_hoadontap.MaNV, tbl_hoadontap.MaKH, tbl_hoadontap.TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH inner join tbl_nhanvien on tbl_hoadontap.MaNV = tbl_nhanvien.MaNV where tbl_khachhang.Ten like concat('%',?,'%') or tbl_hoadontap.MaHoaDonTap=? or tbl_khachhang.SDT=? or tbl_nhanvien.Ten=?";
     
     @Override
     public List<BillTraining> getAll() {
@@ -180,8 +181,7 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
     }
 
     @Override
-    public List<BillTraining> findByMaHD(String MaHD) {
-        List<BillTraining> data = new ArrayList<BillTraining>();
+    public BillTraining findByMaHD(String MaHD) {
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -189,15 +189,15 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
             stmt = conn.prepareStatement(FIND_BY_MAHD);
             stmt.setString(1, MaHD);
             ResultSet rs = stmt.executeQuery();
+            BillTraining cs = new BillTraining();
             while (rs.next()){
-                BillTraining cs = new BillTraining();
                 cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
                 cs.setNgay(rs.getString("Ngay"));
                 cs.setMaKH(rs.getString("MaKH"));
                 cs.setMaNV(rs.getString("MaNV"));
                 cs.setTongTien(rs.getInt("TongTien"));
             }
-            return data;
+            return cs;
         }
         catch (Exception e){
             e.printStackTrace();
@@ -278,6 +278,38 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
             stmt = conn.prepareStatement(RPDATEDIFF);
             stmt.setString(1, date1);
             stmt.setString(2, DateTime.plusDate(date2,1));
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                BillTraining cs = new BillTraining();
+                cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
+                cs.setNgay(rs.getString("Ngay"));
+                cs.setMaKH(rs.getString("MaKH"));
+                cs.setMaNV(rs.getString("MaNV"));
+                cs.setTongTien(rs.getInt("TongTien"));
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<BillTraining> findByString(String input) {
+        List<BillTraining> data = new ArrayList<BillTraining>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND);
+            stmt.setString(1, input);
+            stmt.setString(2, input);
+            stmt.setString(3, input);
+            stmt.setString(4, input);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 BillTraining cs = new BillTraining();

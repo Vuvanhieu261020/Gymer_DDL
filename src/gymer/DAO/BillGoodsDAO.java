@@ -13,7 +13,7 @@ import java.util.*;
 public interface BillGoodsDAO {
     public List<BillGoods> findByIDNV (String ID);
     public List<BillGoods> findByTenKhach (String Name);
-    public List<BillGoods> findByMaHD (String MaHD);
+    public BillGoods findByMaHD (String MaHD);
     public List<BillGoods> findBySDT (String SDT);
     public List<BillGoods_Details> getDetails (String MaHD);
 }

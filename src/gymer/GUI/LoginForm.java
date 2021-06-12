@@ -18,7 +18,6 @@ public class LoginForm extends javax.swing.JFrame {
      * Creates new form LoginForm
      */
     
-    private MainForm mf = new MainForm();
     private Employee em = new Employee();
     private EmployeeImp emi = new EmployeeImp();
     
@@ -165,7 +164,7 @@ public class LoginForm extends javax.swing.JFrame {
             else {
                 String message = "Xin chào " + em.getTen();
                 JOptionPane.showMessageDialog(null, message);
-                mf.setVisible(true);
+                //mf.setVisible(true);
                 this.setVisible(false);
             }
         }

@@ -52,6 +52,7 @@ public class MainClass {
         
         List<Customer> data;
         data = csi.getAll();
+        data = csi.findByName("dtbn");
         for (Customer mm : data){
             System.out.println(mm.getID());
         }*/

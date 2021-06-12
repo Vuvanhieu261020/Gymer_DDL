@@ -5,7 +5,7 @@
  */
 package gymer.GUI;
 
-import gymer.DAO.CustomerDAO;
+
 import gymer.DAO.CustomerImp;
 import gymer.entities.Customer;
 import java.awt.Color;
@@ -25,9 +25,7 @@ import javax.swing.table.TableModel;
  * @author Linh
  */
 public class MainForm extends javax.swing.JFrame {
-    private CustomerImp dao=new CustomerImp() ;
-    private Customer cs = new Customer();
-    private static int count = 0;
+  
     //String strFind="";
     /**
      * Creates new form MainForm
@@ -41,14 +39,9 @@ public class MainForm extends javax.swing.JFrame {
         panedefault = new Color(23,35,54);
         paneClick = new Color(56,71,94);
         
-//        pane1.setVisible(true);
-//        pane2.setVisible(false);
-//        pane3.setVisible(false);
-//        pane4.setVisible(false);
-//        pane5.setVisible(false);
-//        pane6.setVisible(false);
-//        pane7.setVisible(false);
-        
+
+        QL_the ma =new QL_the();
+        jDesktopPane1.add(ma).setVisible(true);
         jp1.setBackground(paneClick);
         jp2.setBackground(panedefault);
          jp3.setBackground(panedefault);
@@ -586,13 +579,10 @@ public class MainForm extends javax.swing.JFrame {
     int x,y;
     private void jp1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp1MouseClicked
         // TODO add your handling code here:
-//        pane1.setVisible(true);
-//        pane2.setVisible(false);
-//        pane3.setVisible(false);
-//        pane4.setVisible(false);
-//        pane5.setVisible(false);
-//        pane6.setVisible(false);
-//        pane7.setVisible(false);
+        jDesktopPane1.removeAll();
+        QL_the ma =new QL_the();
+        jDesktopPane1.add(ma).setVisible(true);
+
         
         jp1.setBackground(paneClick);
         jp2.setBackground(panedefault);
@@ -609,9 +599,10 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         jDesktopPane1.removeAll();
         QL_hoivien ma =new QL_hoivien();
+         jDesktopPane1.add(ma).setVisible(true);
 //        pane1.setVisible(false);
 //       pane2.setVisible(true); 
-       jDesktopPane1.add(ma).setVisible(true);
+      
 //        pane3.setVisible(false);
 //        pane4.setVisible(false);
 //        pane5.setVisible(false);
@@ -636,7 +627,8 @@ public class MainForm extends javax.swing.JFrame {
 //        pane5.setVisible(false);
 //        pane6.setVisible(false);
 //        pane7.setVisible(false);
-        
+        QL_nhanvien ma =new QL_nhanvien();
+        jDesktopPane1.add(ma).setVisible(true);
         jp3.setBackground(paneClick);
         jp2.setBackground(panedefault);
          jp1.setBackground(panedefault);
@@ -655,7 +647,8 @@ public class MainForm extends javax.swing.JFrame {
 //        pane5.setVisible(false);
 //        pane6.setVisible(false);
 //        pane7.setVisible(false);
-        
+        QL_sanpham ma =new QL_sanpham();
+        jDesktopPane1.add(ma).setVisible(true);
         jp4.setBackground(paneClick);
         jp2.setBackground(panedefault);
          jp3.setBackground(panedefault);
@@ -674,7 +667,8 @@ public class MainForm extends javax.swing.JFrame {
 //        pane5.setVisible(true);
 //        pane6.setVisible(false);
 //        pane7.setVisible(false);
-        
+        QL_thietbi ma =new QL_thietbi();
+        jDesktopPane1.add(ma).setVisible(true);
         jp5.setBackground(paneClick);
         jp2.setBackground(panedefault);
          jp3.setBackground(panedefault);
@@ -693,7 +687,8 @@ public class MainForm extends javax.swing.JFrame {
 //        pane5.setVisible(false);
 //        pane6.setVisible(true);
 //        pane7.setVisible(false);
-//        
+        QL_goitap ma =new QL_goitap();
+        jDesktopPane1.add(ma).setVisible(true);
         jp6.setBackground(paneClick);
         jp2.setBackground(panedefault);
          jp3.setBackground(panedefault);
@@ -712,7 +707,8 @@ public class MainForm extends javax.swing.JFrame {
 //        pane5.setVisible(false);
 //        pane6.setVisible(false);
 //        pane7.setVisible(true);
-        
+        QL_baocao ma =new QL_baocao();
+        jDesktopPane1.add(ma).setVisible(true);
         jp7.setBackground(paneClick);
         jp2.setBackground(panedefault);
          jp3.setBackground(panedefault);

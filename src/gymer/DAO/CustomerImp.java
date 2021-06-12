@@ -26,7 +26,7 @@ public class CustomerImp implements CustomerDAO{
     private static final String DELETE = "delete from tbl_khachhang where MaKH=?";
     private static final String DELETECARD = "delete from tbl_The where MaKH=?";
     private static final String FIND_ALL = "select * from tbl_khachhang";
-    private static final String FIND_BY_NAME = "select * from tbl_khachhang where Ten=?";
+    private static final String FIND_BY_NAME = "select * from tbl_khachhang where Ten like concat('%',?,'%') ";
     private static final String FIND_BY_SDT = "select * from tbl_khachhang where SDT=?";
     private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "update tbl_khachhang set Ten=?, CMND=?, SDT=?, DiaChi=?, NamSinh=?, GioiTinh=? where MaKH=?";

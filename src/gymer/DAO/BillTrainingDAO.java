@@ -14,7 +14,7 @@ import java.util.*;
 public interface BillTrainingDAO {
     public List<BillTraining> findByIDNV (String ID);
     public List<BillTraining> findByTenKhach (String Name);
-    public List<BillTraining> findByMaHD (String MaHD);
+    public BillTraining findByMaHD (String MaHD);
     public List<BillTraining> findBySDT (String SDT);
     public List<BillTraning_Details> getDetails (String MaHD);
 }

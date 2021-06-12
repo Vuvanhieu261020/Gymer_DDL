@@ -21,7 +21,7 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     private static final String FIND_BY_IDNV = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where MaNV=?";
     private static final String FIND_BY_SDT = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.SDT=? ";
     private static final String FIND_BY_MAHD = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.MaHoaDonHang=?";
-    private static final String FIND_BY_TEN = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.Ten=? ";
+    private static final String FIND_BY_TEN = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.Ten like concat('%',?,'%') ";
     private static final String INSERTBILL = "insert into tbl_hoadonhang(MaHoaDonHang, Ngay, TenKH, SDT, MaNV, TongTien) values(?, ?, ?, ?, ?, ?)";
     private static final String INSERTDETALS = "insert into tbl_cthdhang(MaHoaDonHang, MaHang, SoLuong) values(?, ?, ?)";
     private static final String GETDETAILS = "select MaHang, TenHang, Gia, SoLuong, DVT from tbl_cthdhang inner join tbl_hanghoa on tbl_cthdhang.MaHang = tbl_hanghoa.MaHang where tbl_cthdhang.MaHaoDonHang=?";
@@ -185,8 +185,7 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     }
 
     @Override
-    public List<BillGoods> findByMaHD(String MaHD) {
-        List<BillGoods> data = new ArrayList<BillGoods>();
+    public BillGoods findByMaHD(String MaHD) {
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -194,8 +193,8 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             stmt = conn.prepareStatement(FIND_BY_MAHD);
             stmt.setString(1, MaHD);
             ResultSet rs = stmt.executeQuery();
+            BillGoods cs = new BillGoods();
             while (rs.next()){
-                BillGoods cs = new BillGoods();
                 cs.setMaHoaDonHang(rs.getString("MaHoaDonHang"));
                 cs.setNgay(rs.getString("Ngay"));
                 cs.setTenKH(rs.getString("TenKH"));
@@ -203,7 +202,7 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
                 cs.setTongTien(rs.getInt("TongTien"));
                 cs.setMaNV(rs.getString("MaNV"));
             }
-            return data;
+            return cs;
         }
         catch (Exception e){
             e.printStackTrace();

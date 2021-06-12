@@ -12,8 +12,9 @@ import java.util.List;
  */
 public interface EmployeeDAO {
     public List<Employee> findByName(String Name);
+    public Employee findByID(String ID);
     public List<Employee> findBySDT(String SDT);
-    public List<Employee> findByIDLogin(String ID);
+    public Employee findByIDLogin(String ID);
     public Employee initfromDB (String ID, String Password);
     public boolean updatePass (Employee input, String currentPasword, String newPassword);
 }

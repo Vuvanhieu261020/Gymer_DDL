@@ -200,6 +200,7 @@ public class MainForm extends javax.swing.JFrame {
         pane7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusCycleRoot(false);
         setMinimumSize(new java.awt.Dimension(1190, 700));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1190, 700));

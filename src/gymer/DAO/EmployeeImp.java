@@ -20,7 +20,8 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
     private static final String DELETENV = "delete from tbl_nhanvien where MaNV=?";
     private static final String DELETELG = "delete from tbl_login where MaNV=?";
     private static final String FIND_ALL = "select * from tbl_nhanvien";
-    private static final String FIND_BY_NAME = "select * from tbl_nhanvien where Ten=? ";
+    private static final String FIND_BY_NAME = "select * from tbl_nhanvien where Ten like concat('%',?,'%') ";
+    private static final String FIND_BY_ID = "select * from tbl_nhanvien where MaNV=? ";
     private static final String FIND_BY_SDT = "select * from tbl_nhanvien where SDT=? ";
     private static final String FIND_BY_ID_LOGIN = "select tbl_nhanvien.MaNV, tbl_nhanvien.Ten, tbl_nhanvien.CMND, tbl_nhanvien.SDT, tbl_nhanvien.ViTri, tbl_nhanvien.DiaChi, tbl_nhanvien.NamSinh, tbl_nhanvien.GioiTinh from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? ";
     private static final String INSERTNV = "insert into tbl_nhanvien(MaNV, Ten, CMND, SDT, ViTri, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -214,8 +215,7 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
     }
 
     @Override
-    public List<Employee> findByIDLogin(String ID) {
-        List<Employee> data = new ArrayList<Employee>();
+    public Employee findByIDLogin(String ID) {
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -223,8 +223,8 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
             stmt = conn.prepareStatement(FIND_BY_ID_LOGIN);
             stmt.setString(1, ID);
             ResultSet rs = stmt.executeQuery();
+            Employee cs = new Employee();
             while (rs.next()){
-                Employee cs = new Employee();
                 cs.setMaNV(rs.getString("MaNV"));
                 cs.setTen(rs.getString("Ten"));
                 cs.setCMND(rs.getString("CMND"));
@@ -233,9 +233,8 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
                 cs.setAddress(rs.getString("DiaChi"));
                 cs.setYearofBirh(rs.getInt("NamSinh"));
                 cs.setSex(rs.getBoolean("GioiTinh"));
-                data.add(cs);
             }
-            return data;
+            return cs;
         }
         catch (Exception e){
             e.printStackTrace();
@@ -319,5 +318,37 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
                 DButil.closeStm(stmt);
             }
         }  
+    }
+
+    @Override
+    public Employee findByID(String ID) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_ID);
+            stmt.setString(1, ID);
+            ResultSet rs = stmt.executeQuery();
+            Employee cs = new Employee();
+            while (rs.next()){
+                cs.setMaNV(rs.getString("MaNV"));
+                cs.setTen(rs.getString("Ten"));
+                cs.setCMND(rs.getString("CMND"));
+                cs.setSDT(rs.getString("SDT"));
+                cs.setViTri(rs.getString("ViTri"));
+                cs.setAddress(rs.getString("DiaChi"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
+            }
+            return cs;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
     }
 }

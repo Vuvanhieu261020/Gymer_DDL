@@ -28,11 +28,11 @@ import java.util.logging.Logger;
 public class EquipmentImp implements UCRD<Equipment>, EquimentDAO{  
 
     
-    private static final String DELETE = "delete from tbl_thietbi where MaTBH=?";
+    private static final String DELETE = "delete from tbl_thietbi where MaTB=?";
     private static final String FIND_ALL = "select * from tbl_thietbi";
-    private static final String FIND_BY_NAME = "select * from tbl_thietbi where Ten=? ";
-    private static final String INSERT = "insert into tbl_thietbi(MaTB, Ten, NSX, SoLuong, TinhTrang, NgayNhap, Gia) values(?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE = "update tbl_thietbi set Ten=?, NSX=?, SoLuong=?, TinhTrang=?, NgayNhap=?, Gia where MaTB=?";
+    private static final String FIND_BY_NAME = "select * from tbl_thietbi where Ten like concat('%',?,'%') ";
+    private static final String INSERT = "insert into tbl_thietbi(MaTB, Ten, NSX, SoLuong, TinhTrang, NgayNhap, GiaNhap) values(?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE = "update tbl_thietbi set Ten=?, NSX=?, SoLuong=?, TinhTrang=?, NgayNhap=?, GiaNhap=? where MaTB=?";
     private static final String BROKEN_LIST = "select * from tbl_thietbi where TinhTrang= 'Hỏng'";
     private static final String WORKING_LIST = "select * from tbl_thietbi where TinhTrang= 'Tốt'";
     private static final String FIND_BY_DATE = "select * from tbl_thietbi where NgayNhap=? ";

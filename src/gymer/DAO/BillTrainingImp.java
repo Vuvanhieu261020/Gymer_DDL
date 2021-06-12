@@ -22,7 +22,7 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
     private static final String FIND_BY_IDNV = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_nhanvien on tbl_hoadontap.MaNV = tbl_nhanvien.MaNV where tbl_nhanvien.Ten=?";
     private static final String FIND_BY_SDT = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH where tbl_khachhang.SDT=? ";
     private static final String FIND_BY_MAHD = "select MaHoaDonTap, Ngay, MaNV, MaKH, TongTien from tbl_hoadontap where MaHoaDonTap=?";
-    private static final String FIND_BY_TEN = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten=? ";
+    private static final String FIND_BY_TEN = "select MaHoaDonTap, Ngay, MaNV, tbl_hoadontap.MaKH, TongTien from tbl_hoadontap inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten like concat('%',?,'%') ";
     private static final String INSERTBILL = "insert into tbl_hoadontap(MaHoaDonTap, Ngay, MaNV, MaKH, TongTien) values(?, ?, ?, ?, ?)";
     private static final String INSERTDETALS = "insert into tbl_cthdtap(MaHoaDonTap, MaDV) values(?, ?)";
     private static final String GETDETAILS = "select MaDV, tbl_dichvu.Ten, tbl_dichvu.Gia, tbl_dichvu.ThoiGian from tbl_cthdtap inner join tbl_dichvu on tbl_cthdtap.MaDV = tbl_dichvu.MaDV where tbl_cthdtap.MaHaoDonTap=?";
@@ -180,8 +180,7 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
     }
 
     @Override
-    public List<BillTraining> findByMaHD(String MaHD) {
-        List<BillTraining> data = new ArrayList<BillTraining>();
+    public BillTraining findByMaHD(String MaHD) {
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -189,15 +188,15 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
             stmt = conn.prepareStatement(FIND_BY_MAHD);
             stmt.setString(1, MaHD);
             ResultSet rs = stmt.executeQuery();
+            BillTraining cs = new BillTraining();
             while (rs.next()){
-                BillTraining cs = new BillTraining();
                 cs.setMaHoaDonTap(rs.getString("MaHoaDonTap"));
                 cs.setNgay(rs.getString("Ngay"));
                 cs.setMaKH(rs.getString("MaKH"));
                 cs.setMaNV(rs.getString("MaNV"));
                 cs.setTongTien(rs.getInt("TongTien"));
             }
-            return data;
+            return cs;
         }
         catch (Exception e){
             e.printStackTrace();

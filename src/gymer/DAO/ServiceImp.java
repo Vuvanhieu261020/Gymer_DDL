@@ -18,7 +18,8 @@ public class ServiceImp implements UCRD<Service> {
     
     private static final String DELETE = "delete from tbl_dichvu where MaDV=?";
     private static final String FIND_ALL = "select * from tbl_dichvu";
-    private static final String FIND_BY_NAME = "select * from tbl_dichvu where Ten=?";
+    private static final String FIND_BY_NAME = "select * from tbl_dichvu where Ten like concat('%',?,'%')";
+    private static final String FIND_BY_ID = "select * from tbl_dichvu where  MaDV=?";
     private static final String INSERT = "insert into tbl_dichvu (MaDV, Ten, ThoiGian, Gia) values(?, ?, ?, ?)";
     private static final String UPDATE = "update tbl_dichvu set Ten=?, ThoiGian=?, Gia=? where MaDV=?";
     
@@ -115,6 +116,62 @@ public class ServiceImp implements UCRD<Service> {
         catch (Exception e){
             e.printStackTrace();
             return false;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public Service getSerice(String ID) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_ID);
+            stmt.setString(1, ID);
+            ResultSet rs = stmt.executeQuery();
+            Service cs = new Service();
+            while (rs.next()){
+                cs.setMaDV(rs.getString("MaDV"));
+                cs.setTen(rs.getString("Ten"));
+                cs.setThoiGian(rs.getInt("ThoiGian"));
+                cs.setGia(rs.getInt("Gia"));
+            }
+            return cs;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<Service> findByName(String Name) {
+        List<Service> data = new ArrayList<Service>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_NAME);
+            stmt.setString(1, Name);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                Service cs = new Service();
+                cs.setMaDV(rs.getString("MaDV"));
+                cs.setTen(rs.getString("Ten"));
+                cs.setThoiGian(rs.getInt("ThoiGian"));
+                cs.setGia(rs.getInt("Gia"));
+                data.add(cs);
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
         finally {
             DButil.closeConn(conn);

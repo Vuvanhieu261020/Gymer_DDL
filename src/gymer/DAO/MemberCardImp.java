@@ -25,8 +25,8 @@ public class MemberCardImp implements MemberCardDAO{
     private static final String DELETE = "delete from tbl_The where MaThe=?";
     private static final String FIND_BY_MAKH = "select * from tbl_The where MaKH=?";
     private static final String FIND_ALL = "select * from tbl_The";
-    private static final String FIND_BY_ID = "select * from tbl_The";
-    private static final String FIND_BY_NAME = "select tbl_the.MaThe, tbl_the.TrangThai, tbl_the.NgayBD, tbl_dichvu.Ten from tbl_the inner join tbl_dichvu on tbl_the.MaDV = tbl_dichvu.MaDV inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten=?";
+    private static final String FIND_BY_ID = "select * from tbl_The where MaThe=?";
+    private static final String FIND_BY_NAME = "select * from tbl_the inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten like concat('%',?,'%')";
     private static final String INSERT = "insert into tbl_the(MaThe, MaKH, TrangThai, NgayBD, MaDV) values(?, ?, ?, ?, ?)";
     private static final String INSERTDT = "insert into tbl_ctthe(MaThe, ThoiDiemSuDung) values(?, ?)";
     private static final String UPDATE = "update tbl_the set MaKH=?, TrangThai=?, NgayBD=?, MaDV=? where MaThe=?";
@@ -168,8 +168,7 @@ public class MemberCardImp implements MemberCardDAO{
     }
 
     @Override
-    public List<MemberCard> findByID(String ID) {
-        List<MemberCard> data = new ArrayList<MemberCard>();
+    public MemberCard findByID(String ID) {
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -177,16 +176,15 @@ public class MemberCardImp implements MemberCardDAO{
             stmt = conn.prepareStatement(FIND_BY_ID);
             stmt.setString(1, ID);
             ResultSet rs = stmt.executeQuery();
+            MemberCard mb = new MemberCard();
             while (rs.next()){
-                MemberCard mb = new MemberCard();
                 mb.setID(rs.getString("MaThe"));
                 mb.setMaDV(rs.getString("MaDV"));
                 mb.setMaKH(rs.getString("MaKH"));
                 mb.setStartDate(rs.getString("NgayBD"));
                 mb.setStatus(rs.getBoolean("TrangThai"));
-                data.add(mb);
             }
-            return data;
+            return mb;
         }
         catch (Exception e){
             e.printStackTrace();
@@ -205,7 +203,7 @@ public class MemberCardImp implements MemberCardDAO{
         Connection conn = null;
         try {
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(FIND_BY_ID);
+            stmt = conn.prepareStatement(FIND_BY_NAME);
             stmt.setString(1, Name);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){

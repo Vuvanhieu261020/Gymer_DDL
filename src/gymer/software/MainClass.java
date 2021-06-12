@@ -50,7 +50,7 @@ public class MainClass {
         csi.delete("257412");
         
         List<Customer> data;
-        data = csi.findByName("luyện");
+        data = csi.findByString("0825452541");
         for (Customer mm : data){
             System.out.println(mm.getID());
             System.out.println(mm.getName());
@@ -59,7 +59,7 @@ public class MainClass {
         
         // Service test
         
-        /*Service sv = new Service();
+        Service sv = new Service();
         ServiceImp svi = new ServiceImp();
         sv.setGia(221100);
         sv.setMaDV(KeyDB.genKey());
@@ -67,17 +67,17 @@ public class MainClass {
         sv.setThoiGian(12);
         svi.insert(sv);
         List<Service> data;
-        data = svi.getAll();
+        data = svi.findByString("44163");
         for (Service mm : data){
             System.out.println(mm.getMaDV());
-        }*/
+        }
         
 
         // interface methods
         /*MainForm mf = new MainForm ();
         mf.setVisible(true);*/  
-        LoginForm lg = new LoginForm();
-        lg.setVisible(true);
+        /*LoginForm lg = new LoginForm();
+        lg.setVisible(true);*/
         
         
         // Employee 

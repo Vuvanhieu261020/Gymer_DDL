@@ -29,6 +29,7 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
     private static final String UPDATEPASSWORD = "update tbl_login set hashed_code=? where TK=?";
     private static final String UPDATE = "update tbl_nhanvien set SDT=?, ViTri=?, DiaChi=? where MaNV=?";
     private static final String INIT = "select * from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? and tbl_login.hashed_code=?";
+    private static final String FIND = "select tbl_nhanvien.MaNV, tbl_nhanvien.Ten, tbl_nhanvien.CMND, tbl_nhanvien.SDT, tbl_nhanvien.ViTri, tbl_nhanvien.DiaChi, tbl_nhanvien.NamSinh, tbl_nhanvien.GioiTinh from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? or tbl_nhanvien.Ten like concat('%',?,'%') or tbl_nhanvien.MaNV=? or tbl_nhanvien.SDT=?";
 
     
     @Override
@@ -341,6 +342,42 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
                 cs.setSex(rs.getBoolean("GioiTinh"));
             }
             return cs;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<Employee> findByString(String input) {
+        List<Employee> data = new ArrayList<Employee>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND);
+            stmt.setString(1, input);
+            stmt.setString(2, input);
+            stmt.setString(3, input);
+            stmt.setString(4, input);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                Employee cs = new Employee();
+                cs.setMaNV(rs.getString("MaNV"));
+                cs.setTen(rs.getString("Ten"));
+                cs.setCMND(rs.getString("CMND"));
+                cs.setSDT(rs.getString("SDT"));
+                cs.setViTri(rs.getString("ViTri"));
+                cs.setAddress(rs.getString("DiaChi"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
+                data.add(cs);
+            }
+            return data;
         }
         catch (Exception e){
             e.printStackTrace();

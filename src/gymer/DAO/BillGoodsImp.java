@@ -22,10 +22,12 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     private static final String FIND_BY_SDT = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.SDT=? ";
     private static final String FIND_BY_MAHD = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.MaHoaDonHang=?";
     private static final String FIND_BY_TEN = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.Ten like concat('%',?,'%') ";
+    private static final String FIND = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.Ten like concat('%',?,'%') or tbl_hoadonhang.MaHoaDonHang=? or tbl_hoadonhang.SDT=? or tbl_nhanvien.MaNV=?";
     private static final String INSERTBILL = "insert into tbl_hoadonhang(MaHoaDonHang, Ngay, TenKH, SDT, MaNV, TongTien) values(?, ?, ?, ?, ?, ?)";
     private static final String INSERTDETALS = "insert into tbl_cthdhang(MaHoaDonHang, MaHang, SoLuong) values(?, ?, ?)";
     private static final String GETDETAILS = "select MaHang, TenHang, Gia, SoLuong, DVT from tbl_cthdhang inner join tbl_hanghoa on tbl_cthdhang.MaHang = tbl_hanghoa.MaHang where tbl_cthdhang.MaHaoDonHang=?";
     private static final String RPDATEDIFF = "select * from tblHoaDonHang where Ngay between ? and ?";
+    private static final String DELTEUPDATE = "update tbl_hanghoang set SoLuong = SoLuong - ? where MaHang=?";
     
     
     @Override
@@ -61,11 +63,13 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     @Override
     public boolean insert(BillGoods input) {
         PreparedStatement stmt = null;
+        PreparedStatement stmt2 = null;
         Connection conn = null;
         try {
             //MaHoaDonHang, Ngay, TenKH, SDT, MaNV, TongTien
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(INSERTBILL);
+            stmt2 = conn.prepareStatement(DELTEUPDATE);
             stmt.setString(1, input.getMaHoaDonHang());
             stmt.setString(2, input.getNgay());
             stmt.setString(3, input.getTenKH());
@@ -79,6 +83,9 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
                 stmt.setString(2, dt.getMaHang());
                 stmt.setInt(3, dt.getSoLuong());
                 stmt.execute();
+                stmt2.setInt(1, dt.getSoLuong());
+                stmt2.setString(2, dt.getMaHang());
+                stmt2.execute();
             }
             return true;
         }
@@ -305,5 +312,38 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             DButil.closeStm(stmt);
         }
     } 
+    
+    public List<BillGoods> findByString(String input) {
+        List<BillGoods> data = new ArrayList<BillGoods>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND);
+            stmt.setString(1, input);
+            stmt.setString(2, input);
+            stmt.setString(3, input);
+            stmt.setString(4, input);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                BillGoods cs = new BillGoods();
+                cs.setMaHoaDonHang(rs.getString("MaHoaDonHang"));
+                cs.setNgay(rs.getString("Ngay"));
+                cs.setTenKH(rs.getString("TenKH"));
+                cs.setSDT(rs.getString("SDT"));
+                cs.setTongTien(rs.getInt("TongTien"));
+                cs.setMaNV(rs.getString("MaNV"));
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
     
 }

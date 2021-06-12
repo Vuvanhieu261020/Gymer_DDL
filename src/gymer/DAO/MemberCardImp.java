@@ -32,6 +32,7 @@ public class MemberCardImp implements MemberCardDAO{
     private static final String UPDATE = "update tbl_the set MaKH=?, TrangThai=?, NgayBD=?, MaDV=? where MaThe=?";
     private static final String CHECK_VALID = "select TrangThai from tbl_the where MaThe=?";
     private static final String GET_DETAIL = "select ThoiDiemSuDung from tbl_ctthe where MaThe=? order by ThoiDiemSuDung desc";
+    private static final String FIND = "select * from tbl_the inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten like concat('%',?,'%') or tbl_khachhang.SDT=? or tbl_khachhang.MaKH=? or tbl_the.MaThe=?";
     
     
     public MemberCard fetchByKH (String MaKH) {
@@ -289,6 +290,37 @@ public class MemberCardImp implements MemberCardDAO{
             }
             Input.setDetail(data);
             return Input;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public MemberCard findByString (String MaKH) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        MemberCard mb = new MemberCard();
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND);
+            stmt.setString(1, MaKH);
+            stmt.setString(2, MaKH);
+            stmt.setString(3, MaKH);
+            stmt.setString(4, MaKH);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                mb.setID(rs.getString("MaThe"));
+                mb.setMaDV(rs.getString("MaDV"));
+                mb.setMaKH(rs.getString("MaKH"));
+                mb.setStartDate(rs.getString("NgayBD"));
+                mb.setStatus(rs.getBoolean("TrangThai"));
+            }
+            return mb;
         }
         catch (Exception e){
             e.printStackTrace();

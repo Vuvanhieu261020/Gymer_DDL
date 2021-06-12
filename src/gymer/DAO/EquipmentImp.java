@@ -37,6 +37,7 @@ public class EquipmentImp implements UCRD<Equipment>, EquimentDAO{
     private static final String WORKING_LIST = "select * from tbl_thietbi where TinhTrang= 'Tốt'";
     private static final String FIND_BY_DATE = "select * from tbl_thietbi where NgayNhap=? ";
     private static final String FIND_BY_DATE_DIFF = "select * from tbl_thietbi where NgayNhap >= ? and NgayNhap <= ? ";
+    private static final String FIND = "select * from tbl_thietbi where Ten like concat('%',?,'%') or NgayNhap=?";
 
     @Override
     public List<Equipment> getAll() {
@@ -277,6 +278,36 @@ public class EquipmentImp implements UCRD<Equipment>, EquimentDAO{
             stmt = conn.prepareStatement(FIND_BY_DATE_DIFF);
             stmt.setString(1, startDate);
             stmt.setString(2, DateTime.plusDate(endDate,1));
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Equipment cs = new Equipment();
+                cs.setMaTB(rs.getString("MaTB"));
+                cs.setTen(rs.getString("Ten"));
+                cs.setNSX(rs.getString("NSX"));
+                cs.setSoLuong(rs.getInt("SoLuong"));
+                cs.setTinhTrang(rs.getString("TinhTrang"));
+                cs.setNgayNhap(rs.getString("NgayNhap"));
+                cs.setGiaNhap(rs.getInt("GiaNhap"));
+                data.add(cs);
+            }
+            return data;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    public List<Equipment> findByString(String Name) {
+        List<Equipment> data = new ArrayList<Equipment>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND);
+            stmt.setString(1, Name);
+            stmt.setString(2, Name);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Equipment cs = new Equipment();

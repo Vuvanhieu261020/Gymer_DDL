@@ -31,6 +31,7 @@ public class CustomerImp implements CustomerDAO{
     private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "update tbl_khachhang set Ten=?, CMND=?, SDT=?, DiaChi=?, NamSinh=?, GioiTinh=? where MaKH=?";
     private static final String COUNT = "select count(*) as coo from tbl_khachhang";
+    private static final String FIND = "select * from tbl_khachhang where Ten like concat('%',?,'%') or SDT=?";
     
     
     @Override
@@ -186,6 +187,39 @@ public class CustomerImp implements CustomerDAO{
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(FIND_BY_SDT);
             stmt.setString(1, SDT);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                Customer cs = new Customer();
+                cs.setID(rs.getString("MaKH"));
+                cs.setCMND(rs.getString("CMND"));
+                cs.setName(rs.getString("Ten"));
+                cs.setSDT(rs.getString("SDT"));
+                cs.setAddress(rs.getString("DiaChi"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
+                data.add(cs);
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<Customer> findByString(String input) {
+        List<Customer> data = new ArrayList<Customer>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND);
+            stmt.setString(1, input);
+            stmt.setString(2, input);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 Customer cs = new Customer();

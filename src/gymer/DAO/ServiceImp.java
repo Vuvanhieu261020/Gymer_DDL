@@ -22,6 +22,7 @@ public class ServiceImp implements UCRD<Service> {
     private static final String FIND_BY_ID = "select * from tbl_dichvu where  MaDV=?";
     private static final String INSERT = "insert into tbl_dichvu (MaDV, Ten, ThoiGian, Gia) values(?, ?, ?, ?)";
     private static final String UPDATE = "update tbl_dichvu set Ten=?, ThoiGian=?, Gia=? where MaDV=?";
+    private static final String FIND = "select * from tbl_dichvu where Ten like concat('%',?,'%') or MaDV=?";
     
     
     
@@ -158,6 +159,36 @@ public class ServiceImp implements UCRD<Service> {
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(FIND_BY_NAME);
             stmt.setString(1, Name);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                Service cs = new Service();
+                cs.setMaDV(rs.getString("MaDV"));
+                cs.setTen(rs.getString("Ten"));
+                cs.setThoiGian(rs.getInt("ThoiGian"));
+                cs.setGia(rs.getInt("Gia"));
+                data.add(cs);
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<Service> findByString(String Name) {
+        List<Service> data = new ArrayList<Service>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND);
+            stmt.setString(1, Name);
+            stmt.setString(2, Name);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 Service cs = new Service();

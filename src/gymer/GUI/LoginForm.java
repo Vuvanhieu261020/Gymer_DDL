@@ -20,6 +20,7 @@ public class LoginForm extends javax.swing.JFrame {
     
     private Employee em = new Employee();
     private EmployeeImp emi = new EmployeeImp();
+    private MainForm mf = new MainForm();
     
     public LoginForm() {
         initComponents();
@@ -184,7 +185,8 @@ public class LoginForm extends javax.swing.JFrame {
             else {
                 String message = "Xin chào " + em.getTen();
                 JOptionPane.showMessageDialog(null, message);
-                //mf.setVisible(true);
+                mf.setVisible(true);
+                mf.setEmployee(em);
                 this.setVisible(false);
             }
         }

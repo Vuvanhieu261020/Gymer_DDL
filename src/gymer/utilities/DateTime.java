@@ -35,4 +35,26 @@ public class DateTime {
             preproDate = c.getTime();
             return dateFormat.format(preproDate);
         }
+        
+        public static String convertReadable (String input){
+            String date;
+            String month;
+            String year;
+            year = input.substring(0, 4);
+            month = input.substring(5,7);
+            date = input.substring(8,10);
+            String result = date + "-" + month + "-" + year;
+            return result;
+        }
+        
+        public static String convertDB (String input){
+            String date;
+            String month;
+            String year;
+            year = input.substring(6, 10);
+            month = input.substring(3,5);
+            date = input.substring(0,2);
+            String result = year + "-" + month + "-" + date;
+            return result;
+        }
 }

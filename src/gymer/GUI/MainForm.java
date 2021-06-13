@@ -6,8 +6,8 @@
 package gymer.GUI;
 
 
-import gymer.DAO.CustomerImp;
-import gymer.entities.Customer;
+import gymer.DAO.*;
+import gymer.entities.*;
 import java.awt.Color;
 import gymer.utilities.*;
 import java.awt.event.MouseAdapter;
@@ -30,7 +30,8 @@ public class MainForm extends javax.swing.JFrame {
     /**
      * Creates new form MainForm
      */
-    
+    private Employee instanceE = new Employee();
+    private 
     Color panedefault;
     Color paneClick;
     
@@ -49,6 +50,12 @@ public class MainForm extends javax.swing.JFrame {
            jp5.setBackground(panedefault);
             jp6.setBackground(panedefault);
              jp7.setBackground(panedefault);
+    }
+    
+    public void setEmployee (Employee input){
+        this.instanceE = input;
+        this.jLabel21.setText(this.instanceE.getTen());
+        this.jLabel22.setText(this.instanceE.getViTri());
     }
     
     
@@ -191,7 +198,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -259,7 +266,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -295,7 +302,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -330,7 +337,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -364,7 +371,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -400,7 +407,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -599,7 +606,8 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         jDesktopPane1.removeAll();
         QL_hoivien ma =new QL_hoivien();
-         jDesktopPane1.add(ma).setVisible(true);
+        ma.setEm(instanceE);
+        jDesktopPane1.add(ma).setVisible(true);
 //        pane1.setVisible(false);
 //       pane2.setVisible(true); 
       
@@ -628,6 +636,7 @@ public class MainForm extends javax.swing.JFrame {
 //        pane6.setVisible(false);
 //        pane7.setVisible(false);
         QL_nhanvien ma =new QL_nhanvien();
+        ma.setEm(instanceE);
         jDesktopPane1.add(ma).setVisible(true);
         jp3.setBackground(paneClick);
         jp2.setBackground(panedefault);
@@ -668,6 +677,7 @@ public class MainForm extends javax.swing.JFrame {
 //        pane6.setVisible(false);
 //        pane7.setVisible(false);
         QL_thietbi ma =new QL_thietbi();
+        ma.setEm(instanceE);
         jDesktopPane1.add(ma).setVisible(true);
         jp5.setBackground(paneClick);
         jp2.setBackground(panedefault);

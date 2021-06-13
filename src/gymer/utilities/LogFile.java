@@ -21,6 +21,7 @@ public class LogFile {
     public static final int KHACHHANG = 5;
     public static final int SANPHAM = 6;
     public static final int DICHVU = 7;
+    public static final int THIETBI = 8;
     
     
     
@@ -49,6 +50,9 @@ public class LogFile {
                 break;
             case 7 :
                 Infor = ID + " " + Name + " Đã xóa dịch vụ cõ mã : " + DeID + " Lý do " + Reason;
+                break;
+            case 8 :
+                Infor = ID + " " + Name + " Đã xóa thiết bị cõ mã : " + DeID + " Lý do " + Reason;
                 break;
             default :
                 return;

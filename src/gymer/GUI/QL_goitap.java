@@ -6,6 +6,12 @@
 package gymer.GUI;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import gymer.utilities.*;
+import gymer.DAO.*;
+import gymer.entities.*;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,11 +22,56 @@ public class QL_goitap extends javax.swing.JInternalFrame {
     /**
      * Creates new form QL_goitap
      */
+    
+    private Employee em = new Employee ();
+    private ServiceImp eqi = new ServiceImp();
+    private Service eq = new Service();
+    private int count = 0;
+    
+    public void setEm (Employee input) {
+        this.em = input;
+    }
+    
     public QL_goitap() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
+        showData(eqi.getAll());
+    }
+    
+    
+    private void setDatatoEnity (Service eq1){
+        eq1.setMaDV(jTextField3.getText());
+        eq1.setTen(jTextField4.getText());
+        eq1.setGia(Integer.parseInt(jTextField5.getText()));
+        eq1.setThoiGian(Integer.parseInt(jTextField6.getText()));
+    }
+    
+    
+    private void showData (List<Service> input) {
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[4];
+        int countDead = 0;
+        for (int i=0 ; i<input.size() ; i++){
+            row[0] = input.get(i).getMaDV();
+            row[1] = input.get(i).getTen();
+            row[2] = input.get(i).getGia();
+            row[3] = input.get(i).getThoiGian();
+            model.addRow(row);
+            jTextField9.setText(Integer.toString(input.size()));
+        }
+    }
+    
+    private void getSelectedRow () {
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        jTextField3.setText(model.getValueAt(selectedRow, 0).toString());
+        jTextField4.setText(model.getValueAt(selectedRow, 1).toString());
+        jTextField5.setText(model.getValueAt(selectedRow, 2).toString());
+        jTextField6.setText(model.getValueAt(selectedRow, 3).toString());
+        setDatatoEnity(this.eq);
     }
 
     /**
@@ -57,6 +108,11 @@ public class QL_goitap extends javax.swing.JInternalFrame {
         jLabel28 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jTextField9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField9.setText("1000");
@@ -65,11 +121,6 @@ public class QL_goitap extends javax.swing.JInternalFrame {
         jTextField10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField10.setText("1000");
         jTextField10.setBorder(null);
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
-            }
-        });
 
         jLabel34.setText("Dùng tốt");
         jLabel34.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -93,99 +144,59 @@ public class QL_goitap extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Mã dịch vụ", "Tên", "NSX", "Số lượng", "Tình trạng", "Ngày nhập", "Giá nhập"
+                "Mã dịch vụ", "Tên", "Thời gian", "Giá"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel33.setText("THiết bị");
         jLabel33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_add.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         jPanel7.setBackground(new java.awt.Color(234, 230, 230));
 
         jLabel24.setText("Mã dịch vụ");
 
         jTextField3.setEditable(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
 
         jLabel26.setText("Tên dịch vụ");
 
-        jTextField4.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField4CaretUpdate(evt);
-            }
-        });
-        jTextField4.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-                jTextField4AncestorRemoved(evt);
-            }
-        });
-        jTextField4.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jTextField4InputMethodTextChanged(evt);
-            }
-        });
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-
         jLabel27.setText("Thời gian");
-
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
 
         jLabel28.setText("Giá");
 
@@ -217,9 +228,9 @@ public class QL_goitap extends javax.swing.JInternalFrame {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26))
-                .addGap(27, 27, 27)
+                    .addComponent(jLabel26)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -243,9 +254,9 @@ public class QL_goitap extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel7)
                                 .addGap(24, 24, 24))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -308,45 +319,93 @@ public class QL_goitap extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
-
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        Service temp = new Service();
+        this.count++;
+        if (this.count % 2 != 0) {
+            jTextField3.setText(KeyDB.genKey());
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+        }
+        else {
+            if (
+                jTextField4.getText().equals("") ||
+                jTextField5.getText().equals("") ||
+                jTextField6.getText().equals("") ) {
+                    JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả xin hãy kiểm tra lại !");
+            }
+            else {
+                setDatatoEnity(temp);
+                if (eqi.insert(temp)){
+                    JOptionPane.showMessageDialog(null, "Thêm thành công");
+                    showData(eqi.getAll());
+                }
+                else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm vui lòng thử lại");
+            }
+        }
+    }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+        Service temp = new Service();
+        setDatatoEnity(temp);
+        if (temp.getTen().equals(eq.getTen())
+                && temp.getMaDV().equals(eq.getMaDV())
+                && temp.getGia() == eq.getGia()
+                && temp.getThoiGian() == eq.getThoiGian()
+                ) {
+            JOptionPane.showMessageDialog(null, "Bạn chưa thay đổi gì !");
+        }
+        else {
+            int dialogButton = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn sửa ?");
+            if(dialogButton == JOptionPane.YES_OPTION){
+                if (eqi.update(temp)){
+                    JOptionPane.showMessageDialog(null, "Sửa thành công");
+                    showData(eqi.getAll());
+                }
+                else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm vui lòng thử lại");
+            }
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jTextField4CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField4CaretUpdate
-
-    }//GEN-LAST:event_jTextField4CaretUpdate
-
-    private void jTextField4AncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextField4AncestorRemoved
-
-    }//GEN-LAST:event_jTextField4AncestorRemoved
-
-    private void jTextField4InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField4InputMethodTextChanged
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4InputMethodTextChanged
+        int dialogButton = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa ?");
+        if (dialogButton == JOptionPane.YES_OPTION) {
+            if (eqi.delete(this.eq.getMaDV())){
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                String Reason = JOptionPane.showInputDialog("Lý do xóa");
+                LogFile.createDeleteLog(em.getMaNV(), em.getTen(), eq.getMaDV(), Reason, LogFile.DICHVU);
+                showData(eqi.getAll());
+            }
+            else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình xóa vui lòng thử lại");
+        }
+    }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+        showData(eqi.getAll());
+    }//GEN-LAST:event_formMouseClicked
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+        getSelectedRow();
+    }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+        String search = jTextField1.getText();
+        if (jTextField1.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả");
+        }
+        showData(eqi.findByString(search));
+    }//GEN-LAST:event_jLabel2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,7 +6,12 @@
 package gymer.GUI;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import gymer.DAO.*;
+import gymer.entities.*;
+import gymer.utilities.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Linh
@@ -16,13 +21,81 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
     /**
      * Creates new form QL_nhanvien
      */
+    
+    
+    
+    private Employee em = new Employee ();
+    private EmployeeImp eqi = new EmployeeImp();
+    private Employee eq = new Employee();
+    private int count = 0;
     public QL_nhanvien() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
+        showData(eqi.getAll());
+        
+    }
+    
+    
+    public void setEm (Employee input) {
+        this.em = input;
     }
 
+    private void showData (List<Employee> input) {
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[8];
+        int countDead = 0;
+        for (int i=0 ; i<input.size() ; i++){
+            row[0] = input.get(i).getMaNV();
+            row[1] = input.get(i).getTen();
+            row[2] = input.get(i).getCMND();
+            row[3] = input.get(i).getAddress();
+            row[4] = input.get(i).getViTri();
+            row[5] = input.get(i).getYearofBirh();
+            if (input.get(i).getSex()){
+                row[6] = "Nữ";
+            }
+            else{ row[6] = "Nam"; }
+            row[7] = input.get(i).getSDT();
+            model.addRow(row);
+            jTextField9.setText(Integer.toString(input.size()));
+        }
+    }
+    
+    private void setDatatoEnity (Employee eq1){
+        eq1.setMaNV(jTextField3.getText());
+        eq1.setTen(jTextField2.getText());
+        eq1.setSDT(jTextField8.getText());
+        eq1.setCMND(jTextField4.getText());
+        eq1.setAddress(jTextField5.getText());
+        eq1.setViTri(jComboBox2.getSelectedItem().toString());
+        eq1.setYearofBirh(Integer.parseInt(jTextField7.getText()));
+        if (jComboBox1.getSelectedItem().toString().equals("Nam")){
+            eq1.setSex(false);
+        }
+        if (jComboBox1.getSelectedItem().toString().equals("Nữ")){
+            eq1.setSex(true);
+        }
+    }
+    
+    private void getSelectedRow () {
+        jComboBox1.setEditable(true);
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        jTextField3.setText(model.getValueAt(selectedRow, 0).toString());
+        jTextField2.setText(model.getValueAt(selectedRow, 1).toString());
+        jTextField4.setText(model.getValueAt(selectedRow, 2).toString());
+        jTextField5.setText(model.getValueAt(selectedRow, 3).toString());
+        jComboBox2.getEditor().setItem(model.getValueAt(selectedRow, 4).toString());
+        jComboBox1.getEditor().setItem(model.getValueAt(selectedRow, 6).toString());
+        jTextField7.setText(model.getValueAt(selectedRow, 5).toString());
+        jTextField8.setText(model.getValueAt(selectedRow, 7).toString());
+        setDatatoEnity(this.eq);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,62 +128,73 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jLabel30 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("DANH SÁCH NHÂN VIÊN");
         jLabel1.setAlignmentY(0.0F);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, 59));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, 70));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Mã hàng", "Tên", "Giá", "Số lượng", "DVT", "HSD"
+                "Mã nhân viên", "Tên", "CMND", "Địa chỉ", "Vị trí", "Năm sinh", "Giới tính", "SDT"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 144, 553, 306));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_add.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 500, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 500, -1, -1));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 232, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 500, -1, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 232, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 50, -1, -1));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(234, 230, 230));
         jPanel7.setAlignmentX(0.0F);
@@ -128,44 +212,16 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jLabel24.setText("Mã nhân viên");
 
         jTextField3.setEditable(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
 
         jLabel26.setText("CMND");
 
-        jTextField4.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField4CaretUpdate(evt);
-            }
-        });
         jTextField4.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-                jTextField4AncestorRemoved(evt);
-            }
-        });
-        jTextField4.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jTextField4InputMethodTextChanged(evt);
-            }
-        });
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                moved(evt);
             }
         });
 
@@ -173,19 +229,20 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
         jLabel28.setText("Vị trí");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-
         jLabel29.setText("Năm sinh");
 
         jLabel30.setText("Giới tính");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam ", "Nữ" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên" }));
+
+        jLabel31.setText("SDT");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -200,19 +257,21 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel26)
-                                    .addComponent(jLabel27)
-                                    .addComponent(jLabel28)
-                                    .addComponent(jLabel29)
                                     .addComponent(jLabel30)
-                                    .addComponent(jLabel24))
+                                    .addComponent(jLabel24)
+                                    .addComponent(jLabel27)
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel31)
+                                    .addComponent(jLabel28))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField4)
                                     .addComponent(jTextField3)
-                                    .addComponent(jTextField5)
                                     .addComponent(jTextField7)
                                     .addComponent(jComboBox1, 0, 173, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField5)
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING)))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(jLabel25)))
@@ -230,26 +289,30 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                     .addComponent(jLabel24)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(15, 15, 15)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel27)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel31)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(118, Short.MAX_VALUE))
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
@@ -266,37 +329,89 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void moved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_moved
+
+    }//GEN-LAST:event_moved
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+        showData(eqi.getAll());
+    }//GEN-LAST:event_formMouseClicked
 
-    private void jTextField4CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField4CaretUpdate
-
-    }//GEN-LAST:event_jTextField4CaretUpdate
-
-    private void jTextField4AncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextField4AncestorRemoved
-
-    }//GEN-LAST:event_jTextField4AncestorRemoved
-
-    private void jTextField4InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField4InputMethodTextChanged
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4InputMethodTextChanged
+        getSelectedRow();
+    }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+        String search = jTextField1.getText();
+        if (jTextField1.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả");
+        }
+        showData(eqi.findByString(search));
+    }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+        
+    }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+        int dialogButton = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa ?");
+        if (dialogButton == JOptionPane.YES_OPTION) {
+            if (eqi.delete(this.eq.getMaNV())){
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                String Reason = JOptionPane.showInputDialog("Lý do xóa");
+                LogFile.createDeleteLog(em.getMaNV(), em.getTen(), eq.getMaNV(), Reason, LogFile.NHANVIEN);
+                showData(eqi.getAll());
+            }
+            else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình xóa vui lòng thử lại");
+        }
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        Employee temp = new Employee();
+        this.count++;
+        if (this.count % 2 != 0) {
+            jComboBox1.setEditable(true);
+            jComboBox2.setEditable(true);
+            jTextField2.setText("");
+            jTextField3.setText(KeyDB.genKey());
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jComboBox1.getEditor().setItem("Nam");
+            jComboBox2.getEditor().setItem("Nhân viên");
+            jTextField7.setText(DateTime.getTimeFormat2().substring(6));
+            jTextField8.setText("");
+        }
+        else {
+            if (
+                jTextField2.getText().equals("") ||
+                jTextField4.getText().equals("") ||
+                jTextField5.getText().equals("") ||
+                jTextField7.getText().equals("") ||
+                jTextField8.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả xin hãy kiểm tra lại !");
+            }
+            else {
+                setDatatoEnity(temp);
+                String ID = JOptionPane.showInputDialog("Nhập User Name");
+                String Password = JOptionPane.showInputDialog("Nhập Password");
+                if (eqi.insert(temp,ID,Password)){
+                    JOptionPane.showMessageDialog(null, "Thêm thành công");
+                    showData(eqi.getAll());
+                }
+                else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm có thể user name đã được sử dụng hoặc lỗi hệ thống");
+            }
+        }
+    }//GEN-LAST:event_jLabel5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -311,6 +426,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -324,6 +440,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

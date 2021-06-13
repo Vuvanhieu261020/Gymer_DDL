@@ -37,7 +37,7 @@ public class EquipmentImp implements UCRD<Equipment>, EquimentDAO{
     private static final String WORKING_LIST = "select * from tbl_thietbi where TinhTrang= 'Tốt'";
     private static final String FIND_BY_DATE = "select * from tbl_thietbi where NgayNhap=? ";
     private static final String FIND_BY_DATE_DIFF = "select * from tbl_thietbi where NgayNhap >= ? and NgayNhap <= ? ";
-    private static final String FIND = "select * from tbl_thietbi where Ten like concat('%',?,'%') or NgayNhap=?";
+    private static final String FIND = "select * from tbl_thietbi where Ten like concat('%',?,'%') or NSX like concat('%',?,'%')";
 
     @Override
     public List<Equipment> getAll() {

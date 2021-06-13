@@ -73,14 +73,22 @@ public class MainClass {
             System.out.println(mm.getMaDV());
         }*/
         
-        MainForm mf = new MainForm ();
-        mf.setVisible(true);
+        /*EquipmentImp eqi = new EquipmentImp();
+        for (Equipment eq : eqi.getAll()){
+            System.out.println(eq.getTen());
+        }*/
+        
+        LoginForm lg = new LoginForm();
+        lg.setVisible(true);
+       /*QL_hoivien ds = new QL_hoivien();
+       ds.setVisible(true);*/
         
         
         // test Ulity
         //String number = "04515662";
         //System.out.println(Regex.NumericCheck(number));
         //System.out.println(HashPassword.Hash("luyen3222513"));
+        //System.out.println(DateTime.convertDB("11-02-2000"));
         
     }
 }

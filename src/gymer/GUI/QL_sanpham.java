@@ -6,6 +6,12 @@
 package gymer.GUI;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import gymer.DAO.*;
+import gymer.entities.*;
+import gymer.utilities.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,13 +22,68 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
     /**
      * Creates new form QL_sanpham
      */
+    
+    private Employee em = new Employee ();
+    private GoodsImp eqi = new GoodsImp();
+    private Goods eq = new Goods();
+    private int count = 0;
+    
+    
     public QL_sanpham() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
+        showData(eqi.getAll());
+        jComboBox1.setEnabled(true);
+    }
+    
+    public void setEm (Employee input) {
+        this.em = input;
+    }
+    
+    
+    
+    private void setDatatoEnity (Goods eq1){
+        eq1.setMaHang(jTextField3.getText());
+        eq1.setTen(jTextField2.getText());
+        eq1.setGia(Integer.parseInt(jTextField5.getText()));
+        eq1.setSoLuong(Integer.parseInt(jTextField6.getText()));
+        eq1.setDVT(jComboBox1.getSelectedItem().toString());
+        eq1.setHSD(DateTime.convertDB(jTextField8.getText()));
+    }
+    
+    
+    private void showData (List<Goods> input) {
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[6];
+        int countDead = 0;
+        for (int i=0 ; i<input.size() ; i++){
+            row[0] = input.get(i).getMaHang();
+            row[1] = input.get(i).getTen();
+            row[2] = input.get(i).getGia();
+            row[3] = input.get(i).getSoLuong();
+            row[4] = input.get(i).getDVT();
+            row[5] = DateTime.convertReadable(input.get(i).getHSD());
+            model.addRow(row);
+            jTextField9.setText(Integer.toString(input.size()));
+        }
     }
 
+    private void getSelectedRow () {
+        jComboBox1.setEditable(true);
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        jTextField3.setText(model.getValueAt(selectedRow, 0).toString());
+        jTextField2.setText(model.getValueAt(selectedRow, 1).toString());
+        jTextField5.setText(model.getValueAt(selectedRow, 2).toString());
+        jTextField6.setText(model.getValueAt(selectedRow, 3).toString());
+        jComboBox1.getEditor().setItem(model.getValueAt(selectedRow, 4).toString());
+        jTextField8.setText(model.getValueAt(selectedRow, 5).toString());
+        setDatatoEnity(this.eq);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,22 +108,26 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField9 = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
 
         jLabel4.setText("jLabel4");
 
         setBackground(new java.awt.Color(255, 255, 255));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -94,17 +159,37 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
                 "Mã hàng", "Tên", "Giá", "Số lượng", "DVT", "HSD"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 144, 553, 306));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_add.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 496, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 496, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 496, -1, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +200,11 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 74, 232, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(688, 70, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(234, 230, 230));
@@ -154,35 +244,6 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel26.setText("Tên");
-
-        jTextField4.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField4CaretUpdate(evt);
-            }
-        });
-        jTextField4.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-                jTextField4AncestorRemoved(evt);
-            }
-        });
-        jTextField4.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jTextField4InputMethodTextChanged(evt);
-            }
-        });
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -199,12 +260,6 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
 
         jLabel28.setText("Số lượng");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-
         jLabel29.setText("DVT");
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +269,8 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         });
 
         jLabel30.setText("HSD");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chai", "Lọ", "Kg" }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -227,7 +284,6 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel26)
                                     .addComponent(jLabel27)
                                     .addComponent(jLabel28)
                                     .addComponent(jLabel29)
@@ -235,12 +291,11 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel24))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                                     .addComponent(jTextField3)
                                     .addComponent(jTextField5)
                                     .addComponent(jTextField6)
-                                    .addComponent(jTextField7)
-                                    .addComponent(jTextField8)))))
+                                    .addComponent(jTextField8)
+                                    .addComponent(jComboBox1, 0, 173, Short.MAX_VALUE)))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(jLabel25)))
@@ -258,10 +313,6 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
                     .addComponent(jLabel24)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel26)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -272,15 +323,18 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
+
+        jTextField9.setText("jTextField9");
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -305,22 +359,6 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jTextField4CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField4CaretUpdate
-
-    }//GEN-LAST:event_jTextField4CaretUpdate
-
-    private void jTextField4AncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextField4AncestorRemoved
-
-    }//GEN-LAST:event_jTextField4AncestorRemoved
-
-    private void jTextField4InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField4InputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4InputMethodTextChanged
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
@@ -329,21 +367,108 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        String search = jTextField1.getText();
+        if (jTextField1.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả");
+        }
+        showData(eqi.findByString(search));
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        showData(eqi.getAll());
+    }//GEN-LAST:event_formMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        getSelectedRow();
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa ?");
+        if (dialogButton == JOptionPane.YES_OPTION) {
+            if (eqi.delete(this.eq.getMaHang())){
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                String Reason = JOptionPane.showInputDialog("Lý do xóa");
+                LogFile.createDeleteLog(em.getMaNV(), em.getTen(), eq.getMaHang(), Reason, LogFile.THIETBI);
+                showData(eqi.getAll());
+            }
+            else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình xóa vui lòng thử lại");
+        }
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        Goods temp = new Goods();
+        this.count++;
+        if (this.count % 2 != 0) {
+            jComboBox1.setEditable(true);
+            jTextField2.setText("");
+            jTextField3.setText(KeyDB.genKey());
+            jTextField6.setText("");
+            jTextField5.setText("");
+            jComboBox1.getEditor().setItem("Kg");
+            jTextField8.setText(DateTime.getTimeFormat2());
+        }
+        else {
+            if (
+                jTextField2.getText().equals("") ||
+                jTextField6.getText().equals("") ||
+                jTextField5.getText().equals("") ||
+                jTextField8.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả xin hãy kiểm tra lại !");
+            }
+            else {
+                setDatatoEnity(temp);
+                if (eqi.insert(temp)){
+                    JOptionPane.showMessageDialog(null, "Thêm thành công");
+                    showData(eqi.getAll());
+                }
+                else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm vui lòng thử lại");
+            }
+        }
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        Goods temp = new Goods();
+        setDatatoEnity(temp);
+        if (temp.getGia()== eq.getGia()
+                && temp.getHSD().equals(eq.getHSD())
+                && temp.getMaHang().equals(eq.getMaHang())
+                && temp.getTen().equals(eq.getTen())
+                && temp.getSoLuong()== eq.getSoLuong()
+                && temp.getDVT().equals(eq.getDVT())
+                ) {
+            JOptionPane.showMessageDialog(null, "Bạn chưa thay đổi gì !");
+        }
+        else {
+            int dialogButton = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn sửa ?");
+            if(dialogButton == JOptionPane.YES_OPTION){
+                if (eqi.update(temp)){
+                    JOptionPane.showMessageDialog(null, "Sửa thành công");
+                    showData(eqi.getAll());
+                }
+                else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm vui lòng thử lại");
+            }
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -359,10 +484,9 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

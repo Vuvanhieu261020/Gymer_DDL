@@ -28,13 +28,28 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
     private EmployeeImp eqi = new EmployeeImp();
     private Employee eq = new Employee();
     private int count = 0;
-    public QL_nhanvien() {
+    
+    
+    
+    public QL_nhanvien(Employee input) {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         showData(eqi.getAll());
-        
+        jComboBox1.setEnabled(true);
+        jComboBox2.setEnabled(true);
+        this.em = input;
+        if (this.em.getViTri().equals("Quản lý")){
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+        }
+        else {
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+        }
     }
     
     
@@ -358,6 +373,28 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
+        Employee temp = new Employee();
+        setDatatoEnity(temp);
+        if (temp.getCMND().equals(eq.getCMND())
+                && temp.getTen().equals(eq.getTen())
+                && temp.getYearofBirh()== eq.getYearofBirh()
+                && temp.getSDT().equals(eq.getSDT())
+                && temp.getAddress().equals(eq.getAddress())
+                && temp.getSex() == eq.getSex()
+                && temp.getViTri().equals(eq.getViTri())
+                ) {
+            JOptionPane.showMessageDialog(null, "Bạn chưa thay đổi gì !");
+        }
+        else {
+            int dialogButton = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn sửa ?");
+            if(dialogButton == JOptionPane.YES_OPTION){
+                if (eqi.update(temp)){
+                    JOptionPane.showMessageDialog(null, "Sửa thành công");
+                    showData(eqi.getAll());
+                }
+                else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm vui lòng thử lại");
+            }
+        }
         
     }//GEN-LAST:event_jLabel6MouseClicked
 
@@ -443,4 +480,8 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    private void println(boolean equals) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

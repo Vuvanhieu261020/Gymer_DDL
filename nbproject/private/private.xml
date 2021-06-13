@@ -6,9 +6,12 @@
             <file>file:/D:/Dev/Gymer_DDL/src/gymer/GUI/QL_thietbi.java</file>
             <file>file:/D:/Dev/Gymer_DDL/src/gymer/GUI/QL_nhanvien.java</file>
             <file>file:/D:/Dev/Gymer_DDL/src/gymer/DAO/EmployeeImp.java</file>
-            <file>file:/D:/Dev/Gymer_DDL/src/gymer/GUI/QL_the.java</file>
             <file>file:/D:/Dev/Gymer_DDL/src/gymer/GUI/MainForm.java</file>
+            <file>file:/D:/Dev/Gymer_DDL/src/gymer/GUI/QL_sanpham.java</file>
             <file>file:/D:/Dev/Gymer_DDL/src/gymer/GUI/QL_hoivien.java</file>
+            <file>file:/D:/Dev/Gymer_DDL/src/gymer/software/MainClass.java</file>
+            <file>file:/D:/Dev/Gymer_DDL/src/gymer/DAO/GoodsImp.java</file>
+            <file>file:/D:/Dev/Gymer_DDL/src/gymer/GUI/LoginForm.java</file>
         </group>
     </open-files>
 </project-private>

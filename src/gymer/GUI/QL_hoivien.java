@@ -42,6 +42,7 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         showData(eqi.getAll());
+        jComboBox2.setEnabled(true);
     }
     
     private void showData (List<Customer> input) {
@@ -72,7 +73,6 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         eq1.setName(jTextField1.getText());
         eq1.setYearofBirh(Integer.parseInt(jTextField7.getText()));
         eq1.setSDT(jTextField4.getText());
-        System.out.println((String)jComboBox2.getSelectedItem());
         if (jComboBox2.getSelectedItem().toString().equals("Nam")){
             eq1.setSex(false);
         }

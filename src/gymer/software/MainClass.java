@@ -82,6 +82,7 @@ public class MainClass {
         lg.setVisible(true);
        /*QL_hoivien ds = new QL_hoivien();
        ds.setVisible(true);*/
+       
         
         
         // test Ulity

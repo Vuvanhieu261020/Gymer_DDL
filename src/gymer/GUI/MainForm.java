@@ -635,8 +635,7 @@ public class MainForm extends javax.swing.JFrame {
 //        pane5.setVisible(false);
 //        pane6.setVisible(false);
 //        pane7.setVisible(false);
-        QL_nhanvien ma =new QL_nhanvien();
-        ma.setEm(instanceE);
+        QL_nhanvien ma =new QL_nhanvien(instanceE);
         jDesktopPane1.add(ma).setVisible(true);
         jp3.setBackground(paneClick);
         jp2.setBackground(panedefault);

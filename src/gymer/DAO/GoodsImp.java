@@ -31,7 +31,7 @@ public class GoodsImp implements UCRD<Goods> , GoodsDAO {
                 cs.setTen(rs.getString("Ten"));
                 cs.setGia(rs.getInt("Gia"));
                 cs.setSoLuong(rs.getInt("SoLuong"));
-                cs.setDVT(rs.getString("SVT"));
+                cs.setDVT(rs.getString("DVT"));
                 cs.setHSD(rs.getString("HSD"));
                 data.add(cs);
             }
@@ -170,7 +170,7 @@ public class GoodsImp implements UCRD<Goods> , GoodsDAO {
         }
     }
     
-    public Goods findByString(String ID) {
+    public List<Goods> findByString(String ID) {
         List<Goods> data = new ArrayList<Goods>();
         PreparedStatement stmt = null;
         Connection conn = null;
@@ -190,7 +190,7 @@ public class GoodsImp implements UCRD<Goods> , GoodsDAO {
                 cs.setHSD(rs.getString("HSD"));
                 data.add(cs);
             }
-            return cs;
+            return data;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

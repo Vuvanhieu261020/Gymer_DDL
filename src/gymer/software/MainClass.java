@@ -80,8 +80,8 @@ public class MainClass {
         
         LoginForm lg = new LoginForm();
         lg.setVisible(true);
-       /*QL_hoivien ds = new QL_hoivien();
-       ds.setVisible(true);*/
+        /*QL_hoivien ds = new QL_hoivien();
+        ds.setVisible(true);*/
        
         
         

@@ -90,7 +90,7 @@ public class LoginForm extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Show password");
-        jCheckBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jCheckBox1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
@@ -139,7 +139,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addComponent(jCheckBox1)
                 .addGap(8, 8, 8)
                 .addComponent(jButton1)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 570));

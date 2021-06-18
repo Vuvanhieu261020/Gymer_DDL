@@ -91,5 +91,20 @@ public class MainClass {
         //System.out.println(HashPassword.Hash("luyen3222513"));
         //System.out.println(DateTime.convertDB("11-02-2000"));
         
+        //test Emoloyee
+//        Employee ep= new  Employee();
+//        EmployeeImp epa= new EmployeeImp();
+//        ep.setTen("LINH");
+//        ep.setMaNV("1");
+//        ep.setAddress("dddd");
+//        ep.setCMND("782373827");
+//        ep.setHspass("123456");
+//        ep.setIdLogin("LINH");
+//        ep.setSDT("0944315816");
+//        ep.setSex(false);
+//        ep.setViTri("Quản lý");
+//        ep.setYearofBirh(2000);
+//        epa.insert(ep,"LINH","123456");
+        
     }
 }

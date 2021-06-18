@@ -334,7 +334,7 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         jTextField9.setText("jTextField9");
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 70, -1, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -48,8 +48,8 @@ public class LoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -63,6 +63,19 @@ public class LoginForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/signin.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setOpaque(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/signin_shadow.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 550, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -81,19 +94,6 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 30, 30, 40));
-
-        jLabel3.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/signin.png"))); // NOI18N
-        jLabel3.setText("Sign In");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 540, 180, 60));
 
         jLabel1.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,27 +186,6 @@ public class LoginForm extends javax.swing.JFrame {
         jPasswordField1.setText("");
     }//GEN-LAST:event_jPasswordField1FocusGained
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        // TODO add your handling code here:
-        if (jTextField1.getText().equals("") || jPasswordField1.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả");
-        }
-        else {
-            em = emi.initfromDB(jTextField1.getText(), jPasswordField1.getText());
-            if (em.getMaNV().equals("")){
-                JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu");
-            }
-            else {
-                String message = "Xin chào " + em.getTen();
-                JOptionPane.showMessageDialog(null, message);
-                LogFile.createLoginLog(em.getMaNV(), em.getTen());
-                mf.setVisible(true);
-                mf.setEmployee(em);
-                this.setVisible(false);
-            }
-        }
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
         System.exit(0);
@@ -225,6 +204,27 @@ public class LoginForm extends javax.swing.JFrame {
         this.setLocation(xx-x,yy-y);
     }//GEN-LAST:event_jLabel6MouseDragged
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        if (jTextField1.getText().equals("") || jPasswordField1.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả");
+        }
+        else {
+            em = emi.initfromDB(jTextField1.getText(), jPasswordField1.getText());
+            if (em.getMaNV().equals("")){
+                JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu");
+            }
+            else {
+                String message = "Xin chào " + em.getTen();
+                JOptionPane.showMessageDialog(null, message);
+                LogFile.createLoginLog(em.getMaNV(), em.getTen());
+                mf.setVisible(true);
+                mf.setEmployee(em);
+                this.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -237,10 +237,10 @@ public class LoginForm extends javax.swing.JFrame {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

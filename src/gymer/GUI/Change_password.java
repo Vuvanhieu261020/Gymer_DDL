@@ -5,6 +5,8 @@
  */
 package gymer.GUI;
 
+import java.awt.Color;
+
 /**
  *
  * @author Linh
@@ -16,6 +18,8 @@ public class Change_password extends javax.swing.JFrame {
      */
     public Change_password() {
         initComponents();
+        setBackground(new Color(255,255,255,150));
+        
     }
 
     /**
@@ -28,7 +32,25 @@ public class Change_password extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jPasswordField3 = new javax.swing.JPasswordField();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPasswordField2 = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -38,15 +60,250 @@ public class Change_password extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Png.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 700, -1));
+        jSeparator4.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator4.setPreferredSize(new java.awt.Dimension(0, 1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 520, 450, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 1120, 790));
+        jPasswordField3.setBackground(new java.awt.Color(0, 0, 102));
+        jPasswordField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPasswordField3.setForeground(new java.awt.Color(153, 153, 153));
+        jPasswordField3.setText("Enter password");
+        jPasswordField3.setBorder(null);
+        jPasswordField3.setOpaque(false);
+        jPasswordField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField3FocusGained(evt);
+            }
+        });
+        jPanel1.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 410, -1));
+
+        jLabel8.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("CONFIRM PASSWORD");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 230, -1));
+
+        jSeparator3.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator3.setPreferredSize(new java.awt.Dimension(0, 1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 450, -1));
+
+        jPasswordField2.setBackground(new java.awt.Color(0, 0, 102));
+        jPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPasswordField2.setForeground(new java.awt.Color(153, 153, 153));
+        jPasswordField2.setText("Enter password");
+        jPasswordField2.setBorder(null);
+        jPasswordField2.setOpaque(false);
+        jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField2FocusGained(evt);
+            }
+        });
+        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 410, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Close.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setFocusPainted(false);
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Close_2.png"))); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 610, -1, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Change.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Change_2.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 610, -1, -1));
+
+        jCheckBox2.setBackground(new java.awt.Color(0, 0, 102));
+        jCheckBox2.setFont(new java.awt.Font("Poppins Thin", 0, 14)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox2.setText("Show password");
+        jCheckBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jCheckBox2.setOpaque(false);
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 140, 30));
+
+        jLabel7.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("NEW PASSWORD");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 183, -1));
+
+        jLabel5.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("OLD PASSWORD ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 183, -1));
+
+        jPasswordField1.setBackground(new java.awt.Color(0, 0, 102));
+        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
+        jPasswordField1.setText("Enter password");
+        jPasswordField1.setBorder(null);
+        jPasswordField1.setOpaque(false);
+        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField1FocusGained(evt);
+            }
+        });
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 410, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator2.setPreferredSize(new java.awt.Dimension(0, 1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 450, -1));
+
+        jCheckBox1.setBackground(new java.awt.Color(0, 0, 102));
+        jCheckBox1.setFont(new java.awt.Font("Poppins Thin", 0, 14)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("Show password");
+        jCheckBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jCheckBox1.setOpaque(false);
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 140, 30));
+
+        jLabel4.setFont(new java.awt.Font("Poppins Medium", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("CHANGE PASSWORD");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 390, -1));
+
+        jLabel2.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("USER NAME");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 194, -1));
+
+        jTextField1.setBackground(new java.awt.Color(0, 0, 102));
+        jTextField1.setFont(new java.awt.Font("Poppins Light", 0, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
+        jTextField1.setText("Enter Username");
+        jTextField1.setBorder(null);
+        jTextField1.setDisabledTextColor(new java.awt.Color(153, 153, 153));
+        jTextField1.setOpaque(false);
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+        });
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 390, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setPreferredSize(new java.awt.Dimension(0, 1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 450, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Png.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 620, 710));
+
+        jLabel3.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("USER NAME");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 194, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 700));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    int x,y;
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        // TODO add your handling code here:
+        jTextField1.setText("");
+    }//GEN-LAST:event_jTextField1FocusGained
 
+    private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
+
+        // TODO add your handling code here:
+        jPasswordField1.setText("");
+    }//GEN-LAST:event_jPasswordField1FocusGained
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        if (jCheckBox1.isSelected()){
+            jPasswordField1.setEchoChar((char)0);
+        }
+        else{
+            jPasswordField1.setEchoChar('•');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+        if (jCheckBox2.isSelected()){
+            jPasswordField2.setEchoChar((char)0);
+        }
+        else{
+            jPasswordField2.setEchoChar('•');
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+//        if (jTextField1.getText().equals("") || jPasswordField1.getText().equals("")){
+//            JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả");
+//        }
+//        else {
+//            em = emi.initfromDB(jTextField1.getText(), jPasswordField1.getText());
+//            if (em.getMaNV().equals("")){
+//                JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu");
+//            }
+//            else {
+//                String message = "Xin chào " + em.getTen();
+//                JOptionPane.showMessageDialog(null, message);
+//                LogFile.createLoginLog(em.getMaNV(), em.getTen());
+//                mf.setVisible(true);
+//                mf.setEmployee(em);
+//                this.setVisible(false);
+//            }
+//        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        //close
+//        Change_password cp= new Change_password();
+//        cp.this.setVisible(false);
+        Change_password.this.setVisible(false);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jPasswordField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField3FocusGained
+        // TODO add your handling code here:
+        jPasswordField3.setText("");
+        
+    }//GEN-LAST:event_jPasswordField3FocusGained
+
+    private void jPasswordField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusGained
+        // TODO add your handling code here:
+        jPasswordField2.setText("");
+    }//GEN-LAST:event_jPasswordField2FocusGained
+    
     /**
      * @param args the command line arguments
      */
@@ -83,7 +340,25 @@ public class Change_password extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField jPasswordField3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

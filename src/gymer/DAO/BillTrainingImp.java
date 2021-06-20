@@ -65,14 +65,14 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
         try {
             //MaHoaDonHang, Ngay, TenKH, SDT, MaNV, TongTien
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(INSERTDETALS);
+            stmt = conn.prepareStatement(INSERTBILL);
             stmt.setString(1, input.getMaHoaDonTap());
             stmt.setString(2, input.getNgay());
             stmt.setString(3, input.getMaNV());
             stmt.setString(4, input.getMaKH());
             stmt.setInt(5, input.getTongTien());
             stmt.execute();
-            stmt = conn.prepareStatement(INSERTBILL);
+            stmt = conn.prepareStatement(INSERTDETALS);
             for (BillTraning_Details dt : input.getDetails()){
                 stmt.setString(1, dt.getMaHoaDonTap());
                 stmt.setString(2, dt.getMaDV());

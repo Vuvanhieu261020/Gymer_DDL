@@ -149,9 +149,9 @@ public class MemberCardImp implements MemberCardDAO{
         Connection conn = null;
         try {
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(INSERT);
+            stmt = conn.prepareStatement(UPDATE);
             stmt.setString(5, Input.getCardID());
-            stmt.setString(1, Input.getMaDV());
+            stmt.setString(1, Input.getMaKH());
             stmt.setBoolean(2, Input.getStatus());
             stmt.setString(3, Input.getStartDate());
             stmt.setString(4, Input.getMaDV());
@@ -301,26 +301,28 @@ public class MemberCardImp implements MemberCardDAO{
         }
     }
     
-    public MemberCard findByString (String MaKH) {
+    public List<MemberCard> findByString(String Name) {
+        List<MemberCard> data = new ArrayList<MemberCard>();
         PreparedStatement stmt = null;
         Connection conn = null;
-        MemberCard mb = new MemberCard();
         try {
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(FIND);
-            stmt.setString(1, MaKH);
-            stmt.setString(2, MaKH);
-            stmt.setString(3, MaKH);
-            stmt.setString(4, MaKH);
+            stmt.setString(1, Name);
+            stmt.setString(2, Name);
+            stmt.setString(3, Name);
+            stmt.setString(4, Name);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
+                MemberCard mb = new MemberCard();
                 mb.setID(rs.getString("MaThe"));
                 mb.setMaDV(rs.getString("MaDV"));
                 mb.setMaKH(rs.getString("MaKH"));
                 mb.setStartDate(rs.getString("NgayBD"));
                 mb.setStatus(rs.getBoolean("TrangThai"));
+                data.add(mb);
             }
-            return mb;
+            return data;
         }
         catch (Exception e){
             e.printStackTrace();

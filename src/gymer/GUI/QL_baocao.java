@@ -6,14 +6,35 @@
 package gymer.GUI;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.table.TableModel;
-
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import gymer.DAO.*;
+import gymer.entities.*;
+import gymer.utilities.*;
+import gymer.utilities.*;
+import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import static org.bouncycastle.asn1.cms.CMSObjectIdentifiers.data;
 /**
  *
  * @author Linh
  */
 public class QL_baocao extends javax.swing.JInternalFrame {
 
+    
+    private Employee em = new Employee();
+    private RPDetails rp = new RPDetails();
+    private ReportImp rpi = new ReportImp();
+    boolean state = true;
+    private List<RPDetails> data = new ArrayList<RPDetails>();
     /**
      * Creates new form QL_baocao
      */
@@ -22,8 +43,12 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
-        CtHD.setVisible(false);
-        Default.setVisible(true);
+        jRadioButton2.setSelected(false);
+        jRadioButton1.setSelected(false);
+    }
+    
+    public void setEm (Employee in){
+        this.em = in;
     }
 
     /**
@@ -364,24 +389,10 @@ public class QL_baocao extends javax.swing.JInternalFrame {
 
         TB_de.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã hóa đơn", "Ngày tạo", "Dịch vụ", "Tên khách hàng", "SĐT", "Tên người tạo", "Mã nhân viên", "Tổng tiền"
             }
         ));
         TB_de.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -391,9 +402,20 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(TB_de);
 
-        Default.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 840, 220));
+        jButton2.setText("xuất file");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 510, -1, -1));
 
         jRadioButton1.setText("Báo cáo hóa đơn hàng");
+        jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton1MouseClicked(evt);
+            }
+        });
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -401,8 +423,13 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         });
         Default.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
 
-        jButton2.setText("xuất file");
-        Default.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 510, -1, -1));
+        jRadioButton2.setText("Báo cáo hóa đơn tập");
+        jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         jLabel2.setText("Báo cáo");
@@ -415,37 +442,56 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void showDataTap(List<RPDetails> input){
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[8];
+        for (int i=0 ; i<input.size() ; i++){
+            System.out.println("created");
+            row[0] = input.get(i).getMaHD();
+            row[1] = input.get(i).getNgayLap();
+            row[2] = input.get(i).getTenDV();
+            row[3] = input.get(i).getTenKhach();
+            row[4] = input.get(i).getSDTKhach();
+            row[5] = input.get(i).getTenNV();
+            row[6] = input.get(i).getMaNV();
+            row[7] = input.get(i).getTongTien();
+            model.addRow(row);
+        }
+    }
+    
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
         // TODO add your handling code here:
-        CtHD.setVisible(false);
-         Default.setVisible(true);
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jTextField7d(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7d
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7d
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void TB_deMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TB_deMouseClicked
-        // TODO add your handling code here:
-        int index=TB_de.getSelectedRow();
-        TableModel model=TB_de.getModel();
+        jRadioButton1.setSelected(false);
+        this.state = true;
+        this.data = rpi.getAllTap();
+        showDataTap(data);
         
-        CtHD.setVisible(true);
-        Default.setVisible(false);
-        
-    }//GEN-LAST:event_TB_deMouseClicked
+    }//GEN-LAST:event_jRadioButton2MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        jRadioButton2.setSelected(false);
+        this.state = false;
+    }//GEN-LAST:event_jRadioButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Chọn nơi lưu báo cáo");
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int userSelection = fileChooser.showSaveDialog(null);
+        String path;
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            path = fileChooser.getSelectedFile().getAbsolutePath();
+            ExcelFiles.createRPBillTraining(this.data, path);
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -69,7 +69,7 @@ public class ExcelFiles {
             headerCell.setCellStyle(header);
             
             headerCell = headerRow.createCell(5);
-            headerCell.setCellValue("Mã nhân ");
+            headerCell.setCellValue("Mã nhân viên");
             headerCell.setCellStyle(header);
             
             headerCell = headerRow.createCell(6);
@@ -204,7 +204,7 @@ public class ExcelFiles {
             total.setCellValue(sum);
             
             
-            FileOutputStream outputStream = new FileOutputStream(path);
+            FileOutputStream outputStream = new FileOutputStream(path + "BaoCaoTap_TaoNgay" + DateTime.getTimeFormat2()+".xlsx");
             workbook.write(outputStream);
             workbook.close();
             

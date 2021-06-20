@@ -47,16 +47,14 @@ public class MainClass {
         cs.setSDT("074845145");
         cs.setYearofBirh(2211);
         cs.setSex(true);
-        cs.setName("Đồng Xuân Luyện");
+        cs.setName("ngocdtb");
         csi.delete("257412");
-        
+        csi.insert(cs);
         List<Customer> data;
         data = csi.getAll();
-        data = csi.findByName("dtbn");
         for (Customer mm : data){
             System.out.println(mm.getID());
         }*/
-        
         
         // Service test
         
@@ -78,12 +76,27 @@ public class MainClass {
             System.out.println(eq.getTen());
         }*/
         
+        /*ReportImp rpi = new ReportImp();
+        for (RPDetails rp : rpi.getAllTap()){
+            System.out.println(rp.getMaHD());
+        }*/
+        
         LoginForm lg = new LoginForm();
         lg.setVisible(true);
         /*QL_hoivien ds = new QL_hoivien();
         ds.setVisible(true);*/
        
-        
+        /*Employee em = new Employee ();
+        EmployeeImp emi = new EmployeeImp ();
+        em.setMaNV(KeyDB.genKey());
+        em.setAddress("40/80 Hoàng Đạo Thành");
+        em.setSDT("0822203990");
+        em.setSex(true);
+        em.setTen("Stephan Haweyes");
+        em.setViTri("Quản lý");
+        em.setYearofBirh(2000);
+        em.setCMND("031200003515");
+        emi.insert(em, "root", "3222513");*/
         
         // test Ulity
         //String number = "04515662";

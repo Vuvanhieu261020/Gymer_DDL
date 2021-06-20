@@ -28,6 +28,7 @@ public class CustomerImp implements CustomerDAO{
     private static final String FIND_ALL = "select * from tbl_khachhang";
     private static final String FIND_BY_NAME = "select * from tbl_khachhang where Ten like concat('%',?,'%') ";
     private static final String FIND_BY_SDT = "select * from tbl_khachhang where SDT=?";
+    private static final String FIND_BY_ID = "select * from tbl_khachhang where MaKH=?";
     private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "update tbl_khachhang set Ten=?, CMND=?, SDT=?, DiaChi=?, NamSinh=?, GioiTinh=? where MaKH=?";
     private static final String COUNT = "select count(*) as coo from tbl_khachhang";
@@ -233,6 +234,95 @@ public class CustomerImp implements CustomerDAO{
                 data.add(cs);
             }
             return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public Customer findBySDT_1(String SDT) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        Customer cs = new Customer();
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_SDT);
+            stmt.setString(1, SDT);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                cs.setID(rs.getString("MaKH"));
+                cs.setCMND(rs.getString("CMND"));
+                cs.setName(rs.getString("Ten"));
+                cs.setSDT(rs.getString("SDT"));
+                cs.setAddress(rs.getString("DiaChi"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
+            }
+            return cs;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public Customer findByNAME_1(String SDT) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        Customer cs = new Customer();
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_NAME);
+            stmt.setString(1, SDT);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                cs.setID(rs.getString("MaKH"));
+                cs.setCMND(rs.getString("CMND"));
+                cs.setName(rs.getString("Ten"));
+                cs.setSDT(rs.getString("SDT"));
+                cs.setAddress(rs.getString("DiaChi"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
+            }
+            return cs;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    public Customer findByID_1(String Input) {
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        Customer cs = new Customer();
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_ID);
+            stmt.setString(1, Input);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                cs.setID(rs.getString("MaKH"));
+                cs.setCMND(rs.getString("CMND"));
+                cs.setName(rs.getString("Ten"));
+                cs.setSDT(rs.getString("SDT"));
+                cs.setAddress(rs.getString("DiaChi"));
+                cs.setSex(rs.getBoolean("GioiTinh"));
+                cs.setYearofBirh(rs.getInt("NamSinh"));
+            }
+            return cs;
         }
         catch (Exception e){
             e.printStackTrace();

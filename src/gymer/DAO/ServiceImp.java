@@ -16,13 +16,13 @@ import java.sql.*;
 public class ServiceImp implements UCRD<Service> {
 
     
-    private static final String DELETE = "delete from tbl_dichvu where MaDV=?";
-    private static final String FIND_ALL = "select * from tbl_dichvu";
-    private static final String FIND_BY_NAME = "select * from tbl_dichvu where Ten like concat('%',?,'%')";
-    private static final String FIND_BY_ID = "select * from tbl_dichvu where  MaDV=?";
-    private static final String INSERT = "insert into tbl_dichvu (MaDV, Ten, ThoiGian, Gia) values(?, ?, ?, ?)";
+    private static final String DELETE = "update tbl_dichvu set delete_flag='true' where MaDV=?";
+    private static final String FIND_ALL = "select * from tbl_dichvu where delete_flag='flase'";
+    private static final String FIND_BY_NAME = "select * from tbl_dichvu where Ten like concat('%',?,'%') and delete_flag='false'";
+    private static final String FIND_BY_ID = "select * from tbl_dichvu where  MaDV=? and delete_flag='false'";
+    private static final String INSERT = "insert into tbl_dichvu (MaDV, Ten, ThoiGian, Gia, delete_flag) values(?, ?, ?, ?, 'false')";
     private static final String UPDATE = "update tbl_dichvu set Ten=?, ThoiGian=?, Gia=? where MaDV=?";
-    private static final String FIND = "select * from tbl_dichvu where Ten like concat('%',?,'%') or MaDV=?";
+    private static final String FIND = "select * from tbl_dichvu where Ten like concat('%',?,'%') or MaDV=? and delete_flag='false'";
     
     
     

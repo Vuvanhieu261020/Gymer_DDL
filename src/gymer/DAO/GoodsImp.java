@@ -8,13 +8,13 @@ import java.sql.*;
 
 public class GoodsImp implements UCRD<Goods> , GoodsDAO {
 
-    private static final String DELETE = "delete from tbl_hanghoa where MaHang=?";
-    private static final String FIND_ALL = "select * from tbl_hanghoa";
-    private static final String FIND_BY_NAME = "select * from tbl_hanghoa where Ten like concat('%',?,'%')";
-    private static final String FIND_BY_ID = "select * from tbl_hanghoa where MaHang=?";
-    private static final String INSERT = "insert into tbl_hanghoa (MaHang, Ten, Gia, SoLuong, DVT, HSD) values(?, ?, ?, ?, ?, ?)";
+    private static final String DELETE = "update tbl_hanghoa set delete_flag='1' where MaHang=?";
+    private static final String FIND_ALL = "select * from tbl_hanghoa where delete_flag = '0'";
+    private static final String FIND_BY_NAME = "select * from tbl_hanghoa where Ten like concat('%',?,'%') and delete_flag = '0'";
+    private static final String FIND_BY_ID = "select * from tbl_hanghoa where MaHang=? and delete_flag = '0'";
+    private static final String INSERT = "insert into tbl_hanghoa (MaHang, Ten, Gia, SoLuong, DVT, HSD, delete_flag) values(?, ?, ?, ?, ?, ?, '0')";
     private static final String UPDATE = "update tbl_hanghoa set Ten=?, Gia=?, SoLuong=?, DVT=?, HSD=? where MaHang=?";
-    private static final String FIND = "select * from tbl_hanghoa where Ten like concat('%',?,'%') or MaHang=?";
+    private static final String FIND = "select * from tbl_hanghoa where Ten like concat('%',?,'%') or MaHang=? and delete_flag = '0'";
 
 
     public List<Goods> getAll(){

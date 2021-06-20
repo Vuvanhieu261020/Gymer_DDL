@@ -123,6 +123,7 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         jLabel4.setText("jLabel4");
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(980, 597));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);

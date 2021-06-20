@@ -41,8 +41,8 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         showData(eqi.getAll());
-        jComboBox1.setEnabled(true);
-        jComboBox2.setEnabled(true);
+        sex.setEnabled(true);
+        BoxVitri.setEnabled(true);
         this.em = input;
         if (this.em.getViTri().equals("Quản lý")){
             jLabel5.setVisible(true);
@@ -77,46 +77,47 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
             row[1] = input.get(i).getTen();
             row[2] = input.get(i).getCMND();
             row[3] = input.get(i).getAddress();
-            row[4] = input.get(i).getViTri();
-            row[5] = input.get(i).getYearofBirh();
+            row[4] = input.get(i).getSDT();
+            row[5] = input.get(i).getViTri();
+            row[6] = input.get(i).getYearofBirh();
             if (input.get(i).getSex()){
-                row[6] = "Nữ";
+                row[7] = "Nữ";
             }
-            else{ row[6] = "Nam"; }
-            row[7] = input.get(i).getSDT();
+            else{ row[7] = "Nam"; }
+        
             model.addRow(row);
             jTextField9.setText(Integer.toString(input.size()));
         }
     }
     
     private void setDatatoEnity (Employee eq1){
-        eq1.setMaNV(jTextField3.getText());
-        eq1.setTen(jTextField2.getText());
-        eq1.setSDT(jTextField8.getText());
-        eq1.setCMND(jTextField4.getText());
-        eq1.setAddress(jTextField5.getText());
-        eq1.setViTri(jComboBox2.getSelectedItem().toString());
-        eq1.setYearofBirh(Integer.parseInt(jTextField7.getText()));
-        if (jComboBox1.getSelectedItem().toString().equals("Nam")){
+        eq1.setMaNV(MaNV.getText());
+        eq1.setTen(Ten.getText());
+        eq1.setSDT(sdt.getText());
+        eq1.setCMND(CMND.getText());
+        eq1.setAddress(diachi.getText());
+        eq1.setViTri(BoxVitri.getSelectedItem().toString());
+        eq1.setYearofBirh(Integer.parseInt(namsinh.getText()));
+        if (sex.getSelectedItem().toString().equals("Nam")){
             eq1.setSex(false);
         }
-        if (jComboBox1.getSelectedItem().toString().equals("Nữ")){
+        if (sex.getSelectedItem().toString().equals("Nữ")){
             eq1.setSex(true);
         }
     }
     
     private void getSelectedRow () {
-        jComboBox1.setEditable(true);
+        sex.setEditable(true);
         DefaultTableModel model = (DefaultTableModel)tb_nhanvien.getModel();
         int selectedRow = tb_nhanvien.getSelectedRow();
-        jTextField3.setText(model.getValueAt(selectedRow, 0).toString());
-        jTextField2.setText(model.getValueAt(selectedRow, 1).toString());
-        jTextField4.setText(model.getValueAt(selectedRow, 2).toString());
-        jTextField5.setText(model.getValueAt(selectedRow, 3).toString());
-        jComboBox2.getEditor().setItem(model.getValueAt(selectedRow, 4).toString());
-        jComboBox1.getEditor().setItem(model.getValueAt(selectedRow, 6).toString());
-        jTextField7.setText(model.getValueAt(selectedRow, 5).toString());
-        jTextField8.setText(model.getValueAt(selectedRow, 7).toString());
+        MaNV.setText(model.getValueAt(selectedRow, 0).toString());
+        Ten.setText(model.getValueAt(selectedRow, 1).toString());
+        CMND.setText(model.getValueAt(selectedRow, 2).toString());
+        diachi.setText(model.getValueAt(selectedRow, 3).toString());
+        sdt.setText(model.getValueAt(selectedRow, 4).toString());
+        BoxVitri.getEditor().setItem(model.getValueAt(selectedRow, 5).toString());
+        namsinh.setText(model.getValueAt(selectedRow, 6).toString());
+        sex.getEditor().setItem(model.getValueAt(selectedRow, 7).toString());
         setDatatoEnity(this.eq);
     }
     
@@ -132,19 +133,19 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        Ten = new javax.swing.JTextField();
+        CMND = new javax.swing.JTextField();
+        diachi = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        namsinh = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField8 = new javax.swing.JTextField();
+        sex = new javax.swing.JComboBox<>();
+        BoxVitri = new javax.swing.JComboBox<>();
+        sdt = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
+        MaNV = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -185,17 +186,17 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jPanel7.setPreferredSize(new java.awt.Dimension(330, 583));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setCaretColor(new java.awt.Color(255, 255, 255));
-        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField2.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jPanel7.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 220, -1));
+        Ten.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Ten.setForeground(new java.awt.Color(51, 51, 51));
+        Ten.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Ten.setCaretColor(new java.awt.Color(255, 255, 255));
+        Ten.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Ten.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jPanel7.add(Ten, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 220, -1));
 
-        jTextField4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField4.addAncestorListener(new javax.swing.event.AncestorListener() {
+        CMND.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        CMND.setForeground(new java.awt.Color(51, 51, 51));
+        CMND.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -204,20 +205,20 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 moved(evt);
             }
         });
-        jPanel7.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 220, -1));
+        jPanel7.add(CMND, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 220, -1));
 
-        jTextField5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 220, 40));
+        diachi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        diachi.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel7.add(diachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 220, 40));
 
         jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Vị trí");
         jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
-        jTextField7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 220, -1));
+        namsinh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        namsinh.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel7.add(namsinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 220, -1));
 
         jLabel29.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,24 +230,24 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jLabel30.setText("Giới tính");
         jPanel7.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam ", "Nữ" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        sex.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        sex.setForeground(new java.awt.Color(51, 51, 51));
+        sex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam ", "Nữ" }));
+        sex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                sexActionPerformed(evt);
             }
         });
-        jPanel7.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 220, -1));
+        jPanel7.add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 220, -1));
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên" }));
-        jPanel7.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 220, -1));
+        BoxVitri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BoxVitri.setForeground(new java.awt.Color(51, 51, 51));
+        BoxVitri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên" }));
+        jPanel7.add(BoxVitri, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 220, -1));
 
-        jTextField8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField8.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 220, -1));
+        sdt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        sdt.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel7.add(sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 220, -1));
 
         jLabel34.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
@@ -256,11 +257,11 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(68, 155, 222));
         jPanel2.setPreferredSize(new java.awt.Dimension(330, 173));
 
-        jTextField3.setEditable(false);
-        jTextField3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setBorder(null);
-        jTextField3.setOpaque(false);
+        MaNV.setEditable(false);
+        MaNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        MaNV.setForeground(new java.awt.Color(255, 255, 255));
+        MaNV.setBorder(null);
+        MaNV.setOpaque(false);
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/GUI/icon_user_blue.png"))); // NOI18N
 
@@ -278,7 +279,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                         .addGap(30, 30, 30)
                         .addComponent(jLabel35)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(MaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel25)))
@@ -291,7 +292,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 .addComponent(jLabel25)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -323,7 +324,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã nhân viên", "Tên", "CMND", "Địa chỉ", "Vị trí", "Năm sinh", "Giới tính", "SDT"
+                "Mã nhân viên", "Tên", "CMND", "Địa chỉ", "SDT", "Vị trí", "Năm sinh", "Giới tính"
             }
         ));
         tb_nhanvien.setGridColor(new java.awt.Color(255, 255, 255));
@@ -417,9 +418,9 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_moved
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void sexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_sexActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
@@ -444,13 +445,13 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Employee temp = new Employee();
         setDatatoEnity(temp);
-        if (temp.getCMND().equals(eq.getCMND())
-                && temp.getTen().equals(eq.getTen())
-                && temp.getYearofBirh()== eq.getYearofBirh()
-                && temp.getSDT().equals(eq.getSDT())
-                && temp.getAddress().equals(eq.getAddress())
-                && temp.getSex() == eq.getSex()
-                && temp.getViTri().equals(eq.getViTri())
+        if (( temp.getCMND().equals(eq.getCMND()) )
+                && ( temp.getTen().equals(eq.getTen()) )
+                && ( temp.getYearofBirh()== eq.getYearofBirh() )
+                && ( temp.getSDT().equals(eq.getSDT()) )
+                && ( temp.getAddress().equals(eq.getAddress()) )
+                && ( temp.getSex() == eq.getSex())
+                && (temp.getViTri().equals(eq.getViTri()))
                 ) {
             JOptionPane.showMessageDialog(null, "Bạn chưa thay đổi gì !");
         }
@@ -486,24 +487,24 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         Employee temp = new Employee();
         this.count++;
         if (this.count % 2 != 0) {
-            jComboBox1.setEditable(true);
-            jComboBox2.setEditable(true);
-            jTextField2.setText("");
-            jTextField3.setText(KeyDB.genKey());
-            jTextField4.setText("");
-            jTextField5.setText("");
-            jComboBox1.getEditor().setItem("Nam");
-            jComboBox2.getEditor().setItem("Nhân viên");
-            jTextField7.setText(DateTime.getTimeFormat2().substring(6));
-            jTextField8.setText("");
+            sex.setEditable(true);
+            BoxVitri.setEditable(true);
+            Ten.setText("");
+            MaNV.setText(KeyDB.genKey());
+            CMND.setText("");
+            diachi.setText("");
+            sex.getEditor().setItem("Nam");
+            BoxVitri.getEditor().setItem("Nhân viên");
+            namsinh.setText(DateTime.getTimeFormat2().substring(6));
+            sdt.setText("");
         }
         else {
             if (
-                jTextField2.getText().equals("") ||
-                jTextField4.getText().equals("") ||
-                jTextField5.getText().equals("") ||
-                jTextField7.getText().equals("") ||
-                jTextField8.getText().equals("")) {
+                Ten.getText().equals("") ||
+                CMND.getText().equals("") ||
+                diachi.getText().equals("") ||
+                namsinh.getText().equals("") ||
+                sdt.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả xin hãy kiểm tra lại !");
             }
             else {
@@ -526,8 +527,11 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> BoxVitri;
+    private javax.swing.JTextField CMND;
+    private javax.swing.JTextField MaNV;
+    private javax.swing.JTextField Ten;
+    private javax.swing.JTextField diachi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel25;
@@ -550,13 +554,10 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField namsinh;
+    private javax.swing.JTextField sdt;
+    private javax.swing.JComboBox<String> sex;
     private javax.swing.JTable tb_nhanvien;
     // End of variables declaration//GEN-END:variables
 

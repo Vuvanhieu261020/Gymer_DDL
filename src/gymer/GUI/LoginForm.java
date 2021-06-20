@@ -218,6 +218,7 @@ public class LoginForm extends javax.swing.JFrame {
                 String message = "Xin chào " + em.getTen();
                 JOptionPane.showMessageDialog(null, message);
                 LogFile.createLoginLog(em.getMaNV(), em.getTen());
+           
                 mf.setVisible(true);
                 mf.setEmployee(em);
                 this.setVisible(false);

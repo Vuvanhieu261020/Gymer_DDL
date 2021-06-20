@@ -28,6 +28,8 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
     private CustomerImp eqi = new CustomerImp();
     private Customer eq = new Customer();
     private int count = 0;
+    
+    
     DefaultTableModel model;
     Color Color_table;
     /**
@@ -343,7 +345,7 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         jScrollPane1.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jScrollPane1.setOpaque(false);
 
-        tb_hoivien.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tb_hoivien.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tb_hoivien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

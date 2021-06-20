@@ -7,6 +7,9 @@ package gymer.GUI;
 
 import gymer.entities.Employee;
 import java.awt.Color;
+import gymer.DAO.EmployeeImp;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,7 +21,7 @@ public class Change_password extends javax.swing.JFrame {
      * Creates new form Change_password
      */
     private Employee instanceE = new Employee();
-
+    private EmployeeImp emp = new EmployeeImp();
     public Change_password() {
         initComponents();
         setBackground(new Color(255,255,255,150));
@@ -248,24 +251,16 @@ public class Change_password extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-//        if (jTextField1.getText().equals("") || jPasswordField1.getText().equals("")){
-//            JOptionPane.showMessageDialog(null, "Bạn chưa nhập gì cả");
-//        }
-//        else {
-//            em = emi.initfromDB(jTextField1.getText(), jPasswordField1.getText());
-//            if (em.getMaNV().equals("")){
-//                JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu");
-//            }
-//            else {
-//                String message = "Xin chào " + em.getTen();
-//                JOptionPane.showMessageDialog(null, message);
-//                LogFile.createLoginLog(em.getMaNV(), em.getTen());
-//                mf.setVisible(true);
-//                mf.setEmployee(em);
-//                this.setVisible(false);
-//            }
-//        }
+        if (jPasswordField2.getText().equals(jPasswordField3.getText())){
+            if (emp.updatePass(instanceE, jPasswordField1.getText(), jPasswordField3.getText())){
+                JOptionPane.showMessageDialog(null, "Đổi mật khẩu thành công");
+            } else {
+                JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình đổi mật khẩu hoặc mật khẩu cũ không chính xác");
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Mật khẩu mới không khớp");
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

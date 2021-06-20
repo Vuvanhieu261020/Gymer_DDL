@@ -84,16 +84,16 @@ public class MainForm extends javax.swing.JFrame {
     }
     
     private void setInformation (MemberCard mcin) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date firstDate = sdf.parse(mcin.getStartDate());
         Date secondDate = sdf.parse(DateTime.getTimeFormat1());
-
+        ServiceImp svi = new ServiceImp();
         long diff = secondDate.getTime() - firstDate.getTime();
-
         TimeUnit time = TimeUnit.DAYS; 
         long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+        long result = svi.getSerice(mcin.getMaDV()).getThoiGian() * 30 - diffrence;
         jTextField2.setText(mcin.getCardID());
-        String DIFF = diffrence + " Ngày";
+        String DIFF = result + " Ngày";
         jTextField4.setText(DIFF);
     }
     
@@ -1118,7 +1118,7 @@ public class MainForm extends javax.swing.JFrame {
             this.mc = this.mci.getDetails(this.mc);
             showDetails(this.mc.getDetail());
             try {
-                setInformation(mc);
+                setInformation(this.mc);
             }
             catch (ParseException ex){
                 ex.printStackTrace();

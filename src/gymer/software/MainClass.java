@@ -92,11 +92,11 @@ public class MainClass {
         em.setAddress("40/80 Hoàng Đạo Thành");
         em.setSDT("0822203990");
         em.setSex(true);
-        em.setTen("Stephan Haweyes");
+        em.setTen("dtbn");
         em.setViTri("Quản lý");
         em.setYearofBirh(2000);
         em.setCMND("031200003515");
-        emi.insert(em, "root", "3222513");*/
+        emi.insert(em, "admin", "1");*/
         
         // test Ulity
         //String number = "04515662";

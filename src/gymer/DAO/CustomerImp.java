@@ -23,16 +23,16 @@ import java.util.ArrayList;
  */
 public class CustomerImp implements CustomerDAO{
     
-    private static final String DELETE = "delete from tbl_khachhang where MaKH=?";
+    private static final String DELETE = "update tbl_khachhang set delete_flag='1' where MaKH=?";
     private static final String DELETECARD = "delete from tbl_The where MaKH=?";
-    private static final String FIND_ALL = "select * from tbl_khachhang";
-    private static final String FIND_BY_NAME = "select * from tbl_khachhang where Ten like concat('%',?,'%') ";
-    private static final String FIND_BY_SDT = "select * from tbl_khachhang where SDT=?";
-    private static final String FIND_BY_ID = "select * from tbl_khachhang where MaKH=?";
-    private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?)";
+    private static final String FIND_ALL = "select * from tbl_khachhang where delete_flag='0'";
+    private static final String FIND_BY_NAME = "select * from tbl_khachhang where Ten like concat('%',?,'%') and delete_flag='0'";
+    private static final String FIND_BY_SDT = "select * from tbl_khachhang where SDT=? and delete_flag='0'";
+    private static final String FIND_BY_ID = "select * from tbl_khachhang where MaKH=? and delete_flag='0'";
+    private static final String INSERT = "insert into tbl_khachhang(MaKH, Ten, CMND, SDT, DiaChi, NamSinh, GioiTinh, delete_flag) values(?, ?, ?, ?, ?, ?, ?, 0)";
     private static final String UPDATE = "update tbl_khachhang set Ten=?, CMND=?, SDT=?, DiaChi=?, NamSinh=?, GioiTinh=? where MaKH=?";
     private static final String COUNT = "select count(*) as coo from tbl_khachhang";
-    private static final String FIND = "select * from tbl_khachhang where Ten like concat('%',?,'%') or SDT=?";
+    private static final String FIND = "select * from tbl_khachhang where Ten like concat('%',?,'%') or SDT=? and delete_flag='0'";
     
     
     @Override

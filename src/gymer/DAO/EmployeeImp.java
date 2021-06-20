@@ -17,19 +17,19 @@ import java.sql.*;
 public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
 
 
-    private static final String DELETENV = "delete from tbl_nhanvien where MaNV=?";
+    private static final String DELETENV = "update tbl_nhanvien set delete_flag='1' where MaNV=?";
     private static final String DELETELG = "delete from tbl_login where MaNV=?";
-    private static final String FIND_ALL = "select * from tbl_nhanvien";
-    private static final String FIND_BY_NAME = "select * from tbl_nhanvien where Ten like concat('%',?,'%') ";
-    private static final String FIND_BY_ID = "select * from tbl_nhanvien where MaNV=? ";
-    private static final String FIND_BY_SDT = "select * from tbl_nhanvien where SDT=? ";
-    private static final String FIND_BY_ID_LOGIN = "select tbl_nhanvien.MaNV, tbl_nhanvien.Ten, tbl_nhanvien.CMND, tbl_nhanvien.SDT, tbl_nhanvien.ViTri, tbl_nhanvien.DiaChi, tbl_nhanvien.NamSinh, tbl_nhanvien.GioiTinh from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? ";
-    private static final String INSERTNV = "insert into tbl_nhanvien(MaNV, Ten, CMND, SDT, ViTri, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String FIND_ALL = "select * from tbl_nhanvien where delete_flag='0'";
+    private static final String FIND_BY_NAME = "select * from tbl_nhanvien where Ten like concat('%',?,'%') and delete_flag='0' ";
+    private static final String FIND_BY_ID = "select * from tbl_nhanvien where MaNV=? and delete_flag='0'";
+    private static final String FIND_BY_SDT = "select * from tbl_nhanvien where SDT=? and delete_flag='0'";
+    private static final String FIND_BY_ID_LOGIN = "select tbl_nhanvien.MaNV, tbl_nhanvien.Ten, tbl_nhanvien.CMND, tbl_nhanvien.SDT, tbl_nhanvien.ViTri, tbl_nhanvien.DiaChi, tbl_nhanvien.NamSinh, tbl_nhanvien.GioiTinh from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? and delete_flag='0'";
+    private static final String INSERTNV = "insert into tbl_nhanvien(MaNV, Ten, CMND, SDT, ViTri, DiaChi, NamSinh, GioiTinh, delete_flag) values(?, ?, ?, ?, ?, ?, ?, ?, 0)";
     private static final String INSERTLG = "insert into tbl_login(MaNV, TK, hashed_code) values(?, ?, ?)";
     private static final String UPDATEPASSWORD = "update tbl_login set hashed_code=? where TK=?";
     private static final String UPDATE = "update tbl_nhanvien set SDT=?, ViTri=?, DiaChi=? where MaNV=?";
     private static final String INIT = "select * from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? and tbl_login.hashed_code=?";
-    private static final String FIND = "select tbl_nhanvien.MaNV, tbl_nhanvien.Ten, tbl_nhanvien.CMND, tbl_nhanvien.SDT, tbl_nhanvien.ViTri, tbl_nhanvien.DiaChi, tbl_nhanvien.NamSinh, tbl_nhanvien.GioiTinh from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? or tbl_nhanvien.Ten like concat('%',?,'%') or tbl_nhanvien.MaNV=? or tbl_nhanvien.SDT=?";
+    private static final String FIND = "select tbl_nhanvien.MaNV, tbl_nhanvien.Ten, tbl_nhanvien.CMND, tbl_nhanvien.SDT, tbl_nhanvien.ViTri, tbl_nhanvien.DiaChi, tbl_nhanvien.NamSinh, tbl_nhanvien.GioiTinh from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? or tbl_nhanvien.Ten like concat('%',?,'%') or tbl_nhanvien.MaNV=? or tbl_nhanvien.SDT=? and delete_flag='0'";
 
     
     @Override

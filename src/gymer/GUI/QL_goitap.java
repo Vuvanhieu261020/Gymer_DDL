@@ -44,8 +44,8 @@ public class QL_goitap extends javax.swing.JInternalFrame {
     private void setDatatoEnity (Service eq1){
         eq1.setMaDV(jTextField3.getText());
         eq1.setTen(jTextField4.getText());
-        eq1.setGia(Integer.parseInt(jTextField5.getText()));
-        eq1.setThoiGian(Integer.parseInt(jTextField6.getText()));
+        eq1.setGia(Integer.parseInt(jTextField6.getText()));
+        eq1.setThoiGian(Integer.parseInt(jTextField5.getText()));
     }
     
     
@@ -57,8 +57,8 @@ public class QL_goitap extends javax.swing.JInternalFrame {
         for (int i=0 ; i<input.size() ; i++){
             row[0] = input.get(i).getMaDV();
             row[1] = input.get(i).getTen();
-            row[2] = input.get(i).getGia();
-            row[3] = input.get(i).getThoiGian();
+            row[2] = input.get(i).getThoiGian();
+            row[3] = input.get(i).getGia();
             model.addRow(row);
         }
         jTextField9.setText(Integer.toString(input.size()));

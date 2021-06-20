@@ -10,6 +10,7 @@ create table tbl_KhachHang (
     DiaChi nvarchar(512),
     NamSinh int not null,
     GioiTinh boolean not null,
+    delete_flag bool not null,
     primary key (MaKH)
 );
 create table tbl_DichVu (
@@ -17,6 +18,7 @@ create table tbl_DichVu (
     Ten nvarchar(256) not null,
     ThoiGian int not null,
     Gia int not null,
+    delete_flag bool not null,
     primary key (MaDV)
 );
 create table tbl_The (
@@ -42,6 +44,7 @@ create table tbl_NhanVien (
     ViTri nvarchar (30) not null,
     NamSinh int not null,
     GioiTinh boolean,
+    delete_flag bool not null,
     primary key (MaNV)
 );
 create table tbl_Login (
@@ -58,6 +61,7 @@ create table tbl_HangHoa (
     SoLuong int not null,
     DVT nvarchar(10) not null,
     HSD date not null,
+    delete_flag bool not null,
     primary key (MaHang)
 );
 create table tbl_ThietBi (

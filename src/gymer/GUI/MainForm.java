@@ -10,6 +10,7 @@ import gymer.DAO.*;
 import gymer.entities.*;
 import java.awt.Color;
 import gymer.utilities.*;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -63,6 +64,7 @@ public class MainForm extends javax.swing.JFrame {
            jp5.setBackground(panedefault);
             jp6.setBackground(panedefault);
              jp7.setBackground(panedefault);
+         TB_check.getTableHeader().setFont(new Font("Arial",Font.BOLD,18));
     }
     
     public void setEmployee (Employee input){
@@ -73,7 +75,7 @@ public class MainForm extends javax.swing.JFrame {
     
     
     private void showDetails (List<MemberCar_Detail> input) {
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel)TB_check.getModel();
         model.setRowCount(0);
         Object row[] = new Object[1];
         int countDead = 0;
@@ -158,7 +160,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TB_check = new javax.swing.JTable();
         jLabel28 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
@@ -173,6 +175,7 @@ public class MainForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1250, 698));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1250, 698));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
@@ -257,7 +260,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -325,7 +328,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -361,7 +364,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -395,7 +398,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -431,7 +434,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -531,7 +534,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -650,6 +653,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/GUI/icon_user_blue.png"))); // NOI18N
 
+        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(102, 102, 102));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.setText("THẺ HỢP LỆ");
@@ -715,11 +719,11 @@ public class MainForm extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel25)
                         .addGap(18, 18, 18)
@@ -755,7 +759,8 @@ public class MainForm extends javax.swing.JFrame {
 
         DashTab.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 390, 220));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TB_check.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        TB_check.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -763,13 +768,14 @@ public class MainForm extends javax.swing.JFrame {
                 "Thời gian"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TB_check);
 
         DashTab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 910, 240));
 
+        jLabel28.setBackground(new java.awt.Color(23, 35, 54));
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel28.setText("10 lần tập gần nhất");
+        jLabel28.setForeground(new java.awt.Color(23, 35, 54));
+        jLabel28.setText("Những lần tập gần nhất");
         DashTab.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 300, 50));
 
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -781,7 +787,7 @@ public class MainForm extends javax.swing.JFrame {
                 jLabel38MouseClicked(evt);
             }
         });
-        jPanel8.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, -1, -1));
+        jPanel8.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
 
         jButton2.setText("CHECK");
         jPanel8.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 79, 80, 30));
@@ -791,9 +797,10 @@ public class MainForm extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 436, 30));
+        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 436, 35));
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(102, 102, 102));
         jLabel27.setText("KIỂM TRA RA VÀO");
         jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 300, 50));
 
@@ -804,7 +811,7 @@ public class MainForm extends javax.swing.JFrame {
                 QLtheMouseClicked(evt);
             }
         });
-        jPanel8.add(QLthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
+        jPanel8.add(QLthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
 
         click_the1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Tạo thẻ tập.png"))); // NOI18N
         click_the1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -813,15 +820,22 @@ public class MainForm extends javax.swing.JFrame {
                 click_the1MouseClicked(evt);
             }
         });
-        jPanel8.add(click_the1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel8.add(click_the1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
-        jButton1.setText("jButton1");
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/CHECK.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setDefaultCapable(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setFocusable(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
+        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 90, -1));
 
         DashTab.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 220));
 
@@ -1142,6 +1156,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel Change_pass;
     private javax.swing.JPanel DashTab;
     private javax.swing.JLabel QLthe;
+    private javax.swing.JTable TB_check;
     private javax.swing.JLabel click_the1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -1184,7 +1199,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

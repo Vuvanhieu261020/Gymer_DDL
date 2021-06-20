@@ -248,6 +248,7 @@ public class QL_thietbi extends javax.swing.JInternalFrame {
 
         jLabel30.setText("Giá nhập");
 
+        jComboBox1.setEditable(true);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tốt", "Hỏng" }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);

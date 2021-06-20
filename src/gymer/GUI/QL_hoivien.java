@@ -9,6 +9,7 @@ import gymer.entities.*;
 import gymer.utilities.*;
 import java.awt.Color;
 import gymer.utilities.*;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -32,6 +33,8 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
     
     DefaultTableModel model;
     Color Color_table;
+    
+    
     /**
      * Creates new form QL_hoivien
      */
@@ -46,14 +49,20 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         
+        
        
         showData(eqi.getAll());
         jComboBox2.setEnabled(true);
         model = (DefaultTableModel)tb_hoivien.getModel();
         Color_table= new Color(62,120,202);
+        tb_hoivien.setBackground(new Color(255,255,255));
         tb_hoivien.setSelectionBackground(Color_table);
         tb_hoivien.setSelectionForeground(new Color(255,255,255));
         tb_hoivien.setColumnSelectionAllowed(false);
+        tb_hoivien.getTableHeader().setFont(new Font("Arial",Font.BOLD,12));
+        tb_hoivien.getTableHeader().setOpaque(false);
+        tb_hoivien.getTableHeader().setBackground(new Color(255,255,255));
+        tb_hoivien.getTableHeader().setForeground(new Color(102,102,102));
  
         
         
@@ -147,7 +156,6 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         jLabel33 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         buttonFind = new javax.swing.JButton();
@@ -174,36 +182,36 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
 
         jPanel7.setBackground(new java.awt.Color(62, 120, 202));
 
-        jLabel24.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Tên");
 
-        jLabel26.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Địa chỉ");
 
-        jTextField3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(51, 51, 51));
 
-        jTextField4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTextField4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(51, 51, 51));
 
-        jLabel27.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("SĐT");
 
-        jTextField5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
 
-        jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("CMND");
 
-        jLabel29.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Giới tính");
 
-        jTextField7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(51, 51, 51));
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,11 +219,12 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel30.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Năm sinh");
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jComboBox2.setEditable(true);
+        jComboBox2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(51, 51, 51));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nữ", "Nam" }));
 
@@ -260,10 +269,9 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24))
         );
 
-        jTextField1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
@@ -279,13 +287,10 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel26)
                             .addComponent(jLabel24))
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField3))))
+                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                            .addComponent(jTextField1)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -342,13 +347,27 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
         jScrollPane1.setForeground(new java.awt.Color(51, 51, 51));
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         jScrollPane1.setOpaque(false);
 
         tb_hoivien.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tb_hoivien.setForeground(new java.awt.Color(102, 102, 102));
         tb_hoivien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {"1", "h", "ưere", "234234", "2000", "nam", "Trườn định"},
+                {"2", "se", "23", "13", "23", "ê", null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "ID", "HỌ VÀ TÊN", "SĐT", "CMND", "NĂM SINH", "GIỚI TÍNH", "ĐỊA CHỈ"
@@ -358,13 +377,15 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         tb_hoivien.setAlignmentY(0.0F);
         tb_hoivien.setEditingColumn(0);
         tb_hoivien.setEditingRow(0);
+        tb_hoivien.setFocusable(false);
         tb_hoivien.setGridColor(new java.awt.Color(255, 255, 255));
         tb_hoivien.setInheritsPopupMenu(true);
+        tb_hoivien.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tb_hoivien.setOpaque(false);
         tb_hoivien.setRowHeight(35);
         tb_hoivien.setRowMargin(0);
-        tb_hoivien.setShowHorizontalLines(false);
-        tb_hoivien.setShowVerticalLines(false);
+        tb_hoivien.setShowGrid(true);
+        tb_hoivien.getTableHeader().setReorderingAllowed(false);
         tb_hoivien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_hoivienMouseClicked(evt);
@@ -405,10 +426,6 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
             }
         });
         pane2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, -1, -1));
-
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_add.png"))); // NOI18N
-        jLabel38.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        pane2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, -1, -1));
 
         jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
         jLabel39.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -538,7 +555,6 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -24,7 +24,7 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
     private static final String FIND_BY_ID = "select * from tbl_nhanvien where MaNV=? ";
     private static final String FIND_BY_SDT = "select * from tbl_nhanvien where SDT=? ";
     private static final String FIND_BY_ID_LOGIN = "select tbl_nhanvien.MaNV, tbl_nhanvien.Ten, tbl_nhanvien.CMND, tbl_nhanvien.SDT, tbl_nhanvien.ViTri, tbl_nhanvien.DiaChi, tbl_nhanvien.NamSinh, tbl_nhanvien.GioiTinh from tbl_nhanvien inner join tbl_login on tbl_nhanvien.MaNV = tbl_login.MaNV where tbl_login.TK=? ";
-    private static final String INSERTNV = "insert into tbl_nhanvien(MaNV, Ten, CMND, SDT, ViTri, DiaChi, NamSinh, GioiTinh) values(?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERTNV = "insert into tbl_nhanvien(MaNV, Ten, CMND, SDT, ViTri, DiaChi, NamSinh, GioiTinh,delete_flag) values(?, ?, ?, ?, ?, ?, ?, ?,0)";
     private static final String INSERTLG = "insert into tbl_login(MaNV, TK, hashed_code) values(?, ?, ?)";
     private static final String UPDATEPASSWORD = "update tbl_login set hashed_code=? where TK=?";
     private static final String UPDATE = "update tbl_nhanvien set SDT=?, ViTri=?, DiaChi=? where MaNV=?";

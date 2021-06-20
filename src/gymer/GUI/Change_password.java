@@ -261,6 +261,7 @@ public class Change_password extends javax.swing.JFrame {
         else {
             JOptionPane.showMessageDialog(null, "Mật khẩu mới không khớp");
         }
+        Change_password.this.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

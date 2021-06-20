@@ -84,15 +84,20 @@ public class Add_sell extends javax.swing.JFrame {
         tenNV.setText("jLabel1");
         jPanel7.add(tenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 30, 150, 20));
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 60));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1040, 70));
 
-        jButton1.setText("back");
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Back.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setDefaultCapable(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 560, 70, 20));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 500, 90, 40));
 
         jLabel25.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,6 +109,7 @@ public class Add_sell extends javax.swing.JFrame {
         jLabel34.setText("Mã hóa đơn:");
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 90, 30));
 
+        jComboBox1.setEditable(true);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 240, -1));
 
@@ -120,7 +126,7 @@ public class Add_sell extends javax.swing.JFrame {
         jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 90, 20));
 
         jButton3.setText("Bán");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, -1, -1));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(741, 503, 80, 40));
 
         jLabel37.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(102, 102, 102));

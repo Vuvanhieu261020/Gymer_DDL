@@ -186,7 +186,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jPanel7.setPreferredSize(new java.awt.Dimension(330, 583));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Ten.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Ten.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         Ten.setForeground(new java.awt.Color(51, 51, 51));
         Ten.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Ten.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -194,7 +194,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         Ten.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jPanel7.add(Ten, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 220, -1));
 
-        CMND.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        CMND.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         CMND.setForeground(new java.awt.Color(51, 51, 51));
         CMND.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -207,30 +207,31 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         });
         jPanel7.add(CMND, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 220, -1));
 
-        diachi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        diachi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         diachi.setForeground(new java.awt.Color(51, 51, 51));
         jPanel7.add(diachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 220, 40));
 
-        jLabel28.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Vị trí");
         jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
-        namsinh.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        namsinh.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         namsinh.setForeground(new java.awt.Color(51, 51, 51));
         jPanel7.add(namsinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 220, -1));
 
-        jLabel29.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Năm sinh");
         jPanel7.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Giới tính");
         jPanel7.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
-        sex.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        sex.setEditable(true);
+        sex.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         sex.setForeground(new java.awt.Color(51, 51, 51));
         sex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam ", "Nữ" }));
         sex.addActionListener(new java.awt.event.ActionListener() {
@@ -240,16 +241,17 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         });
         jPanel7.add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 220, -1));
 
-        BoxVitri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        BoxVitri.setEditable(true);
+        BoxVitri.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         BoxVitri.setForeground(new java.awt.Color(51, 51, 51));
         BoxVitri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên" }));
         jPanel7.add(BoxVitri, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 220, -1));
 
-        sdt.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        sdt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         sdt.setForeground(new java.awt.Color(51, 51, 51));
         jPanel7.add(sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 220, -1));
 
-        jLabel34.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Địa chỉ");
         jPanel7.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
@@ -299,17 +301,17 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
         jPanel7.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 173));
 
-        jLabel36.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Tên");
         jPanel7.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
-        jLabel37.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("SĐT");
         jPanel7.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
-        jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("CMND");
         jPanel7.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));

@@ -13,6 +13,7 @@ import gymer.entities.*;
 import gymer.utilities.*;
 import gymer.utilities.*;
 import java.awt.Color;
+import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         bi.setNorthPane(null);
         jRadioButton2.setSelected(false);
         jRadioButton1.setSelected(false);
+        TB_tap.getTableHeader().setFont(new Font("Arial",Font.BOLD,12));
     }
     
     public void setEm (Employee in){
@@ -63,49 +65,69 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tb_tap = new javax.swing.JScrollPane();
+        TB_tap = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        TB_hang = new javax.swing.JScrollPane();
+        Tb_hang = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(980, 597));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("từ ngày");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Từ ngày");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
-        jLabel3.setText("đến ngày");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Đến ngày");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
 
-        jButton1.setText("check");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/CHECK.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setDefaultCapable(false);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TB_tap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã hóa đơn", "Ngày tạo", "Dịch vụ", "Tên khách hàng", "SĐT", "Tên người tạo", "Mã nhân viên", "Tổng tiền"
+                "Mã HOá ĐƠN", "Ngày tạo", "Dịch vụ", "Tên khách hàng", "SĐT", "Tên người tạo", "Mã nhân viên", "Tổng tiền"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Tb_tap.setViewportView(TB_tap);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 840, 220));
+        getContentPane().add(Tb_tap, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 840, 220));
 
-        jButton2.setText("xuất file");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Xuất file.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setDefaultCapable(false);
+        jButton2.setFocusPainted(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 510, -1, -1));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 510, -1, -1));
 
         jRadioButton1.setText("Báo cáo hóa đơn hàng");
+        jRadioButton1.setOpaque(false);
         jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRadioButton1MouseClicked(evt);
@@ -116,28 +138,41 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 140, 40));
 
         jRadioButton2.setText("Báo cáo hóa đơn tập");
+        jRadioButton2.setOpaque(false);
         jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRadioButton2MouseClicked(evt);
             }
         });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 140, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         jLabel2.setText("Báo cáo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 200, 40));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 190, -1));
-        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 190, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 200, 40));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 230, 30));
+        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 230, 30));
+
+        Tb_hang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã hóa đơn", "Ngày tạo", "Dịch vụ", "Tên người tạo", "Mã nhân viên", "Tổng tiền"
+            }
+        ));
+        TB_hang.setViewportView(Tb_hang);
+
+        getContentPane().add(TB_hang, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 840, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
     private void showDataTap(List<RPDetails> input){
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel)TB_tap.getModel();
         model.setRowCount(0);
         Object row[] = new Object[8];
         for (int i=0 ; i<input.size() ; i++){
@@ -156,6 +191,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
@@ -164,6 +200,8 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         this.state = true;
         this.data = rpi.getAllTap();
         showDataTap(data);
+        Tb_tap.setVisible(true);
+        TB_hang.setVisible(false);
         
     }//GEN-LAST:event_jRadioButton2MouseClicked
 
@@ -171,6 +209,8 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         jRadioButton2.setSelected(false);
         this.state = false;
+        Tb_tap.setVisible(false);
+        TB_hang.setVisible(true);
     }//GEN-LAST:event_jRadioButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -186,8 +226,16 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane TB_hang;
+    private javax.swing.JTable TB_tap;
+    private javax.swing.JTable Tb_hang;
+    private javax.swing.JScrollPane Tb_tap;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
@@ -197,7 +245,5 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

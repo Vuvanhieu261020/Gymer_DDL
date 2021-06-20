@@ -96,7 +96,7 @@ public class MainClass {
         em.setViTri("Quản lý");
         em.setYearofBirh(2000);
         em.setCMND("031200003515");
-        emi.insert(em, "admin", "1");*/
+        emi.insert(em, "admin11", "1");*/
         
         // test Ulity
         //String number = "04515662";

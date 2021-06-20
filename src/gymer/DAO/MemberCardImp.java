@@ -23,6 +23,7 @@ public class MemberCardImp implements MemberCardDAO{
     
     
     private static final String DELETE = "delete from tbl_The where MaThe=?";
+    private static final String DELETE_DT = "delete from tbl_ctthe where MaThe=?";
     private static final String FIND_BY_MAKH = "select * from tbl_The where MaKH=?";
     private static final String FIND_ALL = "select * from tbl_The";
     private static final String FIND_BY_ID = "select * from tbl_The where MaThe=?";
@@ -128,6 +129,9 @@ public class MemberCardImp implements MemberCardDAO{
         Connection conn = null;
         try {
             conn = DButil.getConnection();
+            stmt = conn.prepareStatement(DELETE_DT);
+            stmt.setString(1, ID);
+            stmt.execute();
             stmt = conn.prepareStatement(DELETE);
             stmt.setString(1, ID);
             stmt.execute();

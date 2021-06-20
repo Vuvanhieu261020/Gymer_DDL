@@ -495,8 +495,8 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
             MaNV.setText(KeyDB.genKey());
             CMND.setText("");
             diachi.setText("");
-            sex.getEditor().setItem("Nam");
-            BoxVitri.getEditor().setItem("Nhân viên");
+            sex.getEditor().setItem("");
+            BoxVitri.getEditor().setItem("");
             namsinh.setText(DateTime.getTimeFormat2().substring(6));
             sdt.setText("");
         }

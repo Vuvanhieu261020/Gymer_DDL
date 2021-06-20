@@ -1125,6 +1125,7 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.mc = mci.findByID(jTextField1.getText());
         boolean checker = mci.checkValid(mc.getCardID(), DateTime.getTimeFormat1());
+        System.out.print(checker);
         if (checker == false) {
             jTextField3.setText("THẺ KHÔNG HỢP LỆ");
         }

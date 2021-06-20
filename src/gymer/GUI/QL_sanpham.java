@@ -272,6 +272,7 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
 
         jComboBox1.setEditable(true);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chai", "Lọ", "Kg" }));
+        jComboBox1.setSelectedItem("");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -415,7 +416,7 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
             jTextField3.setText(KeyDB.genKey());
             jTextField6.setText("");
             jTextField5.setText("");
-            jComboBox1.getEditor().setItem("Kg");
+            jComboBox1.getEditor().setItem("");
             jTextField8.setText(DateTime.getTimeFormat2());
         }
         else {

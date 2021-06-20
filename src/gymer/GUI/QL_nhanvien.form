@@ -345,7 +345,6 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel25">
@@ -501,7 +500,6 @@
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="rowHeight" type="int" value="35"/>
-                <Property name="rowMargin" type="int" value="0"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>

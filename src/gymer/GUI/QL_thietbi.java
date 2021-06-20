@@ -229,7 +229,6 @@ public class QL_thietbi extends javax.swing.JInternalFrame {
 
         jTextField2.setForeground(new java.awt.Color(102, 102, 102));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Tên thiết bị");
         jTextField2.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField2.setDisabledTextColor(new java.awt.Color(255, 255, 255));

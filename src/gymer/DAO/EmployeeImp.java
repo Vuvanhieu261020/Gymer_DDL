@@ -107,8 +107,8 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(UPDATE);
             stmt.setString(1, input.getSDT());
-            stmt.setString(2, input.getAddress());
-            stmt.setString(3, input.getViTri());
+            stmt.setString(2, input.getViTri());
+            stmt.setString(3, input.getAddress());
             stmt.setString(4, input.getMaNV());
             stmt.execute();
             return true;

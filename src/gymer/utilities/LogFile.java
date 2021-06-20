@@ -81,5 +81,18 @@ public class LogFile {
             e.printStackTrace();
         }
     }
+    public static void createLogOutLog (String ID, String Name){
+        String Infor = ID + " " + Name + " Đẵ đăng xuất";
+        String FileName = "LogoutLog_" + DateTime.getTimeFormat2() + ".log";
+        try {
+            FileHandler fh = new  FileHandler(FileName, true);
+            fh.setFormatter(new SimpleFormatter());
+            LOGGER.addHandler(fh);
+            LOGGER.info(Infor);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     
 }

@@ -123,6 +123,7 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         jLabel4.setText("jLabel4");
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(980, 597));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -334,7 +335,7 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, -1, -1));
 
         jTextField9.setText("jTextField9");
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 70, -1, -1));
+        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

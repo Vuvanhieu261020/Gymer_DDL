@@ -151,7 +151,7 @@ public class QL_thietbi extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã dịch vụ", "Tên", "NSX", "Số lượng", "Tình trạng", "Ngày nhập", "Giá nhập"
+                "Mã thiết bị", "Tên", "NSX", "Số lượng", "Tình trạng", "Ngày nhập", "Giá nhập"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -160,6 +160,12 @@ public class QL_thietbi extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Số lượng");
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("Ngày nhập");
+            jTable1.getColumnModel().getColumn(6).setHeaderValue("Giá nhập");
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 620, 290));
 
@@ -234,7 +240,7 @@ public class QL_thietbi extends javax.swing.JInternalFrame {
         jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField2.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
-        jLabel24.setText("Mã dịch vụ");
+        jLabel24.setText("Mã thiết bị");
 
         jTextField3.setEditable(false);
 

@@ -294,10 +294,9 @@ public class EmployeeImp implements UCRD<Employee> , EmployeeDAO{
     public boolean updatePass(Employee input, String currentPasword, String newPassword) {
         PreparedStatement stmt = null;
         Connection conn = null;
-        String prevHash = input.getHspass();
         String newHash = HashPassword.Hash(newPassword);
         
-        if (!prevHash.equals(currentPasword)){
+        if (initfromDB(input.getIdLogin(),currentPasword).getMaNV().equals("")){
             return false;
         }
         else 

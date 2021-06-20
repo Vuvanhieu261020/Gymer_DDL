@@ -5,8 +5,13 @@
  */
 package gymer.GUI;
 
-import gymer.entities.Employee;
+import gymer.entities.*;
+import gymer.DAO.*;
+import gymer.utilities.*;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,17 +19,90 @@ import java.awt.Color;
  */
 public class Add_bill extends javax.swing.JFrame {
     private Employee instanceE = new Employee();
+    private Customer cs = new Customer();
+    private CustomerImp csi = new CustomerImp();
+    private MemberCard mb = new MemberCard();
+    private MemberCardImp mbi = new MemberCardImp();
+    private Service sv = new Service();
+    private ServiceImp svi = new ServiceImp();
+    private BillTraining bt = new BillTraining();
+    private BillTrainingImp bti = new BillTrainingImp();
+    boolean checker1 = false;
+    boolean checker2 = false;
     /**
      * Creates new form CT_the
      */
     public Add_bill() {
         initComponents();
+        jTextField2.setText(KeyDB.genKey());
         setBackground(new Color(75, 160, 200, 125));
+        jTextField8.setText(KeyDB.genKey());
+        for (Service svindex : svi.getAll()) {
+            jComboBox1.addItem(svindex.getTen());
+        }
+        Date date = new Date();
+        jDateChooser1.setDate(date);
     }
     public void setEmployee (Employee input){
         this.instanceE = input;
         this.tenNV.setText(this.instanceE.getTen());
     }
+    
+    public void setCustomer (Customer eq1) {
+        //jComboBox2.setEditable(true);
+        eq1.setID(jTextField2.getText());
+        eq1.setCMND(jTextField5.getText());
+        eq1.setName(jTextField1.getText());
+        eq1.setYearofBirh(Integer.parseInt(jTextField7.getText()));
+        eq1.setSDT(jTextField4.getText());
+        if (jComboBox2.getSelectedItem().toString().equals("Nam")){
+            eq1.setSex(false);
+        }
+        if (jComboBox2.getSelectedItem().toString().equals("Nữ")){
+            eq1.setSex(true);
+        }
+        eq1.setAddress(jTextField3.getText());
+    }
+    
+    private void setBill (BillTraining input) {
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        List<BillTraning_Details> dta = new ArrayList<BillTraning_Details>();
+        BillTraning_Details bdindex = new BillTraning_Details();
+        bdindex.setMaHoaDonTap(jTextField8.getText());
+        bdindex.setMaDV(sv.getMaDV());
+        dta.add(bdindex);
+        input.setMaHoaDonTap(jTextField8.getText());
+        input.setMaNV(instanceE.getMaNV());
+        input.setMaKH(this.cs.getID());
+        input.setTongTien(Integer.parseInt(jTextField6.getText()));
+        input.setNgay(DateTime.getTimeFormat1());
+        input.setDetails(dta);
+    }
+    
+    private void setMemberCard (MemberCard input) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        input.setID(KeyDB.genKey());
+        input.setMaDV(this.sv.getMaDV());
+        input.setMaKH(this.cs.getID());
+        input.setStatus(true);
+        input.setStartDate(sdf.format(jDateChooser1.getDate()));
+    }
+    
+    private void setCustoText (Customer cus){
+        jTextField2.setText(cus.getID());
+        jTextField1.setText(cus.getName());
+        jTextField3.setText(cus.getAddress());
+        jTextField4.setText(cus.getSDT());
+        jTextField5.setText(cus.getCMND());
+        jTextField7.setText(Integer.toString(cus.getYearofBirh()));
+        if (cus.getSex() == true) {
+            jComboBox2.getEditor().setItem("Nữ");
+        }
+        if (cus.getSex() == false) {
+            jComboBox2.getEditor().setItem("Nam");
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,6 +204,11 @@ public class Add_bill extends javax.swing.JFrame {
 
         jTextField4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField4KeyReleased(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 102, 102));
@@ -154,6 +237,7 @@ public class Add_bill extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(102, 102, 102));
         jLabel30.setText("Năm sinh");
 
+        jComboBox2.setEditable(true);
         jComboBox2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jComboBox2.setForeground(new java.awt.Color(51, 51, 51));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nữ", "Nam" }));
@@ -219,7 +303,6 @@ public class Add_bill extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTextField2.setOpaque(false);
 
         jLabel32.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
@@ -274,7 +357,12 @@ public class Add_bill extends javax.swing.JFrame {
         jLabel34.setText("Mã hóa đơn:");
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 90, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setEditable(true);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 240, -1));
 
         jLabel35.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -305,6 +393,11 @@ public class Add_bill extends javax.swing.JFrame {
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, -1, -1));
 
         jButton3.setText("Tạo thẻ");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -365,6 +458,50 @@ public class Add_bill extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        List<Service> data = svi.findByName(jComboBox1.getSelectedItem().toString());
+        for (Service svindex : data){
+            this.sv = svindex;
+        }
+        jTextField6.setText(Integer.toString(this.sv.getGia()));
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+        // TODO add your handling code here:
+        this.cs = csi.findBySDT_1(jTextField4.getText());
+        if (!this.cs.getID().equals("")){
+            setCustoText(this.cs);
+            checker1 = true;
+            //System.out.println("scsd");
+        }
+    }//GEN-LAST:event_jTextField4KeyReleased
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        setCustomer(this.cs);
+        setMemberCard(this.mb);
+        setBill(this.bt);
+        if (checker1){
+            if (this.mbi.insert(this.mb) && this.bti.insert(this.bt)) {
+            JOptionPane.showMessageDialog(null, "Tạo hóa đơn thành công");
+            JOptionPane.showMessageDialog(null, "Thẻ mới của" + this.cs.getName() + " có ID là " + this.mb.getCardID());
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm");
+            }
+        }
+        else {
+            if (this.csi.insert(this.cs) && this.mbi.insert(this.mb) && this.bti.insert(this.bt)) {
+            JOptionPane.showMessageDialog(null, "Tạo hóa đơn thành công");
+            JOptionPane.showMessageDialog(null, "Thẻ mới của " + this.cs.getName() + " có ID là " + this.mb.getCardID());
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm");
+            }
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments

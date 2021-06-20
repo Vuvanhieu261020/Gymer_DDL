@@ -60,8 +60,8 @@ public class QL_goitap extends javax.swing.JInternalFrame {
             row[2] = input.get(i).getGia();
             row[3] = input.get(i).getThoiGian();
             model.addRow(row);
-            jTextField9.setText(Integer.toString(input.size()));
         }
+        jTextField9.setText(Integer.toString(input.size()));
     }
     
     private void getSelectedRow () {

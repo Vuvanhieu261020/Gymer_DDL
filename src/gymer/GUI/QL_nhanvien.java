@@ -86,8 +86,8 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
             else{ row[7] = "Nam"; }
         
             model.addRow(row);
-            jTextField9.setText(Integer.toString(input.size()));
         }
+        jTextField9.setText(Integer.toString(input.size()));
     }
     
     private void setDatatoEnity (Employee eq1){

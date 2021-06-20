@@ -114,7 +114,7 @@
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="27" pref="34" max="32767" attributes="0"/>
+              <EmptySpace min="27" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <Component id="jPanel7" max="32767" attributes="0"/>

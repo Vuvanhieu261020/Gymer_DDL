@@ -6,19 +6,72 @@
 package gymer.GUI;
 
 import java.awt.Color;
-
+import gymer.DAO.*;
+import gymer.entities.*;
+import gymer.utilities.*;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Linh
  */
 public class CT_the extends javax.swing.JFrame {
 
+    
+    private Employee instanceE = new Employee();
+    private Customer cs = new Customer();
+    private CustomerImp csi = new CustomerImp();
+    private MemberCard mb = new MemberCard();
+    private MemberCardImp mbi = new MemberCardImp();
+    private Service sv = new Service();
+    private ServiceImp svi = new ServiceImp();
+    private BillTraining bt = new BillTraining();
+    private BillTrainingImp bti = new BillTrainingImp();
+    boolean checker1 = false;
+    boolean checker2 = false;
+    
     /**
      * Creates new form CT_the
      */
     public CT_the() {
         initComponents();
         setBackground(new Color(75, 160, 200, 125));
+        showData(mbi.getAll());
+    }
+    
+    public void setEm (Employee input) {
+        this.instanceE = input;
+    }
+    
+    
+    private void showData (List<MemberCard> input) {
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[5];
+        for (int i=0 ; i<input.size() ; i++){
+            row[0] = input.get(i).getCardID();
+            row[1] = csi.findByID_1(input.get(i).getMaKH()).getName();
+            row[2] = svi.getSerice(input.get(i).getMaDV()).getTen();
+            if (input.get(i).getStatus() == true) {
+                row[3] = "Hoạt động";
+            } else {row[3] = "Ngưng hoạt động";}
+            row[4] = DateTime.convertReadable(input.get(i).getStartDate());
+            model.addRow(row);
+        }
+    }
+    
+    
+    private void getSelectedRow (MemberCard input) {
+        jComboBox1.setEditable(true);
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        jTextField3.setText(model.getValueAt(selectedRow, 0).toString());
+        jTextField2.setText(model.getValueAt(selectedRow, 1).toString());
+        jTextField5.setText(model.getValueAt(selectedRow, 2).toString());
+        jTextField6.setText(model.getValueAt(selectedRow, 4).toString());
+        jComboBox1.getEditor().setItem(model.getValueAt(selectedRow, 3).toString());
+        this.mb = mbi.findByID(jTextField3.getText());
     }
 
     /**
@@ -47,10 +100,8 @@ public class CT_the extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -62,21 +113,41 @@ public class CT_the extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("QUẢN LÝ THẺ");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 38, 331, 41));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 180, 41));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(611, 506, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(732, 506, -1, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 90, 232, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(496, 90, 370, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(746, 90, -1, -1));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, -1, -1));
 
         jPanel7.setBackground(new java.awt.Color(234, 230, 230));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,11 +156,12 @@ public class CT_the extends javax.swing.JFrame {
         jPanel7.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 53, -1, -1));
 
         jTextField3.setEditable(false);
-        jPanel7.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
+        jPanel7.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 190, -1));
 
-        jLabel24.setText("Mã hàng");
-        jPanel7.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+        jLabel24.setText("Mã thẻ");
+        jPanel7.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
+        jTextField2.setEditable(false);
         jTextField2.setForeground(new java.awt.Color(102, 102, 102));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setText("Tên sản phẩm(nhớ xóa)");
@@ -101,52 +173,48 @@ public class CT_the extends javax.swing.JFrame {
                 jTextField2PropertyChange(evt);
             }
         });
-        jPanel7.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+        jPanel7.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 190, -1));
 
-        jLabel26.setText("Mã khách hàng");
-        jPanel7.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
-        jPanel7.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 140, -1));
+        jLabel26.setText("Tên khách hàng");
+        jPanel7.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        jLabel27.setText("Mã dịch vụ");
-        jPanel7.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
-        jPanel7.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 160, -1));
+        jTextField5.setEditable(false);
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 190, -1));
+
+        jLabel27.setText("Tên dịch vụ");
+        jPanel7.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        jPanel7.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 190, -1));
 
         jLabel28.setText("Ngày bắt đầu");
-        jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
-        jPanel7.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 170, -1));
+        jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         jLabel29.setText("Tình trạng");
-        jPanel7.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
-        jPanel7.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 170, -1));
+        jPanel7.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
-        jLabel30.setText("Ngày kết thúc");
-        jPanel7.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+        jComboBox1.setEditable(true);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hoạt động", "Ngưng hoạt động" }));
+        jPanel7.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 190, -1));
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 570));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Mã thẻ", "Mã khách hàng", "Mã dịch vụ", "Ngày bắt đầu", "Tình trạng"
+                "Mã thẻ", "Tên khách hàng", "Tên dịch vụ", "Trạng thái", "Ngày bắt đầu"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 158, 610, 306));
@@ -195,6 +263,64 @@ public class CT_the extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextField2PropertyChange
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        getSelectedRow(this.mb);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:
+        showData(this.mbi.findByString(jTextField1.getText()));
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+        showData(this.mbi.getAll());
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        boolean checker = true;
+        if (jComboBox1.getSelectedItem().toString().equals("Hoạt động")){
+            checker = true;
+        }
+        else {checker = false;}
+        
+        if (DateTime.convertDB(jTextField6.getText()).equals(this.mb.getStartDate()) && this.mb.getStatus() == checker) {
+            JOptionPane.showMessageDialog(null, "Bạn chưa thay đổi gì !");
+        }
+        else {
+            this.mb.setStatus(checker);
+            this.mb.setStartDate(DateTime.convertDB(jTextField6.getText()));
+            int dialogButton = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn sửa ?");
+            if(dialogButton == JOptionPane.YES_OPTION){
+                if (this.mbi.update(this.mb)){
+                    JOptionPane.showMessageDialog(null, "Sửa thành công");
+                    showData(this.mbi.getAll());
+                }
+                else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm vui lòng thử lại");
+            }
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa ?");
+        if (dialogButton == JOptionPane.YES_OPTION) {
+            if (mbi.delete(this.mb.getCardID())){
+                JOptionPane.showMessageDialog(null, "Xóa thành công");
+                String Reason = JOptionPane.showInputDialog("Lý do xóa");
+                LogFile.createDeleteLog(instanceE.getMaNV(), instanceE.getTen(), mb.getCardID(), Reason, LogFile.THE);
+                showData(mbi.getAll());
+            }
+            else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình xóa vui lòng thử lại");
+        }
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -232,6 +358,7 @@ public class CT_the extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -239,7 +366,6 @@ public class CT_the extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -253,7 +379,5 @@ public class CT_the extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

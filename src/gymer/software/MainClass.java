@@ -76,6 +76,11 @@ public class MainClass {
             System.out.println(eq.getTen());
         }*/
         
+        /*ReportImp rpi = new ReportImp();
+        for (RPDetails rp : rpi.getAllTap()){
+            System.out.println(rp.getMaHD());
+        }*/
+        
         LoginForm lg = new LoginForm();
         lg.setVisible(true);
         /*QL_hoivien ds = new QL_hoivien();

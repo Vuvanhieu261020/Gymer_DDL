@@ -13,7 +13,11 @@ import gymer.utilities.*;
 import java.awt.event.MouseAdapter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -33,6 +37,10 @@ public class MainForm extends javax.swing.JFrame {
     
     private Employee instanceE = new Employee();
     private EmployeeImp emi = new EmployeeImp();
+    private MemberCard mc = new MemberCard();
+    private MemberCardImp mci = new MemberCardImp();
+    private Customer cs = new Customer();
+    private CustomerImp ci = new CustomerImp();
    
             
     Color panedefault;
@@ -61,6 +69,32 @@ public class MainForm extends javax.swing.JFrame {
         this.instanceE = input;
         this.jLabel21.setText(this.instanceE.getTen());
         this.jLabel22.setText(this.instanceE.getViTri());
+    }
+    
+    
+    private void showDetails (List<MemberCar_Detail> input) {
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[1];
+        int countDead = 0;
+        for (int i=0 ; i<input.size() ; i++){
+            row[0] = DateTime.convertReadable(input.get(i).getTime());
+            model.addRow(row);
+        }
+    }
+    
+    private void setInformation (MemberCard mcin) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date firstDate = sdf.parse(mcin.getStartDate());
+        Date secondDate = sdf.parse(DateTime.getTimeFormat1());
+
+        long diff = secondDate.getTime() - firstDate.getTime();
+
+        TimeUnit time = TimeUnit.DAYS; 
+        long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+        jTextField2.setText(mcin.getCardID());
+        String DIFF = diffrence + " Ngày";
+        jTextField4.setText(DIFF);
     }
     
     
@@ -132,14 +166,13 @@ public class MainForm extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         QLthe = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         click_the1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1250, 698));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1250, 698));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
@@ -224,7 +257,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -292,7 +325,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -328,7 +361,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -362,7 +395,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -398,7 +431,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -498,7 +531,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -724,26 +757,10 @@ public class MainForm extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Thời gian"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -789,9 +806,6 @@ public class MainForm extends javax.swing.JFrame {
         });
         jPanel8.add(QLthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
 
-        jButton3.setText("check");
-        jPanel8.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, 30));
-
         click_the1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Tạo thẻ tập.png"))); // NOI18N
         click_the1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         click_the1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -800,6 +814,14 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         jPanel8.add(click_the1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+
+        jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
 
         DashTab.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 220));
 
@@ -1085,6 +1107,25 @@ public class MainForm extends javax.swing.JFrame {
         ad.setEmployee(instanceE);
     }//GEN-LAST:event_click_the1MouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        this.mc = mci.findByID(jTextField1.getText());
+        boolean checker = mci.checkValid(mc.getCardID(), DateTime.getTimeFormat1());
+        if (checker == false) {
+            jTextField3.setText("THẺ KHÔNG HỢP LỆ");
+        }
+        else {
+            this.mc = this.mci.getDetails(this.mc);
+            showDetails(this.mc.getDetail());
+            try {
+                setInformation(mc);
+            }
+            catch (ParseException ex){
+                ex.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
     
     /**
      * @param args the command line arguments
@@ -1102,8 +1143,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel DashTab;
     private javax.swing.JLabel QLthe;
     private javax.swing.JLabel click_the1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

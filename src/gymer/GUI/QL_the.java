@@ -6,7 +6,19 @@
 package gymer.GUI;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import gymer.DAO.*;
+import gymer.entities.*;
+import gymer.utilities.*;
+import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Linh
@@ -16,12 +28,46 @@ public class QL_the extends javax.swing.JInternalFrame {
     /**
      * Creates new form QL_the
      */
+    
+    private MemberCard mc = new MemberCard();
+    private MemberCardImp mci = new MemberCardImp();
+    private Employee em = new Employee();
+    private EmployeeImp emi = new EmployeeImp();
+    private Customer cs = new Customer();
+    private CustomerImp ci = new CustomerImp();
+    
     public QL_the() {
         
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
+    }
+    
+    
+    private void showDetails (List<MemberCar_Detail> input) {
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[1];
+        int countDead = 0;
+        for (int i=0 ; i<input.size() ; i++){
+            row[0] = DateTime.convertReadable(input.get(i).getTime());
+            model.addRow(row);
+        }
+    }
+    
+    private void setInformation (MemberCard mcin) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date firstDate = sdf.parse(mcin.getStartDate());
+        Date secondDate = sdf.parse(DateTime.getTimeFormat1());
+
+        long diff = secondDate.getTime() - firstDate.getTime();
+
+        TimeUnit time = TimeUnit.DAYS; 
+        long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+        jTextField2.setText(mcin.getCardID());
+        String DIFF = diffrence + " Ngày";
+        jTextField4.setText(DIFF);
     }
     
 
@@ -49,8 +95,8 @@ public class QL_the extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         QLthe = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         click_the1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jDesktopPane1 = new javax.swing.JDesktopPane();
@@ -92,16 +138,6 @@ public class QL_the extends javax.swing.JInternalFrame {
                 jTextField3FocusLost(evt);
             }
         });
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jTextField3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jTextField3PropertyChange(evt);
-            }
-        });
 
         jLabel24.setText("Mã thẻ");
 
@@ -113,33 +149,6 @@ public class QL_the extends javax.swing.JInternalFrame {
         });
 
         jLabel26.setText("Còn lại");
-
-        jTextField4.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField4CaretUpdate(evt);
-            }
-        });
-        jTextField4.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-                jTextField4AncestorRemoved(evt);
-            }
-        });
-        jTextField4.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jTextField4InputMethodTextChanged(evt);
-            }
-        });
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -199,12 +208,6 @@ public class QL_the extends javax.swing.JInternalFrame {
 
         jButton1.setText("CHECK");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 79, 80, 30));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 79, 436, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -220,9 +223,6 @@ public class QL_the extends javax.swing.JInternalFrame {
         });
         jPanel1.add(QLthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
-        jButton2.setText("check");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 79, -1, 30));
-
         click_the1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Tạo thẻ tập.png"))); // NOI18N
         click_the1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         click_the1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,30 +232,22 @@ public class QL_the extends javax.swing.JInternalFrame {
         });
         jPanel1.add(click_the1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
+        jButton3.setText("Kiểm tra");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 220));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Thời gian"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -278,41 +270,13 @@ public class QL_the extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
         
     }//GEN-LAST:event_jLabel38MouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField4InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField4InputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4InputMethodTextChanged
-
-    private void jTextField4AncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextField4AncestorRemoved
-
-    }//GEN-LAST:event_jTextField4AncestorRemoved
-
-    private void jTextField4CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField4CaretUpdate
-
-    }//GEN-LAST:event_jTextField4CaretUpdate
-
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField3PropertyChange
-
-    }//GEN-LAST:event_jTextField3PropertyChange
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
 
@@ -320,7 +284,6 @@ public class QL_the extends javax.swing.JInternalFrame {
 
     private void QLtheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLtheMouseClicked
         // TODO add your handling code here:
-       
        QL_ctthe ma=new QL_ctthe();
        ma.setVisible(true);
        QL_the.this.setVisible(false);
@@ -333,12 +296,17 @@ public class QL_the extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_click_the1MouseClicked
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "DSFS");
+    }//GEN-LAST:event_jButton3MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel QLthe;
     private javax.swing.JLabel click_the1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

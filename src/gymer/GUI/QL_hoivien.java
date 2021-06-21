@@ -233,12 +233,12 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/GUI/icon_user_blue.png"))); // NOI18N
 
         jTextField2.setEditable(false);
-        jTextField2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setBorder(null);
-        jTextField2.setOpaque(false);
 
-        jLabel31.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("ID:");
 
@@ -247,7 +247,7 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
+                .addContainerGap(96, Short.MAX_VALUE)
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,6 +272,7 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField1.setCaretColor(new java.awt.Color(0, 0, 0));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
@@ -282,28 +283,36 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel26)
-                            .addComponent(jLabel24))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel28)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel30))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField4))))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel30))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel27)
+                                    .addComponent(jLabel28)
+                                    .addComponent(jLabel29))))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, 0, 226, Short.MAX_VALUE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField7))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -339,10 +348,10 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
 
         pane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, -1));
 
-        jLabel32.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
         jLabel32.setText("Danh sách hội viên");
-        pane2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
+        pane2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
@@ -355,19 +364,7 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         tb_hoivien.setForeground(new java.awt.Color(102, 102, 102));
         tb_hoivien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "h", "ưere", "234234", "2000", "nam", "Trườn định"},
-                {"2", "se", "23", "13", "23", "ê", null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "HỌ VÀ TÊN", "SĐT", "CMND", "NĂM SINH", "GIỚI TÍNH", "ĐỊA CHỈ"
@@ -380,10 +377,8 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         tb_hoivien.setFocusable(false);
         tb_hoivien.setGridColor(new java.awt.Color(255, 255, 255));
         tb_hoivien.setInheritsPopupMenu(true);
-        tb_hoivien.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tb_hoivien.setOpaque(false);
         tb_hoivien.setRowHeight(35);
-        tb_hoivien.setRowMargin(0);
         tb_hoivien.setShowGrid(true);
         tb_hoivien.getTableHeader().setReorderingAllowed(false);
         tb_hoivien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -393,26 +388,19 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tb_hoivien);
         if (tb_hoivien.getColumnModel().getColumnCount() > 0) {
-            tb_hoivien.getColumnModel().getColumn(0).setHeaderValue("ID");
-            tb_hoivien.getColumnModel().getColumn(1).setHeaderValue("HỌ VÀ TÊN");
             tb_hoivien.getColumnModel().getColumn(2).setResizable(false);
-            tb_hoivien.getColumnModel().getColumn(2).setHeaderValue("SĐT");
-            tb_hoivien.getColumnModel().getColumn(3).setHeaderValue("CMND");
-            tb_hoivien.getColumnModel().getColumn(4).setHeaderValue("NĂM SINH");
-            tb_hoivien.getColumnModel().getColumn(5).setHeaderValue("GIỚI TÍNH");
-            tb_hoivien.getColumnModel().getColumn(6).setHeaderValue("ĐỊA CHỈ");
         }
 
         pane2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 630, 320));
 
         jLabel33.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel33.setForeground(new java.awt.Color(102, 102, 102));
         jLabel33.setText("Hội viên");
         jLabel33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         pane2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
 
         jTextField9.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(255, 0, 0));
+        jTextField9.setForeground(new java.awt.Color(102, 102, 102));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setText("0");
         jTextField9.setBorder(null);
@@ -436,13 +424,12 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         });
         pane2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(219, 219, 219));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonFind.setBackground(new java.awt.Color(255, 255, 255));
         buttonFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
         buttonFind.setBorderPainted(false);
-        buttonFind.setOpaque(false);
         buttonFind.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonFindMouseClicked(evt);
@@ -450,11 +437,10 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         });
         jPanel1.add(buttonFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 50, 40));
 
-        txtFind.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txtFind.setForeground(new java.awt.Color(153, 153, 153));
+        txtFind.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtFind.setForeground(new java.awt.Color(51, 51, 51));
         txtFind.setText("Tìm kiếm");
         txtFind.setBorder(null);
-        txtFind.setOpaque(false);
         txtFind.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFindFocusGained(evt);

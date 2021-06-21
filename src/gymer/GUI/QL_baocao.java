@@ -82,11 +82,11 @@ public class QL_baocao extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Từ ngày");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Đến ngày");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/CHECK.png"))); // NOI18N
@@ -94,19 +94,23 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setDefaultCapable(false);
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 90, 90, 60));
 
+        TB_tap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         TB_tap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã HOá ĐƠN", "Ngày tạo", "Dịch vụ", "Tên khách hàng", "SĐT", "Tên người tạo", "Mã nhân viên", "Tổng tiền"
+                "Mã Hóa Đơn", "Ngày tạo", "Dịch vụ", "Tên khách hàng", "SĐT", "Tên người tạo", "Mã nhân viên", "Tổng tiền"
             }
         ));
+        TB_tap.setRowHeight(25);
+        TB_tap.setSelectionBackground(new java.awt.Color(0, 102, 204));
+        TB_tap.setSelectionForeground(new java.awt.Color(255, 255, 255));
         Tb_tap.setViewportView(TB_tap);
 
-        getContentPane().add(Tb_tap, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 840, 220));
+        getContentPane().add(Tb_tap, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 840, 340));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Xuất file.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -126,8 +130,9 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 510, -1, -1));
 
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jRadioButton1.setText("Báo cáo hóa đơn hàng");
-        jRadioButton1.setOpaque(false);
         jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRadioButton1MouseClicked(evt);
@@ -138,22 +143,23 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                 jRadioButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 140, 40));
+        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 190, 40));
 
+        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jRadioButton2.setText("Báo cáo hóa đơn tập");
-        jRadioButton2.setOpaque(false);
         jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRadioButton2MouseClicked(evt);
             }
         });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 140, 40));
+        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 190, 40));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         jLabel2.setText("Báo cáo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 200, 40));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 230, 30));
-        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 230, 30));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 200, 40));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 230, 30));
+        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 230, 30));
 
         Tb_hang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,8 +181,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel)TB_tap.getModel();
         model.setRowCount(0);
         Object row[] = new Object[8];
-        for (int i=0 ; i<input.size() ; i++){
-            System.out.println("created");
+        for (int i=0 ; i<input.size() ; i++){ 
             row[0] = input.get(i).getMaHD();
             row[1] = input.get(i).getNgayLap();
             row[2] = input.get(i).getTenDV();

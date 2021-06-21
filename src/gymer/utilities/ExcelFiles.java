@@ -204,7 +204,7 @@ public class ExcelFiles {
             total.setCellValue(sum);
             
             
-            FileOutputStream outputStream = new FileOutputStream(path + "BaoCaoTap_TaoNgay" + DateTime.getTimeFormat2()+".xlsx");
+            FileOutputStream outputStream = new FileOutputStream(path + "BaoCaoTap_TaoNgay_" + DateTime.getTimeFormat2()+".xlsx");
             workbook.write(outputStream);
             workbook.close();
             

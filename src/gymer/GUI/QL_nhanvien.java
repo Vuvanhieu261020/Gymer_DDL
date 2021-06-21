@@ -184,15 +184,13 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jPanel7.setAlignmentX(0.0F);
         jPanel7.setAlignmentY(0.0F);
         jPanel7.setPreferredSize(new java.awt.Dimension(330, 583));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Ten.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         Ten.setForeground(new java.awt.Color(51, 51, 51));
-        Ten.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Ten.setCaretColor(new java.awt.Color(255, 255, 255));
+        Ten.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        Ten.setCaretColor(new java.awt.Color(0, 0, 0));
         Ten.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Ten.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jPanel7.add(Ten, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 220, -1));
 
         CMND.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         CMND.setForeground(new java.awt.Color(51, 51, 51));
@@ -205,69 +203,59 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 moved(evt);
             }
         });
-        jPanel7.add(CMND, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 220, -1));
 
         diachi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         diachi.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(diachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 220, 40));
 
         jLabel28.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Vị trí");
-        jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
         namsinh.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         namsinh.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(namsinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 220, -1));
 
         jLabel29.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Năm sinh");
-        jPanel7.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
         jLabel30.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Giới tính");
-        jPanel7.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
         sex.setEditable(true);
         sex.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         sex.setForeground(new java.awt.Color(51, 51, 51));
-        sex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam ", "Nữ" }));
+        sex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
         sex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sexActionPerformed(evt);
             }
         });
-        jPanel7.add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 220, -1));
 
         BoxVitri.setEditable(true);
         BoxVitri.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         BoxVitri.setForeground(new java.awt.Color(51, 51, 51));
         BoxVitri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên" }));
-        jPanel7.add(BoxVitri, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 220, -1));
 
         sdt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         sdt.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 220, -1));
 
         jLabel34.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Địa chỉ");
-        jPanel7.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(68, 155, 222));
         jPanel2.setPreferredSize(new java.awt.Dimension(330, 173));
 
         MaNV.setEditable(false);
-        MaNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        MaNV.setForeground(new java.awt.Color(255, 255, 255));
+        MaNV.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        MaNV.setForeground(new java.awt.Color(0, 0, 0));
+        MaNV.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         MaNV.setBorder(null);
-        MaNV.setOpaque(false);
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/GUI/icon_user_blue.png"))); // NOI18N
 
-        jLabel35.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Mã Nhân Viên:");
 
@@ -285,7 +273,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel25)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,28 +287,94 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jPanel7.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 173));
-
         jLabel36.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Tên");
-        jPanel7.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         jLabel37.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("SĐT");
-        jPanel7.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
         jLabel38.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("CMND");
-        jPanel7.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel30)
+                        .addGap(27, 27, 27)
+                        .addComponent(sex, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addGap(52, 52, 52)
+                        .addComponent(BoxVitri, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addGap(52, 52, 52)
+                        .addComponent(sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel34)
+                        .addGap(37, 37, 37)
+                        .addComponent(diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addGap(40, 40, 40)
+                        .addComponent(CMND, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel36)
+                        .addGap(55, 55, 55)
+                        .addComponent(Ten, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addGap(22, 22, 22)
+                        .addComponent(namsinh, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Ten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel34)
+                    .addComponent(diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BoxVitri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namsinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30)))
+        );
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 583));
 
         jScrollPane1.setBorder(null);
 
-        tb_nhanvien.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tb_nhanvien.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tb_nhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -332,7 +386,6 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         tb_nhanvien.setGridColor(new java.awt.Color(255, 255, 255));
         tb_nhanvien.setOpaque(false);
         tb_nhanvien.setRowHeight(35);
-        tb_nhanvien.setRowMargin(0);
         tb_nhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_nhanvienMouseClicked(evt);
@@ -367,24 +420,24 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, -1, -1));
 
         jTextField9.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(255, 0, 0));
+        jTextField9.setForeground(new java.awt.Color(102, 102, 102));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setText("1000");
+        jTextField9.setText("0");
         jTextField9.setBorder(null);
         jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 70, -1));
 
         jLabel33.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel33.setForeground(new java.awt.Color(102, 102, 102));
         jLabel33.setText("Nhân viên");
         jLabel33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
 
-        jLabel32.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
         jLabel32.setText("Danh sách nhân viên");
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(219, 219, 219));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
@@ -395,8 +448,8 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 24, 30, 30));
 
-        jTextField1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setText("Tìm kiếm");
         jTextField1.setBorder(null);
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -516,6 +569,16 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 if (eqi.insert(temp,ID,Password)){
                     JOptionPane.showMessageDialog(null, "Thêm thành công");
                     showData(eqi.getAll());
+                    sex.setEditable(true);
+                    BoxVitri.setEditable(true);
+                    Ten.setText("");
+                    MaNV.setText("");
+                    CMND.setText("");
+                    diachi.setText("");
+                    sex.getEditor().setItem("");
+                    BoxVitri.getEditor().setItem("");
+                    namsinh.setText(DateTime.getTimeFormat2().substring(6));
+                    sdt.setText("");
                 }
                 else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm có thể user name đã được sử dụng hoặc lỗi hệ thống");
             }

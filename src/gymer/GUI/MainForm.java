@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -36,14 +37,13 @@ public class MainForm extends javax.swing.JFrame {
      * Creates new form MainForm
      */
     
+    
     private Employee instanceE = new Employee();
     private EmployeeImp emi = new EmployeeImp();
     private MemberCard mc = new MemberCard();
     private MemberCardImp mci = new MemberCardImp();
     private Customer cs = new Customer();
-    private CustomerImp ci = new CustomerImp();
-   
-            
+    private CustomerImp ci = new CustomerImp();     
     Color panedefault;
     Color paneClick;
     
@@ -53,8 +53,8 @@ public class MainForm extends javax.swing.JFrame {
         paneClick = new Color(56,71,94);
         
 
-//        QL_the ma =new QL_the();
-//        jDesktopPane1.add(ma).setVisible(true);
+//      QL_the ma =new QL_the();
+//      jDesktopPane1.add(ma).setVisible(true);
         DashTab.setVisible(true);
         jDesktopPane1.setVisible(false);
         jp1.setBackground(paneClick);
@@ -64,8 +64,9 @@ public class MainForm extends javax.swing.JFrame {
            jp5.setBackground(panedefault);
             jp6.setBackground(panedefault);
              jp7.setBackground(panedefault);
-         TB_check.getTableHeader().setFont(new Font("Arial",Font.BOLD,18));
+        TB_check.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,18));
     }
+      
     
     public void setEmployee (Employee input){
         this.instanceE = input;
@@ -623,16 +624,16 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(361, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -781,7 +782,7 @@ public class MainForm extends javax.swing.JFrame {
         DashTab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 780, 270));
 
         jLabel28.setBackground(new java.awt.Color(23, 35, 54));
-        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(23, 35, 54));
         jLabel28.setText("Những lần tập gần nhất");
         DashTab.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 300, 50));

@@ -227,6 +227,7 @@ public class CT_the extends javax.swing.JFrame {
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 570));
 
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -235,6 +236,7 @@ public class CT_the extends javax.swing.JFrame {
                 "Mã thẻ", "Tên khách hàng", "Tên dịch vụ", "Trạng thái", "Ngày bắt đầu"
             }
         ));
+        jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(62, 120, 202));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {

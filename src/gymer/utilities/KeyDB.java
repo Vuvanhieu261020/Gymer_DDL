@@ -19,7 +19,7 @@ public class KeyDB {
     public static String genKey (){
         Calendar cal = Calendar.getInstance();
         long timeNumber = cal.getTimeInMillis();
-        Long longLong = new Long(timeNumber);
+        Long longLong = timeNumber;
         // sub string de la 7 vi neu return ca? longlong thi` qua dai`
         String key = longLong.toString().substring(7);
         return key;

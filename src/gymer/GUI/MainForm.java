@@ -81,7 +81,7 @@ public class MainForm extends javax.swing.JFrame {
         Object row[] = new Object[1];
         int countDead = 0;
         for (int i=0 ; i<input.size() ; i++){
-            row[0] = DateTime.convertReadable(input.get(i).getTime());
+            row[0] = DateTime.convertReadable_time(input.get(i).getTime()) ;
             model.addRow(row);
         }
     }
@@ -1136,7 +1136,7 @@ public class MainForm extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.mc = mci.findByID(jTextField1.getText());
-        boolean checker = mci.checkValid(mc.getCardID(), DateTime.getTimeFormat1());
+        boolean checker = mci.checkValid(mc.getCardID(), DateTime.getDateandTime());
         if (checker == false) {
             jTextField3.setText("THẺ KHÔNG HỢP LỆ");
         }

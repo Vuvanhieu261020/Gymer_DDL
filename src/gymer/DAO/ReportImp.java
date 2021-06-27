@@ -68,7 +68,7 @@ public class ReportImp {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 RPDetails cs = new RPDetails();
-                cs.setMaHD(rs.getString("MaHoaDonHang"));
+                cs.setMaHD(rs.getString("MaHoaDonTap"));
                 cs.setNgayLap(rs.getString("Ngay"));
                 cs.setTenDV(rs.getString("TenDV"));
                 cs.setTenKhach(rs.getString("TenKH"));
@@ -76,6 +76,7 @@ public class ReportImp {
                 cs.setTenNV(rs.getString("Ten"));
                 cs.setMaNV(rs.getString("MaNV"));
                 cs.setTongTien(rs.getInt("TongTien"));
+                data.add(cs);
             }
             return data;
         }
@@ -110,6 +111,7 @@ public class ReportImp {
                 cs.setTenNV(rs.getString("Ten"));
                 cs.setMaNV(rs.getString("MaNV"));
                 cs.setTongTien(rs.getInt("TongTien"));
+                data.add(cs);
             }
             return data;
         }

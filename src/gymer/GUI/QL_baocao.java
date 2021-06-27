@@ -14,6 +14,7 @@ import gymer.utilities.*;
 import gymer.utilities.*;
 import java.awt.Color;
 import java.awt.Font;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -88,12 +89,16 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jLabel3.setText("Đến ngày");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/CHECK.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setDefaultCapable(false);
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 90, 90, 60));
 
         TB_tap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -234,6 +239,23 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        Date date2 = jDateChooser2.getDate();
+        Date date1 = jDateChooser1.getDate();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String startDate = dateFormat.format(date2);
+        String endDate = dateFormat.format(date1);
+        if (jRadioButton2.isSelected()) {
+            this.data = rpi.getDataTap(startDate, endDate);
+            showDataTap(data);
+        }
+        if (jRadioButton1.isSelected()) {
+            this.data = rpi.getDataHang(startDate, endDate);
+            showDataTap(data);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

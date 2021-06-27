@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="06b65e77-db0d-46e6-96ce-7e64edbb15d0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/auxiliary.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/ooxml_lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gymer_DDL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gymer_DDL.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/DAO/ReportImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/DAO/ReportImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/GUI/Add_bill.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/GUI/Add_bill.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/GUI/Add_bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/GUI/Add_bill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/GUI/MainForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/GUI/MainForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/GUI/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/GUI/MainForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/GUI/QL_baocao.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/GUI/QL_baocao.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/GUI/QL_baocao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/GUI/QL_baocao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/software/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/software/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/utilities/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/utilities/DateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gymer/utilities/KeyDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/utilities/KeyDB.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1uW1lCxM19sN8eBqWJZfq62aeLP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="06b65e77-db0d-46e6-96ce-7e64edbb15d0" name="Default Changelist" comment="" />
+      <created>1624766682482</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624766682482</updated>
+    </task>
+    <servers />
+  </component>
+</project>

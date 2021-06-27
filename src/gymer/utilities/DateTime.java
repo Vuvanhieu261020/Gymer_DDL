@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package gymer.utilities;
-import gymer.DAO.EquipmentImp;
 import java.util.*;
 import java.text.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.time.LocalDateTime;
 /**
  *
  * @author luyen
@@ -25,6 +23,14 @@ public class DateTime {
             return dateFormat.format(date);
         }
         
+        public static String getDateandTime(){
+            LocalDateTime myObj = LocalDateTime.now();
+            String datetime = myObj.toString();
+            String date = datetime.substring(0,10);
+            String time = datetime.substring(11,19);
+            String result = date + " " + time;
+            return result;
+        }
         
         public static String plusDate (String inDate, int Times) throws ParseException{
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -44,6 +50,18 @@ public class DateTime {
             month = input.substring(5,7);
             date = input.substring(8,10);
             String result = date + "-" + month + "-" + year;
+            return result;
+        }
+        
+        
+        public static String convertReadable_time (String input){
+            String date;
+            String month;
+            String year;
+            year = input.substring(0, 4);
+            month = input.substring(5,7);
+            date = input.substring(8,10);
+            String result = date + "-" + month + "-" + year + " " + input.substring(11,19);
             return result;
         }
         

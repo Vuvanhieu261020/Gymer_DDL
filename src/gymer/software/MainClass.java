@@ -9,7 +9,7 @@ import gymer.entities.*;
 import gymer.utilities.*;
 import java.util.List;
 import gymer.GUI.*;
-
+import java.time.LocalDateTime;
 
 
 /**
@@ -83,8 +83,8 @@ public class MainClass {
         
         LoginForm lg = new LoginForm();
         lg.setVisible(true);
-        /*QL_hoivien ds = new QL_hoivien();
-        ds.setVisible(true);*/
+        
+        //System.out.println(DateTime.getDateandTime());
        
         /*Employee em = new Employee ();
         EmployeeImp emi = new EmployeeImp ();
@@ -105,19 +105,19 @@ public class MainClass {
         //System.out.println(DateTime.convertDB("11-02-2000"));
         
         //test Emoloyee
-//        Employee ep= new  Employee();
-//        EmployeeImp epa= new EmployeeImp();
-//        ep.setTen("LINH");
-//        ep.setMaNV("1");
-//        ep.setAddress("dddd");
-//        ep.setCMND("782373827");
-//        ep.setHspass("123456");
-//        ep.setIdLogin("LINH");
-//        ep.setSDT("0944315816");
-//        ep.setSex(false);
-//        ep.setViTri("Quản lý");
-//        ep.setYearofBirh(2000);
-//        epa.insert(ep,"LINH","123456");
+        /*Employee ep= new  Employee();
+        EmployeeImp epa= new EmployeeImp();
+        ep.setTen("dtbn");
+        ep.setMaNV("1");
+        ep.setAddress("1/1/1/1");
+        ep.setCMND("11111111111");
+        //ep.setHspass("1");
+        //ep.setIdLogin("admin");
+        ep.setSDT("0822203990");
+        ep.setSex(false);
+        ep.setViTri("Quản lý");
+        ep.setYearofBirh(2000);
+        epa.insert(ep,"admin","1");*/
         
     }
 }

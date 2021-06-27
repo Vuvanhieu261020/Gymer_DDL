@@ -178,6 +178,7 @@ public class Add_bill extends javax.swing.JFrame {
         jPanel7.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 331, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Back.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
@@ -268,6 +269,8 @@ public class Add_bill extends javax.swing.JFrame {
         jTextField8.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField8.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Xuất file.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
@@ -279,6 +282,7 @@ public class Add_bill extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Tạo thẻ.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
@@ -291,7 +295,6 @@ public class Add_bill extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setCaretColor(new java.awt.Color(0, 0, 0));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
@@ -306,7 +309,6 @@ public class Add_bill extends javax.swing.JFrame {
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField3.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(102, 102, 102));
@@ -316,9 +318,8 @@ public class Add_bill extends javax.swing.JFrame {
         jLabel27.setForeground(new java.awt.Color(102, 102, 102));
         jLabel27.setText("SĐT");
 
-        jTextField4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField4.setCaretColor(new java.awt.Color(0, 0, 0));
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField4KeyReleased(evt);
@@ -327,7 +328,6 @@ public class Add_bill extends javax.swing.JFrame {
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField5.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
@@ -344,7 +344,6 @@ public class Add_bill extends javax.swing.JFrame {
 
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField7.setCaretColor(new java.awt.Color(0, 0, 0));
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7d(evt);

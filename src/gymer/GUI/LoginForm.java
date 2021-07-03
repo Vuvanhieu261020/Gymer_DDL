@@ -36,7 +36,7 @@ public class LoginForm extends javax.swing.JFrame {
     }
     
     public Employee getEmployee (){
-        return this.em;
+        return em;
     }
 
     /**
@@ -221,21 +221,11 @@ public class LoginForm extends javax.swing.JFrame {
            
                 mf.setVisible(true);
                 mf.setEmployee(em);
-                this.setVisible(false);
+                this.dispose();
             }
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    /*public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginForm().setVisible(true);
-            }
-        });
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

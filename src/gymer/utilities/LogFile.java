@@ -57,7 +57,7 @@ public class LogFile {
             default :
                 return;
         }
-        String FileName = "DeleteLog_" + DateTime.getTimeFormat2() + ".log";
+        String FileName = "./Log/DeleteLog_" + DateTime.getTimeFormat2() + ".log";
         try {
             FileHandler fh = new  FileHandler(FileName, true);
             fh.setFormatter(new SimpleFormatter());
@@ -70,7 +70,7 @@ public class LogFile {
     }
     public static void createLoginLog (String ID, String Name){
         String Infor = ID + " " + Name + " Đẵ đăng nhập";
-        String FileName = "LoginLog_" + DateTime.getTimeFormat2() + ".log";
+        String FileName = "./Log/LoginLog_" + DateTime.getTimeFormat2() + ".log";
         try {
             FileHandler fh = new  FileHandler(FileName, true);
             fh.setFormatter(new SimpleFormatter());
@@ -83,7 +83,7 @@ public class LogFile {
     }
     public static void createLogOutLog (String ID, String Name){
         String Infor = ID + " " + Name + " Đẵ đăng xuất";
-        String FileName = "LogoutLog_" + DateTime.getTimeFormat2() + ".log";
+        String FileName = "./Log/LogoutLog_" + DateTime.getTimeFormat2() + ".log";
         try {
             FileHandler fh = new  FileHandler(FileName, true);
             fh.setFormatter(new SimpleFormatter());

@@ -18,6 +18,15 @@ public class RPDetails {
     private String TenNV;
     private String MaNV;
     private int TongTien;
+    private int SoLuongDichVu;
+
+    public int getSoLuongDichVu() {
+        return SoLuongDichVu;
+    }
+
+    public void setSoLuongDichVu(int soLuongDichVu) {
+        SoLuongDichVu = soLuongDichVu;
+    }
 
     public RPDetails() {
     }

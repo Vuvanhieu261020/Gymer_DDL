@@ -64,21 +64,25 @@ public class Change_password extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(1494, 753));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1494, 753));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setMinimumSize(new java.awt.Dimension(1494, 753));
         jPanel1.setOpaque(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(1494, 753));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("USER NAME");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 450, 20));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, 450, 20));
 
         jSeparator4.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator4.setPreferredSize(new java.awt.Dimension(0, 1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 520, 420, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 540, 420, -1));
 
         jPasswordField3.setBackground(new java.awt.Color(0, 0, 102));
         jPasswordField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -91,17 +95,17 @@ public class Change_password extends javax.swing.JFrame {
                 jPasswordField3FocusGained(evt);
             }
         });
-        jPanel1.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, 410, -1));
+        jPanel1.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 410, -1));
 
         jLabel8.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("CONFIRM PASSWORD");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 230, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 230, -1));
 
         jSeparator3.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator3.setPreferredSize(new java.awt.Dimension(0, 1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 410, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 410, -1));
 
         jPasswordField2.setBackground(new java.awt.Color(0, 0, 102));
         jPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -114,7 +118,7 @@ public class Change_password extends javax.swing.JFrame {
                 jPasswordField2FocusGained(evt);
             }
         });
-        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 410, -1));
+        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 410, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Close.png"))); // NOI18N
         jButton2.setBorder(null);
@@ -126,7 +130,7 @@ public class Change_password extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 550, -1, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 570, -1, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Change.png"))); // NOI18N
         jButton1.setBorder(null);
@@ -138,7 +142,7 @@ public class Change_password extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 570, -1, -1));
 
         jCheckBox2.setBackground(new java.awt.Color(0, 0, 102));
         jCheckBox2.setFont(new java.awt.Font("Poppins Thin", 0, 14)); // NOI18N
@@ -151,17 +155,17 @@ public class Change_password extends javax.swing.JFrame {
                 jCheckBox2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 140, 30));
+        jPanel1.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 140, 30));
 
         jLabel7.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("NEW PASSWORD");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 183, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 183, -1));
 
         jLabel5.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("OLD PASSWORD ");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 183, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, 183, -1));
 
         jPasswordField1.setBackground(new java.awt.Color(0, 0, 102));
         jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -174,12 +178,12 @@ public class Change_password extends javax.swing.JFrame {
                 jPasswordField1FocusGained(evt);
             }
         });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 410, -1));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 410, -1));
 
         jSeparator2.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator2.setPreferredSize(new java.awt.Dimension(0, 1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 410, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 410, -1));
 
         jCheckBox1.setBackground(new java.awt.Color(0, 0, 102));
         jCheckBox1.setFont(new java.awt.Font("Poppins Thin", 0, 14)); // NOI18N
@@ -192,33 +196,33 @@ public class Change_password extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, 140, 30));
+        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 140, 30));
 
         jLabel4.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("CHANGE PASSWORD");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 390, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 390, -1));
 
         jLabel2.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("USER NAME");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 194, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 194, -1));
 
         jSeparator1.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator1.setPreferredSize(new java.awt.Dimension(0, 1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 410, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 410, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/back_change.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 550, 650));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 550, 650));
 
         jLabel3.setFont(new java.awt.Font("Poppins Medium", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("USER NAME");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 194, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 194, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 700));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1494, 753));
 
         pack();
         setLocationRelativeTo(null);

@@ -166,7 +166,8 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         setAlignmentX(0.0F);
         setAlignmentY(0.0F);
         setAutoscrolls(true);
-        setPreferredSize(new java.awt.Dimension(980, 570));
+        setMinimumSize(new java.awt.Dimension(1230, 630));
+        setPreferredSize(new java.awt.Dimension(1230, 630));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pane2.setBackground(new java.awt.Color(255, 255, 255));
@@ -334,15 +335,15 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
-        pane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, -1));
+        pane2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 630));
 
         jLabel32.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
         jLabel32.setText("Danh sách hội viên");
-        pane2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
+        pane2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
@@ -383,7 +384,6 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         tb_hoivien.setIntercellSpacing(new java.awt.Dimension(0, 0));
         tb_hoivien.setOpaque(false);
         tb_hoivien.setRowHeight(35);
-        tb_hoivien.setRowMargin(0);
         tb_hoivien.setShowGrid(true);
         tb_hoivien.getTableHeader().setReorderingAllowed(false);
         tb_hoivien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -403,20 +403,20 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
             tb_hoivien.getColumnModel().getColumn(6).setHeaderValue("ĐỊA CHỈ");
         }
 
-        pane2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 630, 320));
+        pane2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 870, 280));
 
         jLabel33.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 0, 0));
         jLabel33.setText("Hội viên");
         jLabel33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        pane2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
+        pane2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, -1, -1));
 
         jTextField9.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 0, 0));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setText("0");
         jTextField9.setBorder(null);
-        pane2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 58, 32));
+        pane2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 58, 32));
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
         jLabel36.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -425,7 +425,7 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
                 jLabel36MouseClicked(evt);
             }
         });
-        pane2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, -1, -1));
+        pane2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 540, -1, -1));
 
         jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
         jLabel39.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -434,7 +434,7 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
                 jLabel39MouseClicked(evt);
             }
         });
-        pane2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, -1, -1));
+        pane2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 540, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(219, 219, 219));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -448,7 +448,7 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
                 buttonFindMouseClicked(evt);
             }
         });
-        jPanel1.add(buttonFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 50, 40));
+        jPanel1.add(buttonFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 50, 40));
 
         txtFind.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtFind.setForeground(new java.awt.Color(153, 153, 153));
@@ -460,14 +460,14 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
                 txtFindFocusGained(evt);
             }
         });
-        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 167, 25));
+        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 167, 25));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Rectangle_s.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
-        pane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 58, 650, 90));
+        pane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 910, 90));
 
-        getContentPane().add(pane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 570));
+        getContentPane().add(pane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

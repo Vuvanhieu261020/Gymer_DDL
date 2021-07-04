@@ -164,7 +164,6 @@ public class MainForm extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         QLthe = new javax.swing.JLabel();
@@ -175,7 +174,7 @@ public class MainForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1250, 698));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1250, 698));
+        setPreferredSize(new java.awt.Dimension(1494, 753));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
@@ -201,16 +200,16 @@ public class MainForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(1221, Short.MAX_VALUE)
+                .addContainerGap(1471, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 30));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1500, 30));
 
         jPanel2.setBackground(new java.awt.Color(23, 35, 54));
 
@@ -581,12 +580,12 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(jp7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 270, 680));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 270, 730));
 
         jPanel3.setBackground(new java.awt.Color(62, 120, 202));
 
@@ -628,7 +627,7 @@ public class MainForm extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(611, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -644,7 +643,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 980, 100));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 1230, 100));
 
         DashTab.setBackground(new java.awt.Color(255, 255, 255));
         DashTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -736,7 +735,7 @@ public class MainForm extends javax.swing.JFrame {
                                 .addComponent(jLabel26)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextField4)))))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -757,7 +756,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        DashTab.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 390, 220));
+        DashTab.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 400, 220));
 
         TB_check.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TB_check.setModel(new javax.swing.table.DefaultTableModel(
@@ -770,7 +769,7 @@ public class MainForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TB_check);
 
-        DashTab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 910, 240));
+        DashTab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 1130, 330));
 
         jLabel28.setBackground(new java.awt.Color(23, 35, 54));
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -788,9 +787,6 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         jPanel8.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
-
-        jButton2.setText("CHECK");
-        jPanel8.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 79, 80, 30));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -835,24 +831,31 @@ public class MainForm extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 90, -1));
 
-        DashTab.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 220));
+        DashTab.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 220));
 
-        getContentPane().add(DashTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 980, 570));
+        getContentPane().add(DashTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 1230, 630));
+
+        jDesktopPane1.setPreferredSize(new java.awt.Dimension(1230, 630));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
+            .addGap(0, 1230, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 980, 570));
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 1230, 630));
 
         pack();
         setLocationRelativeTo(null);
@@ -1140,6 +1143,10 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -1159,7 +1166,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTable TB_check;
     private javax.swing.JLabel click_the1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

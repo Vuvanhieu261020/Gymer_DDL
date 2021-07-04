@@ -168,7 +168,8 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         setBorder(null);
         setAlignmentX(0.0F);
         setAlignmentY(0.0F);
-        setPreferredSize(new java.awt.Dimension(980, 570));
+        setMinimumSize(new java.awt.Dimension(1230, 650));
+        setPreferredSize(new java.awt.Dimension(1230, 650));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -316,7 +317,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jLabel38.setText("CMND");
         jPanel7.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 583));
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 630));
 
         jScrollPane1.setBorder(null);
 
@@ -340,7 +341,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tb_nhanvien);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 630, 320));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 860, 300));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_add.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -348,7 +349,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 510, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -356,7 +357,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 510, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 550, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -364,25 +365,25 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 jLabel7MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 510, -1, -1));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 550, -1, -1));
 
         jTextField9.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 0, 0));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setText("1000");
         jTextField9.setBorder(null);
-        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 70, -1));
+        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 70, -1));
 
         jLabel33.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 0, 0));
         jLabel33.setText("Nhân viên");
         jLabel33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 540, -1, -1));
+        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, -1, -1));
 
         jLabel32.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
         jLabel32.setText("Danh sách nhân viên");
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(219, 219, 219));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -393,7 +394,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 24, 30, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 30, 30));
 
         jTextField1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
@@ -404,14 +405,14 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 jTextField1FocusGained(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 200, 20));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 200, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Rectangle_s.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 270, 60));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 270, 60));
 
-        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 58, 660, 90));
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 910, 90));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 583));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

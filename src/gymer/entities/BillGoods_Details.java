@@ -16,6 +16,16 @@ public class BillGoods_Details {
     private int SoLuong;
     private int Gia;
     private String DVT;
+    private int TongTien;
+
+    public int getTongTien() {
+        return TongTien;
+    }
+
+    public void setTongTien(int TongTien) {
+        this.TongTien = TongTien;
+    }
+   
 
     public BillGoods_Details() {
         this.MaHD = "";

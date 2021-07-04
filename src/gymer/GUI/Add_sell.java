@@ -5,8 +5,19 @@
  */
 package gymer.GUI;
 
-import gymer.entities.Employee;
 import java.awt.Color;
+import gymer.entities.*;
+import gymer.DAO.*;
+import gymer.utilities.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import org.bouncycastle.operator.AADProcessor;
 
 /**
  *
@@ -14,17 +25,32 @@ import java.awt.Color;
  */
 public class Add_sell extends javax.swing.JFrame {
     private Employee instanceE = new Employee();
+    private GoodsImp gimp = new GoodsImp();
+    private int Quality, Price;
+    private Goods data = new Goods();
+    private BillGoods_Details bgd = new BillGoods_Details();
+    private List<BillGoods_Details> data_details = new ArrayList<BillGoods_Details>();
+    private int result;
+    private int TongThanhToan = 0;
+    private BillGoodsImp bimps = new BillGoodsImp();
+    private BillGoods bgoods = new BillGoods();
     /**
      * Creates new form CT_the
      */
     public Add_sell() {
         initComponents();
         setBackground(new Color(75, 160, 200, 125));
+        jTextField9.setText(KeyDB.genKey());
+        for (Goods svindex : gimp.getAll()) {
+            jComboBox1.addItem(svindex.getTen());
+        }
     }
     public void setEmployee (Employee input){
         this.instanceE = input;
         this.tenNV.setText(this.instanceE.getTen());
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,13 +139,13 @@ public class Add_sell extends javax.swing.JFrame {
         jLabel25.setText("Tên");
         jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel34.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(102, 102, 102));
         jLabel34.setText("Mã hóa đơn:");
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 90, 30));
 
         jComboBox1.setEditable(true);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -127,72 +153,106 @@ public class Add_sell extends javax.swing.JFrame {
         });
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 120, 290, -1));
 
-        jLabel35.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(102, 102, 102));
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel35.setText("Sản phẩm");
         jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 80, 20));
 
-        jLabel36.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(102, 102, 102));
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel36.setText("Số lượng");
         jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 90, 20));
 
         jButton3.setText("Bán");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 530, 80, 40));
 
-        jLabel37.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(102, 102, 102));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel37.setText("Giá");
         jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 80, 20));
+
+        jTextField9.setEditable(false);
+        jTextField9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 240, -1));
 
-        jLabel38.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(102, 102, 102));
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel38.setText("Thành tiền");
         jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 80, 20));
+
+        jTextField11.setEditable(false);
+        jTextField11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 290, -1));
+
+        jTextField12.setEditable(false);
+        jTextField12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 210, 290, -1));
+
+        jTextField13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField13KeyReleased(evt);
+            }
+        });
         jPanel2.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 290, -1));
 
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Tên hàng", "Giá", "Sô lượng", "DVT", "Tổng tiền"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 890, 160));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 890, 180));
 
         jLabel1.setText("Tổng thành tiền");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 80, 30));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 100, 30));
 
         jTextField1.setText("290000000");
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 290, 30));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, 220, 30));
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton2.setText("Thêm sản phẩm");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 120, 30));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 150, 30));
+
+        jTextField10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 240, -1));
 
-        jLabel39.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(102, 102, 102));
         jLabel39.setText("Tên khách hàng:");
         jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 120, 30));
 
-        jLabel40.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(102, 102, 102));
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel40.setText("SĐT:");
         jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 90, 30));
+
+        jTextField14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 240, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 1020, 600));
@@ -229,7 +289,113 @@ public class Add_sell extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        this.data = gimp.findByName_1(jComboBox1.getSelectedItem().toString());
+        this.Price = data.getGia();
+        this.Quality = data.getSoLuong();
+        //System.out.println (this.Quality);
+        String message = "Còn lại " + this.Quality + " " + data.getDVT();
+        if (Quality == 0) {
+            JOptionPane.showMessageDialog(null, "Hết hàng");
+            return;
+        }
+        /*jTextField13.addFocusListener(new FocusAdapter() {
+            public void focusGained(FocusEvent e) {
+		if(jTextField13.getText().trim().equals(message)) {
+                        jTextField13.setText("");
+                    }
+		}
+		public void focusLost(FocusEvent e) {
+                    if(jTextField13.getText().trim().equals("")) {
+                        jTextField13.setText(message);
+                        }
+                    }
+	});*/
+        jTextField13.setText(message);
+        jTextField12.setText(Integer.toString(this.data.getGia()));
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField13KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyReleased
+        // TODO add your handling code here:
+        if (Regex.NumericCheck(jTextField13.getText())){
+            this.result =  Integer.parseInt(jTextField13.getText().toString());
+            if (result > this.Quality) {
+                JOptionPane.showMessageDialog(null, "Nhiều hơn số lượng trong kho ?");
+            }
+            int Sum = this.data.getGia() * result;
+            jTextField11.setText(Integer.toString(Sum));
+            
+        }
+    }//GEN-LAST:event_jTextField13KeyReleased
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        //List<BillGoods_Details> tempData = new ArrayList<BillGoods_Details>();
+        for (BillGoods_Details af : this.data_details) {
+            if (af.getTenHang().equals(jComboBox1.getSelectedItem().toString())){
+                JOptionPane.showMessageDialog(null, "Bị trùng !");
+                return;
+            }
+        }
+        this.TongThanhToan += Integer.parseInt(jTextField11.getText());
+        jTextField1.setText(Integer.toString(this.TongThanhToan));
+       
+        BillGoods_Details bgds = new BillGoods_Details();
+        bgds.setMaHD(jTextField9.getText());
+        bgds.setMaHang(this.data.getMaHang());
+        bgds.setSoLuong(this.result);
+        bgds.setGia(this.data.getGia());
+        bgds.setDVT(this.data.getDVT());
+        bgds.setTongTien(Integer.parseInt(jTextField11.getText()));
+        bgds.setTenHang(jComboBox1.getSelectedItem().toString());
+        this.data_details.add(bgds);
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[5];
+        for (int i=0 ; i<this.data_details.size() ; i++){
+            row[0] = this.data_details.get(i).getTenHang();
+            row[1] = this.data_details.get(i).getGia();
+            row[2] = this.data_details.get(i).getSoLuong();
+            row[3] = this.data_details.get(i).getDVT();
+            row[4] = this.data_details.get(i).getTongTien();
+            model.addRow(row);
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        this.bgoods.setMaHoaDonHang(jTextField9.getText());
+        this.bgoods.setTongTien(this.TongThanhToan);
+        this.bgoods.setMaNV(this.instanceE.getMaNV());
+        this.bgoods.setNgay(DateTime.getTimeFormat1());
+        this.bgoods.setSDT(jTextField14.getText());
+        this.bgoods.setTenKH(jTextField10.getText());
+        this.bgoods.setDetails(data_details);
+        if (this.bimps.insert(bgoods)){
+            JOptionPane.showMessageDialog(null, "Thành công");
+            Add_sell.this.dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình thêm");
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton() == MouseEvent.BUTTON3){
+            this.data_details.remove(jTable1.getSelectedRow());
+            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            model.setRowCount(0);
+            Object row[] = new Object[5];
+            for (int i=0 ; i<this.data_details.size() ; i++){
+                row[0] = this.data_details.get(i).getTenHang();
+                row[1] = this.data_details.get(i).getGia();
+                row[2] = this.data_details.get(i).getSoLuong();
+                row[3] = this.data_details.get(i).getDVT();
+                row[4] = this.data_details.get(i).getTongTien();
+                model.addRow(row);
+            }
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

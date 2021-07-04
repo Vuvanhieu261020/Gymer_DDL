@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5103f73-c5f6-42ba-aa6a-d1f07011ffed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Log/LoginLog_02-07-2021.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Log/LoginLog_03-07-2021.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Log/LogoutLog_03-07-2021.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gymer_DDL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Gymer_DDL.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginLog_27-06-2021.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginLog_27-06-2021.log.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LogoutLog_27-06-2021.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gymer_DDL/gymer/DAO/ReportImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gymer_DDL/gymer/DAO/ReportImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Gymer_DDL/gymer/entities/RPDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Gymer_DDL/gymer/entities/RPDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gymer/DAO/ReportImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/DAO/ReportImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gymer/GUI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/GUI/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gymer/entities/RPDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/entities/RPDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gymer/utilities/LogFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gymer/utilities/LogFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Log/LoginLog_03-07-2021.log" beforeDir="false" afterPath="$PROJECT_DIR$/Log/LoginLog_03-07-2021.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

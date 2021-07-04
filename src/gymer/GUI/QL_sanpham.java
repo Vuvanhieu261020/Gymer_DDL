@@ -67,8 +67,8 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
             row[4] = input.get(i).getDVT();
             row[5] = DateTime.convertReadable(input.get(i).getHSD());
             model.addRow(row);
-            jTextField9.setText(Integer.toString(input.size()));
         }
+        jTextField9.setText(Integer.toString(input.size()));
     }
 
     private void getSelectedRow () {

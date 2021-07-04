@@ -12,8 +12,8 @@ public class GoodsImp implements UCRD<Goods> , GoodsDAO {
     private static final String FIND_ALL = "select * from tbl_hanghoa where delete_flag = '0'";
     private static final String FIND_BY_NAME = "select * from tbl_hanghoa where Ten like concat('%',?,'%') and delete_flag = '0'";
     private static final String FIND_BY_ID = "select * from tbl_hanghoa where MaHang=? and delete_flag = '0'";
-    private static final String INSERT = "insert into tbl_hanghoa (MaHang, Ten, Gia, SoLuong, DVT, HSD, delete_flag) values(?, ?, ?, ?, ?, ?, '0')";
-    private static final String UPDATE = "update tbl_hanghoa set Ten=?, Gia=?, SoLuong=?, DVT=?, HSD=? where MaHang=?";
+    private static final String INSERT = "insert into tbl_hanghoa (MaHang, Ten, SoLuong, Gia,  DVT, HSD, delete_flag) values(?, ?, ?, ?, ?, ?, '0')";
+    private static final String UPDATE = "update tbl_hanghoa set Ten=?, SoLuong=?, Gia=?, DVT=?, HSD=? where MaHang=?";
     private static final String FIND = "select * from tbl_hanghoa where Ten like concat('%',?,'%') or MaHang=? and delete_flag = '0'";
 
 
@@ -161,6 +161,34 @@ public class GoodsImp implements UCRD<Goods> , GoodsDAO {
                 data.add(cs);
             }
             return data;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public Goods findByName_1(String Name) {
+        //List<Goods> data = new ArrayList<Goods>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(FIND_BY_NAME);
+            stmt.setString(1, Name);
+            ResultSet rs = stmt.executeQuery();
+            Goods cs = new Goods();
+            while (rs.next()) {
+                cs.setMaHang(rs.getString("MaHang"));
+                cs.setTen(rs.getString("Ten"));
+                cs.setGia(rs.getInt("Gia"));
+                cs.setSoLuong(rs.getInt("SoLuong"));
+                cs.setDVT(rs.getString("DVT"));
+                cs.setHSD(rs.getString("HSD"));
+            }
+            return cs;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -27,7 +27,7 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     private static final String INSERTDETALS = "insert into tbl_cthdhang(MaHoaDonHang, MaHang, SoLuong) values(?, ?, ?)";
     private static final String GETDETAILS = "select MaHang, TenHang, Gia, SoLuong, DVT from tbl_cthdhang inner join tbl_hanghoa on tbl_cthdhang.MaHang = tbl_hanghoa.MaHang where tbl_cthdhang.MaHaoDonHang=?";
     private static final String RPDATEDIFF = "select * from tblHoaDonHang where Ngay between ? and ?";
-    private static final String DELTEUPDATE = "update tbl_hanghoang set SoLuong = SoLuong - ? where MaHang=?";
+    private static final String DELTEUPDATE = "update tbl_hanghoa set SoLuong = SoLuong - ? where MaHang=?";
     
     
     @Override

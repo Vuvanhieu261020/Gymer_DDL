@@ -14,6 +14,8 @@ import gymer.utilities.*;
 import gymer.utilities.*;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -39,11 +41,14 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     private BillTrainingImp bti =  new BillTrainingImp();
     private Customer cs = new Customer();
     private CustomerImp csi =  new CustomerImp();
-    private boolean TAP = false;
-    private boolean HANG = false;
-    private boolean DICHVU = false;
-    private boolean SANPHAM = false;
+    private boolean TAP;
+    private boolean HANG;
+    private boolean DICHVU;
+    private boolean SANPHAM;
+    private GoodsImp svi = new GoodsImp();
+    private Goods sv = new Goods();
     private List<RPDetails> data = new ArrayList<RPDetails>();
+    private BillGoodsImp bgi = new BillGoodsImp();
     /**
      * Creates new form QL_baocao
      */
@@ -52,11 +57,10 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi=(BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
-        jR_TKsanpham.setSelected(false);
-        jR_HDhang.setSelected(false);
-        TB_tap.getTableHeader().setFont(new Font("Arial",Font.BOLD,12));
+        deState();
         CttDontap.setVisible(false);
         CttHang.setVisible(false);
+        stateHandler(null);
     }
     
     public void setEm (Employee in){
@@ -319,6 +323,11 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jTextField16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField16.setForeground(new java.awt.Color(0, 0, 0));
         jTextField16.setToolTipText("Tìm kiếm");
+        jTextField16.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField16KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PmainLayout = new javax.swing.GroupLayout(Pmain);
         Pmain.setLayout(PmainLayout);
@@ -382,7 +391,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(PmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Tb_tap, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_hang, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -867,7 +876,102 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void deState () {
+        this.DICHVU = false;
+        this.TAP = false;
+        this.HANG = false;
+        this.SANPHAM = false;
+    }
     
+    
+    private void debug () {
+        System.err.println(this.TAP + " " + this.HANG + " " + this.DICHVU + " " + this.SANPHAM);
+    }
+    
+    private void stateHandler (List input) {
+        this.data = input;
+        QL_baocao.this.setVisible(true);
+        Pmain.setVisible(true);
+        CttDontap.setVisible(false);
+        CttHang.setVisible(false);
+        QL_baocao.this.revalidate();
+        if (this.DICHVU == true) {
+            showDataDV(input);
+            jR_TKsanpham.setSelected(false);
+            jR_HDhang.setSelected(false);
+            jR_HDtap.setSelected(false);
+            Tb_tap.setVisible(false);
+            TB_hang.setVisible(false);
+            TB_tkHang.setVisible(false);
+            TB_tkTap.setVisible(true);
+            QL_baocao.this.revalidate();
+            this.SANPHAM = false;
+            this.TAP = false;
+            this.HANG = false;
+            debug();
+        }
+        if (this.HANG == true) {
+            showDataHang(input);
+            jR_TKsanpham.setSelected(false);
+            jR_TKdichvu.setSelected(false);
+            jR_HDtap.setSelected(false);
+            Tb_tap.setVisible(false);
+            TB_hang.setVisible(true);
+            TB_tkHang.setVisible(false);
+            TB_tkTap.setVisible(false);
+            QL_baocao.this.revalidate();
+            this.SANPHAM = false;
+            this.DICHVU = false;
+            this.TAP = false;
+            debug();
+        }
+        if (this.TAP == true) {
+            showDataTap(input);
+            jR_TKsanpham.setSelected(false);
+            jR_HDhang.setSelected(false);
+            jR_TKdichvu.setSelected(false);
+            Tb_tap.setVisible(true);
+            TB_hang.setVisible(false);
+            TB_tkHang.setVisible(false);
+            TB_tkTap.setVisible(false);
+            QL_baocao.this.revalidate();
+            this.SANPHAM = false;
+            this.DICHVU = false;
+            this.HANG = false;
+            debug();
+        }
+        if (this.SANPHAM == true) {
+            showDataHangHoa(input);
+            jR_TKdichvu.setSelected(false);
+            jR_HDhang.setSelected(false);
+            jR_HDtap.setSelected(false);
+            Tb_tap.setVisible(false);
+            TB_hang.setVisible(false);
+            TB_tkHang.setVisible(true);
+            TB_tkTap.setVisible(false);
+            QL_baocao.this.revalidate();
+            this.HANG = false;
+            this.DICHVU = false;
+            this.TAP = false;
+            debug();
+        }
+        if (this.DICHVU == false && this.HANG == false && this.SANPHAM == false && this.TAP == false) {
+            jR_TKdichvu.setSelected(false);
+            jR_HDhang.setSelected(false);
+            jR_HDtap.setSelected(false);
+            jR_TKsanpham.setSelected(false);
+            Tb_tap.setVisible(false);
+            TB_hang.setVisible(false);
+            TB_tkHang.setVisible(false);
+            TB_tkTap.setVisible(false);
+            QL_baocao.this.revalidate();
+            System.err.println("clean");
+            debug();
+        }
+    }
+    
+    
+    // hien thi trong phan chi tiet
     private void setHangDetails () {
         int index = Tb_hang.getSelectedRow();
         TableModel model = Tb_hang.getModel();
@@ -878,12 +982,8 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jTextField14.setText(model.getValueAt(selectedRow, 2).toString());
         jTextField15.setText(model.getValueAt(selectedRow, 3).toString());
         tenNV1.setText(model.getValueAt(selectedRow, 4).toString());
-        jTextField10.setText(model.getValueAt(selectedRow, 6).toString());
-        
-        GoodsImp svi = new GoodsImp();
-        Goods sv = new Goods();
+        jTextField10.setText(model.getValueAt(selectedRow, 6).toString());      
         List<BillGoods_Details> input = new ArrayList<BillGoods_Details>();
-        BillGoodsImp bgi = new BillGoodsImp();
         input = bgi.getDetails(jTextField9.getText());
         DefaultTableModel model1 = (DefaultTableModel)jTable1.getModel();
         model1.setRowCount(0);
@@ -897,7 +997,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         }
     }
     
-    
+    // hien thi trong phan chi tiet
     private void setTapDetails () {
         int index = TB_tap.getSelectedRow();
         TableModel model = TB_tap.getModel();
@@ -958,35 +1058,44 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     }
     
     
+    private void showDataDV(List<RPDetails> input){
+        DefaultTableModel model = (DefaultTableModel)Tb_hang2.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[3];
+        for (int i=0 ; i<input.size() ; i++){
+            row[0] = input.get(i).getTenDV();
+            row[1] = input.get(i).getSoLuongDichVu();
+            row[2] = input.get(i).getTongTien();
+            model.addRow(row);
+        }
+    }
+    
+    private void showDataHangHoa(List<RPDetails> input){
+        DefaultTableModel model = (DefaultTableModel)Tb_hang1.getModel();
+        model.setRowCount(0);
+        Object row[] = new Object[4];
+        for (int i=0 ; i<input.size() ; i++){
+            row[0] = input.get(i).getTenDV();
+            row[1] = input.get(i).getSoLuongDichVu();
+            row[2] = input.get(i).getTonKho();
+            row[3] = input.get(i).getTongTien();
+            model.addRow(row);
+        }
+    }
+    
+    
     private void jR_TKsanphamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jR_TKsanphamMouseClicked
         // TODO add your handling code here:
-        jR_HDhang.setSelected(false);
-        jR_TKdichvu.setSelected(false);
-        jR_HDtap.setSelected(false);
+        deState();
         this.SANPHAM = true;
-        this.DICHVU = false;
-        this.TAP = false;
-        this.HANG = false;
-        Tb_tap.setVisible(false);
-        TB_hang.setVisible(false);
-        TB_tkHang.setVisible(true);
-        TB_tkTap.setVisible(false);
+        stateHandler(rpi.getAllHangHoa());
     }//GEN-LAST:event_jR_TKsanphamMouseClicked
 
     private void jR_HDhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jR_HDhangMouseClicked
         // TODO add your handling code here:     
-        jR_TKdichvu.setSelected(false);
-        jR_HDtap.setSelected(false);
-        jR_TKsanpham.setSelected(false);
-        this.SANPHAM = false;
-        this.DICHVU = false;
-        this.TAP = false;
+        deState();
         this.HANG = true;
-        Tb_tap.setVisible(false);
-        TB_hang.setVisible(true);
-        TB_tkHang.setVisible(false);
-        TB_tkTap.setVisible(false);
-        showDataHang(rpi.getAllHang());
+        stateHandler(rpi.getAllHang());
     }//GEN-LAST:event_jR_HDhangMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -998,7 +1107,18 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         String path;
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             path = fileChooser.getSelectedFile().getAbsolutePath();
-            ExcelFiles.createRPBillTraining(this.data, path);
+            if (this.TAP == true) {
+                ExcelFiles.createRPBillTraining(this.data, path);
+            }
+            if (this.HANG == true) {
+                ExcelFiles.createRPBillGoods(this.data, path);
+            }
+            if (this.DICHVU == true) {
+                ExcelFiles.createRPServices(this.data, path);
+            }
+            if (this.SANPHAM == true) {
+                ExcelFiles.createRPGoods(this.data, path);
+            }
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -1008,13 +1128,29 @@ public class QL_baocao extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String date1, date2;
+        Date d1 = jDateChooser2.getDate();
+        Date d2 = jDateChooser1.getDate();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        date1 = df.format(d1);
+        date2 = df.format(d2);
+        if (this.TAP == true) {
+            stateHandler(rpi.getDataTap(date1, date2));
+        }
+        if (this.HANG == true) {
+            stateHandler(rpi.getDataHang(date1, date2));
+        }
+        if (this.DICHVU == true) {
+            stateHandler(rpi.getDichVuTapbyDate(date1, date2));
+        }
+        if (this.SANPHAM == true) {
+            stateHandler(rpi.getAllHangHoabyDate(date1, date2));
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-       CttDontap.setVisible(false);
-       Tb_tap.setVisible(true);
-       Pmain.setVisible(true);
+        stateHandler(rpi.getAllTap());
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
@@ -1043,50 +1179,22 @@ public class QL_baocao extends javax.swing.JInternalFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-       CttHang.setVisible(false);
-       TB_hang.setVisible(true);
-       Pmain.setVisible(true);
+        stateHandler(rpi.getAllHang());
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jR_HDtapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jR_HDtapMouseClicked
         // TODO add your handling code here:
-        jR_TKsanpham.setSelected(false);
-        jR_TKdichvu.setSelected(false);
-        jR_HDhang.setSelected(false);
-        this.data = rpi.getAllTap();
-        showDataTap(data);
-        this.SANPHAM = false;
-        this.DICHVU = false;
+        deState();
         this.TAP = true;
-        this.HANG = false;
-        Tb_tap.setVisible(true);
-        TB_hang.setVisible(false);
-        TB_tkHang.setVisible(false);
-        TB_tkTap.setVisible(false);
+        stateHandler(rpi.getAllTap());
     }//GEN-LAST:event_jR_HDtapMouseClicked
 
     private void jR_TKdichvuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jR_TKdichvuMouseClicked
         // TODO add your handling code here:
-        jR_TKsanpham.setSelected(false);
-        jR_HDhang.setSelected(false);
-        jR_HDtap.setSelected(false);
-        Tb_tap.setVisible(false);
-        TB_hang.setVisible(false);
-        TB_tkHang.setVisible(false);
-        TB_tkTap.setVisible(true);
-        this.SANPHAM = false;
+        deState();
         this.DICHVU = true;
-        this.TAP = false;
-        this.HANG = false;
+        stateHandler(rpi.getAllDichVuTap());
     }//GEN-LAST:event_jR_TKdichvuMouseClicked
-
-    private void Tb_hang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tb_hang1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tb_hang1MouseClicked
-
-    private void Tb_hang2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tb_hang2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tb_hang2MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
@@ -1096,10 +1204,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Xóa thành công");
                 String Reason = JOptionPane.showInputDialog("Lý do xóa");
                 LogFile.createDeleteLog(em.getMaNV(), em.getTen(), jTextField17.getText(), Reason, LogFile.HOADONTAP);
-                CttDontap.setVisible(false);
-                Pmain.setVisible(true);
-                this.data = rpi.getAllTap();
-                showDataTap(data);
+                stateHandler(rpi.getAllHang());
             }
             else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình xóa vui lòng thử lại");
         }
@@ -1114,9 +1219,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Xóa thành công");
                 String Reason = JOptionPane.showInputDialog("Lý do xóa");
                 LogFile.createDeleteLog(em.getMaNV(), em.getTen(), jTextField9.getText(), Reason, LogFile.HOADONHANG);
-                CttHang.setVisible(false);
-                Pmain.setVisible(true);
-                showDataHang(rpi.getAllHang());
+                stateHandler(rpi.getAllTap());
             }
             else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình xóa vui lòng thử lại");
         }
@@ -1125,6 +1228,26 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void Tb_hang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tb_hang1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tb_hang1MouseClicked
+
+    private void Tb_hang2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tb_hang2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tb_hang2MouseClicked
+
+    private void jTextField16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField16KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (this.TAP == true) {
+                stateHandler(rpi.getAllTapbyString(jTextField16.getText()));
+            }
+            if (this.HANG == true){
+                stateHandler(rpi.getAllHangbyString(jTextField16.getText()));
+            }
+        }
+    }//GEN-LAST:event_jTextField16KeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -19,6 +19,7 @@ public class RPDetails {
     private String MaNV;
     private int TongTien;
     private int SoLuongDichVu;
+    private int TonKho;
 
     public int getSoLuongDichVu() {
         return SoLuongDichVu;
@@ -29,6 +30,14 @@ public class RPDetails {
     }
 
     public RPDetails() {
+    }
+
+    public int getTonKho() {
+        return TonKho;
+    }
+
+    public void setTonKho(int TonKho) {
+        this.TonKho = TonKho;
     }
     
     

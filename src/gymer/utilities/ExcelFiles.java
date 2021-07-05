@@ -108,7 +108,7 @@ public class ExcelFiles {
             total.setCellValue(sum);
             
             
-            FileOutputStream outputStream = new FileOutputStream(path);
+            FileOutputStream outputStream = new FileOutputStream(path + "BaoCaoHoaDonHang_TaoNgay_" + DateTime.getTimeFormat2()+".xlsx");
             workbook.write(outputStream);
             workbook.close();
             
@@ -204,7 +204,7 @@ public class ExcelFiles {
             total.setCellValue(sum);
             
             
-            FileOutputStream outputStream = new FileOutputStream(path + "BaoCaoTap_TaoNgay_" + DateTime.getTimeFormat2()+".xlsx");
+            FileOutputStream outputStream = new FileOutputStream(path + "BaoCaoHoaDonTap_TaoNgay_" + DateTime.getTimeFormat2()+".xlsx");
             workbook.write(outputStream);
             workbook.close();
             
@@ -213,7 +213,6 @@ public class ExcelFiles {
             e.printStackTrace();
         }
     }
-    
     public static void createRPStaff(List<Employee> data, String path){
         try {
             Workbook workbook = new XSSFWorkbook();
@@ -394,6 +393,133 @@ public class ExcelFiles {
             
             
             FileOutputStream outputStream = new FileOutputStream(path);
+            workbook.write(outputStream);
+            workbook.close();
+            
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void createRPServices(List<RPDetails> data, String path){
+        try {
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Bao Cao");
+            sheet.setColumnWidth(0, 6000);
+            sheet.setColumnWidth(1, 6000);
+            sheet.setColumnWidth(2, 6000);
+            Row headerRow = sheet.createRow(0);
+            CellStyle header = workbook.createCellStyle();
+            header.setFillBackgroundColor(IndexedColors.BLUE_GREY.getIndex());
+            XSSFFont font = ((XSSFWorkbook) workbook).createFont();
+            font.setFontName("Calibri");
+            font.setFontHeightInPoints((short) 14);
+            font.setBold(true);
+            header.setFont(font);
+            Cell headerCell = headerRow.createCell(0);
+            headerCell.setCellValue("Tên gói tập");
+            headerCell.setCellStyle(header);
+            
+            headerCell = headerRow.createCell(1);
+            headerCell.setCellValue("Số lượng đã bán");
+            headerCell.setCellStyle(header);
+            
+            headerCell = headerRow.createCell(2);
+            headerCell.setCellValue("Tổng tiền");
+            headerCell.setCellStyle(header);            
+            
+            int rowNo = 1;
+            int sum = 0;
+            
+            for (RPDetails bg : data){
+                Row row = sheet.createRow(rowNo);
+                Cell detailCell = row.createCell(0);
+                detailCell.setCellValue(bg.getTenDV());
+                detailCell = row.createCell(1);
+                detailCell.setCellValue(bg.getSoLuongDichVu());
+                detailCell = row.createCell(2);
+                detailCell.setCellValue(bg.getTongTien());
+                sum += bg.getTongTien();
+                rowNo++;
+            }
+            
+            Row lastRow = sheet.createRow(rowNo + 2);
+            Cell total = lastRow.createCell(1);
+            total.setCellStyle(header);
+            total.setCellValue("Tổng cộng");
+            total = lastRow.createCell(2);
+            total.setCellStyle(header);
+            total.setCellValue(sum);
+            
+            
+            FileOutputStream outputStream = new FileOutputStream(path + "BaoCaoDoanhSoDichVu_TaoNgay_" + DateTime.getTimeFormat2()+".xlsx");
+            workbook.write(outputStream);
+            workbook.close();
+            
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void createRPGoods(List<RPDetails> data, String path){
+        try {
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Bao Cao");
+            sheet.setColumnWidth(0, 6000);
+            sheet.setColumnWidth(1, 6000);
+            sheet.setColumnWidth(2, 6000);
+            sheet.setColumnWidth(3, 6000);
+            Row headerRow = sheet.createRow(0);
+            CellStyle header = workbook.createCellStyle();
+            header.setFillBackgroundColor(IndexedColors.BLUE_GREY.getIndex());
+            XSSFFont font = ((XSSFWorkbook) workbook).createFont();
+            font.setFontName("Calibri");
+            font.setFontHeightInPoints((short) 14);
+            font.setBold(true);
+            header.setFont(font);
+            Cell headerCell = headerRow.createCell(0);
+            headerCell.setCellValue("Tên hàng hóa ");
+            headerCell.setCellStyle(header);
+            
+            headerCell = headerRow.createCell(1);
+            headerCell.setCellValue("Số lượng đã bán");
+            headerCell.setCellStyle(header);
+            
+            headerCell = headerRow.createCell(2);
+            headerCell.setCellValue("Tồn kho");
+            headerCell.setCellStyle(header);
+            
+            headerCell = headerRow.createCell(3);
+            headerCell.setCellValue("Tổng tiền");
+            headerCell.setCellStyle(header);            
+            
+            int rowNo = 1;
+            int sum = 0;
+            
+            for (RPDetails bg : data){
+                Row row = sheet.createRow(rowNo);
+                Cell detailCell = row.createCell(0);
+                detailCell.setCellValue(bg.getTenDV());
+                detailCell = row.createCell(1);
+                detailCell.setCellValue(bg.getSoLuongDichVu());
+                detailCell = row.createCell(2);
+                detailCell.setCellValue(bg.getTonKho());
+                detailCell = row.createCell(3);
+                detailCell.setCellValue(bg.getTongTien());
+                sum += bg.getTongTien();
+                rowNo++;
+            }
+            
+            Row lastRow = sheet.createRow(rowNo + 2);
+            Cell total = lastRow.createCell(2);
+            total.setCellStyle(header);
+            total.setCellValue("Tổng cộng");
+            total = lastRow.createCell(3);
+            total.setCellStyle(header);
+            total.setCellValue(sum);
+            
+            
+            FileOutputStream outputStream = new FileOutputStream(path + "BaoCaoDoanhSoBanHang_TaoNgay_" + DateTime.getTimeFormat2()+".xlsx");
             workbook.write(outputStream);
             workbook.close();
             

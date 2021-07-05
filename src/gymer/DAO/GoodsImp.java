@@ -112,7 +112,6 @@ public class GoodsImp implements UCRD<Goods> , GoodsDAO {
 
     @Override
     public Goods findByID(String ID) {
-        List<Goods> data = new ArrayList<Goods>();
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
@@ -126,9 +125,8 @@ public class GoodsImp implements UCRD<Goods> , GoodsDAO {
                 cs.setTen(rs.getString("Ten"));
                 cs.setGia(rs.getInt("Gia"));
                 cs.setSoLuong(rs.getInt("SoLuong"));
-                cs.setDVT(rs.getString("SVT"));
+                cs.setDVT(rs.getString("DVT"));
                 cs.setHSD(rs.getString("HSD"));
-                data.add(cs);
             }
             return cs;
         } catch (Exception e) {

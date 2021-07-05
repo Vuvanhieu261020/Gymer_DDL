@@ -71,9 +71,41 @@ public class ReportImp {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 RPDetails cs = new RPDetails();
-                cs.setMaHD(rs.getString("MaHoaDonTap"));
+                cs.setMaHD(rs.getString("MaHoaDonHang"));
                 cs.setNgayLap(rs.getString("Ngay"));
                 cs.setTenDV(rs.getString("TenDV"));
+                cs.setTenKhach(rs.getString("TenKH"));
+                cs.setSDTKhach(rs.getString("SDT"));
+                cs.setTenNV(rs.getString("Ten"));
+                cs.setMaNV(rs.getString("MaNV"));
+                cs.setTongTien(rs.getInt("TongTien"));
+                data.add(cs);
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    
+    public List<RPDetails> getAllHang (){
+        List<RPDetails> data = new ArrayList<RPDetails>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(RPHDHANG_ALL);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                RPDetails cs = new RPDetails();
+                cs.setMaHD(rs.getString("MaHoaDonHang"));
+                cs.setNgayLap(rs.getString("Ngay"));
                 cs.setTenKhach(rs.getString("TenKH"));
                 cs.setSDTKhach(rs.getString("SDT"));
                 cs.setTenNV(rs.getString("Ten"));

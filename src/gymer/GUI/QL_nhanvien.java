@@ -12,6 +12,7 @@ import gymer.DAO.*;
 import gymer.entities.*;
 import gymer.utilities.*;
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 /**
  *
@@ -57,9 +58,14 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         
         model = (DefaultTableModel)tb_nhanvien.getModel();
         Color_table= new Color(62,120,202);
+        tb_nhanvien.setBackground(new Color(255,255,255));
         tb_nhanvien.setSelectionBackground(Color_table);
         tb_nhanvien.setSelectionForeground(new Color(255,255,255));
         tb_nhanvien.setColumnSelectionAllowed(false);
+        tb_nhanvien.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,14));
+        tb_nhanvien.getTableHeader().setOpaque(false);
+        tb_nhanvien.getTableHeader().setBackground(new Color(255,255,255));
+        tb_nhanvien.getTableHeader().setForeground(new Color(102,102,102));
     }
     
     
@@ -185,17 +191,14 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jPanel7.setAlignmentX(0.0F);
         jPanel7.setAlignmentY(0.0F);
         jPanel7.setPreferredSize(new java.awt.Dimension(330, 583));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Ten.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        Ten.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Ten.setForeground(new java.awt.Color(51, 51, 51));
-        Ten.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Ten.setCaretColor(new java.awt.Color(255, 255, 255));
+        Ten.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         Ten.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        Ten.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jPanel7.add(Ten, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 220, -1));
+        Ten.setDisabledTextColor(new java.awt.Color(187, 187, 187));
 
-        CMND.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CMND.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         CMND.setForeground(new java.awt.Color(51, 51, 51));
         CMND.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -206,33 +209,27 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 moved(evt);
             }
         });
-        jPanel7.add(CMND, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 220, -1));
 
-        diachi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        diachi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         diachi.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(diachi, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 220, 40));
 
-        jLabel28.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Vị trí");
-        jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
 
-        namsinh.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        namsinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         namsinh.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(namsinh, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 220, -1));
 
-        jLabel29.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Năm sinh");
-        jPanel7.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
-        jLabel30.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Giới tính");
-        jPanel7.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
         sex.setEditable(true);
-        sex.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        sex.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sex.setForeground(new java.awt.Color(51, 51, 51));
         sex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam ", "Nữ" }));
         sex.addActionListener(new java.awt.event.ActionListener() {
@@ -240,35 +237,30 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 sexActionPerformed(evt);
             }
         });
-        jPanel7.add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 220, -1));
 
         BoxVitri.setEditable(true);
-        BoxVitri.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        BoxVitri.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BoxVitri.setForeground(new java.awt.Color(51, 51, 51));
         BoxVitri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên" }));
-        jPanel7.add(BoxVitri, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 220, -1));
 
-        sdt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        sdt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sdt.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel7.add(sdt, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 220, -1));
 
-        jLabel34.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Địa chỉ");
-        jPanel7.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(68, 155, 222));
         jPanel2.setPreferredSize(new java.awt.Dimension(330, 173));
 
         MaNV.setEditable(false);
-        MaNV.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        MaNV.setForeground(new java.awt.Color(255, 255, 255));
+        MaNV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        MaNV.setForeground(new java.awt.Color(0, 0, 0));
         MaNV.setBorder(null);
-        MaNV.setOpaque(false);
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/GUI/icon_user_blue.png"))); // NOI18N
 
-        jLabel35.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Mã Nhân Viên:");
 
@@ -286,7 +278,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel25)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,28 +292,100 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jPanel7.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 173));
-
-        jLabel36.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Tên");
-        jPanel7.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
-        jLabel37.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setText("SĐT");
-        jPanel7.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
-        jLabel38.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("CMND");
-        jPanel7.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel36)
+                                    .addComponent(jLabel38))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CMND)
+                                    .addComponent(Ten, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel30)
+                                .addGap(25, 25, 25)
+                                .addComponent(sex, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel34)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(diachi, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel37)
+                                    .addGap(54, 54, 54)
+                                    .addComponent(sdt)))
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel29)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(namsinh))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel28)
+                                    .addGap(47, 47, 47)
+                                    .addComponent(BoxVitri, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Ten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel34)
+                    .addComponent(diachi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BoxVitri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(namsinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
+                .addContainerGap())
+        );
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 630));
 
         jScrollPane1.setBorder(null);
 
-        tb_nhanvien.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tb_nhanvien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tb_nhanvien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -333,7 +397,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         tb_nhanvien.setGridColor(new java.awt.Color(255, 255, 255));
         tb_nhanvien.setOpaque(false);
         tb_nhanvien.setRowHeight(35);
-        tb_nhanvien.setRowMargin(0);
+        tb_nhanvien.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tb_nhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_nhanvienMouseClicked(evt);
@@ -341,7 +405,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tb_nhanvien);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 860, 300));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 860, 340));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_add.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -368,24 +432,24 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 550, -1, -1));
 
         jTextField9.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(255, 0, 0));
+        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setText("1000");
         jTextField9.setBorder(null);
         jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 70, -1));
 
-        jLabel33.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Nhân viên");
         jLabel33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, -1, -1));
 
-        jLabel32.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
         jLabel32.setText("Danh sách nhân viên");
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, -1, -1));
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(219, 219, 219));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
@@ -396,8 +460,8 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 30, 30));
 
-        jTextField1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setText("Tìm kiếm");
         jTextField1.setBorder(null);
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {

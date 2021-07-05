@@ -102,10 +102,10 @@ public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
         Connection conn = null;
         try {
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(DELETEBILL);
+            stmt = conn.prepareStatement(DELETEDETAILS);
             stmt.setString(1, ID);
             stmt.execute();
-            stmt = conn.prepareStatement(DELETEDETAILS);
+            stmt = conn.prepareStatement(DELETEBILL);
             stmt.setString(1, ID);
             stmt.execute();
             return true;

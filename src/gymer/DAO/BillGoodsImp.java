@@ -25,7 +25,7 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     private static final String FIND = "select MaHoaDonHang, Ngay, TenKH, tbl_hoadonhang.SDT, tbl_nhanvien.Ten, TongTien, MaNV from tbl_hoadonhang inner join tbl_nhanvien on tbl_hoadonhang.MaNV = tbl_nhanvien.MaNV where tbl_hoadonhang.Ten like concat('%',?,'%') or tbl_hoadonhang.MaHoaDonHang=? or tbl_hoadonhang.SDT=? or tbl_nhanvien.MaNV=?";
     private static final String INSERTBILL = "insert into tbl_hoadonhang(MaHoaDonHang, Ngay, TenKH, SDT, MaNV, TongTien) values(?, ?, ?, ?, ?, ?)";
     private static final String INSERTDETALS = "insert into tbl_cthdhang(MaHoaDonHang, MaHang, SoLuong) values(?, ?, ?)";
-    private static final String GETDETAILS = "select MaHang, TenHang, Gia, SoLuong, DVT from tbl_cthdhang inner join tbl_hanghoa on tbl_cthdhang.MaHang = tbl_hanghoa.MaHang where tbl_cthdhang.MaHaoDonHang=?";
+    private static final String GETDETAILS = "select * from tbl_cthdhang where MaHoaDonHang=?";
     private static final String RPDATEDIFF = "select * from tblHoaDonHang where Ngay between ? and ?";
     private static final String DELTEUPDATE = "update tbl_hanghoa set SoLuong = SoLuong - ? where MaHang=?";
     
@@ -264,12 +264,10 @@ public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 BillGoods_Details cs = new BillGoods_Details();
-                cs.setMaHD(rs.getString(MaHD));
+                cs.setMaHD(rs.getString("MaHoaDonHang"));
                 cs.setMaHang(rs.getString("MaHang"));
-                cs.setTenHang(rs.getString("TenHang"));
-                cs.setGia(rs.getInt("Gia"));
                 cs.setSoLuong(rs.getInt("SoLuong"));
-                cs.setDVT(rs.getString("SVT"));
+                data.add(cs);
             }
             return data;
         }

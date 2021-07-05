@@ -11,10 +11,14 @@ public class DButil {
     // change DB url here
     public static String DB_URL = "jdbc:mysql://localhost:3306/gymer_oop";
     // change Password here
-    public static String Password = "3222513";//LINHhoa117763
+    public static String Password = "";//3222513 / LINHhoa117763 / dtbn
     // change user name here
     public static String UserName = "root";
     
+    
+    public static void setPWD (String input) {
+        Password = input;
+    }
     
     // ham ket noi voi co so du lieu, cac csdl khac co the thay doi o ben tren
     public static Connection getConnection (){

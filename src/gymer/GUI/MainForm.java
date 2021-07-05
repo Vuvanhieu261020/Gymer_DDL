@@ -96,6 +96,13 @@ public class MainForm extends javax.swing.JFrame {
         TimeUnit time = TimeUnit.DAYS; 
         long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
         long result = svi.getSerice(mcin.getMaDV()).getThoiGian() * 30 - diffrence;
+        if (result < 0) {
+            jTextField4.setText("0 Ngày");
+            jTextField3.setForeground(new Color(255,000,000));
+            jTextField3.setText("THẺ KHÔNG HỢP LỆ");
+            return;
+        }
+        jTextField3.setForeground(new Color(000,255,000));
         jTextField3.setText("THẺ HỢP LỆ");
         jTextField2.setText(mcin.getCardID());
         String DIFF = result + " Ngày";
@@ -649,15 +656,14 @@ public class MainForm extends javax.swing.JFrame {
         DashTab.setBackground(new java.awt.Color(255, 255, 255));
         DashTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel7.setBackground(new java.awt.Color(141, 200, 255));
+        jPanel7.setBackground(new java.awt.Color(68, 155, 222));
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/GUI/icon_user_blue.png"))); // NOI18N
 
-        jTextField3.setBackground(new java.awt.Color(141, 200, 255));
+        jTextField3.setBackground(new java.awt.Color(68, 155, 222));
         jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(51, 51, 51));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("THẺ HỢP LỆ");
         jTextField3.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField3.setDisabledTextColor(new java.awt.Color(255, 255, 255));
@@ -678,7 +684,7 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Mã thẻ");
 
         jTextField2.setEditable(false);
@@ -690,7 +696,7 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Còn lại");
 
         jTextField4.setEditable(false);
@@ -750,10 +756,12 @@ public class MainForm extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25)
                     .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel25))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -787,7 +795,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel28.setText("Những lần tập gần nhất");
         DashTab.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 300, 50));
 
-        jPanel8.setBackground(new java.awt.Color(141, 200, 255));
+        jPanel8.setBackground(new java.awt.Color(68, 155, 222));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Bán hàng.png"))); // NOI18N
@@ -799,7 +807,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         jPanel8.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -809,7 +817,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel27.setBackground(new java.awt.Color(0, 0, 0));
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("KIỂM TRA RA VÀO");
         jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 330, 50));
 
@@ -1144,8 +1152,20 @@ public class MainForm extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.mc = mci.findByID(jTextField1.getText());
+        try {
+                setInformation(this.mc);
+            }
+            catch (ParseException ex){
+                ex.printStackTrace();
+            }
+        if (jTextField3.getText().equals("THẺ KHÔNG HỢP LỆ")) {
+            this.mc.setStatus(false);
+            this.mci.update(this.mc);
+            return;
+        }
         boolean checker = mci.checkValid(mc.getCardID(), DateTime.getDateandTime());
         if (checker == false) {
+            jTextField3.setForeground(new Color(255,000,000));
             jTextField3.setText("THẺ KHÔNG HỢP LỆ");
         }
         else {

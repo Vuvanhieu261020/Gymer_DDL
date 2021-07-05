@@ -9,8 +9,10 @@ import gymer.entities.*;
 import gymer.utilities.*;
 import java.util.List;
 import gymer.GUI.*;
+import gymer.database.DButil;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -82,8 +84,6 @@ public class MainClass {
             System.out.println(rp.getMaHD());
         }*/
         
-        LoginForm lg = new LoginForm();
-        lg.setVisible(true);
         //System.out.println(DateTime.getDateandTime());
        
         /*Employee em = new Employee ();
@@ -119,5 +119,14 @@ public class MainClass {
         ep.setYearofBirh(2000);
         epa.insert(ep,"admin","1");*/
         //System.out.print(DateTime.getDateandTime());
+        
+        
+        
+        // dev progress code 
+        
+        String pwdDB = JOptionPane.showInputDialog("PASSWORD DATABASE");
+        DButil.setPWD(pwdDB);
+        LoginForm lg = new LoginForm();
+        lg.setVisible(true);
     }
 }

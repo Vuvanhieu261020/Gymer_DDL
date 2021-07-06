@@ -11,7 +11,7 @@ public class DButil {
     // change DB url here
     public static String DB_URL = "jdbc:mysql://localhost:3306/gymer_oop";
     // change Password here
-    public static String Password = "";//3222513 / LINHhoa117763 / dtbn
+    public static String Password = "3222513";//3222513 / LINHhoa117763 / dtbn
     // change user name here
     public static String UserName = "root";
     

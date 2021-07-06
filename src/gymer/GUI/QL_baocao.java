@@ -97,6 +97,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jR_HDtap = new javax.swing.JRadioButton();
         jR_TKdichvu = new javax.swing.JRadioButton();
         jTextField16 = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
         CttHang = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
@@ -329,6 +330,16 @@ public class QL_baocao extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(51, 153, 255));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Biểu đồ");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PmainLayout = new javax.swing.GroupLayout(Pmain);
         Pmain.setLayout(PmainLayout);
         PmainLayout.setHorizontalGroup(
@@ -343,7 +354,9 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                             .addComponent(TB_tkTap, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TB_tkHang, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PmainLayout.createSequentialGroup()
-                        .addGap(1060, 1060, 1060)
+                        .addGap(967, 967, 967)
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2))
                     .addGroup(PmainLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
@@ -391,14 +404,17 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(PmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Tb_tap, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_hang, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_tkTap, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_tkHang, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(59, 59, 59)
                 .addComponent(jButton2))
+            .addGroup(PmainLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(Pmain, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 1230, 650));
@@ -884,9 +900,6 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     }
     
     
-    private void debug () {
-        System.err.println(this.TAP + " " + this.HANG + " " + this.DICHVU + " " + this.SANPHAM);
-    }
     
     private void stateHandler (List input) {
         this.data = input;
@@ -908,7 +921,6 @@ public class QL_baocao extends javax.swing.JInternalFrame {
             this.SANPHAM = false;
             this.TAP = false;
             this.HANG = false;
-            debug();
         }
         if (this.HANG == true) {
             showDataHang(input);
@@ -923,7 +935,6 @@ public class QL_baocao extends javax.swing.JInternalFrame {
             this.SANPHAM = false;
             this.DICHVU = false;
             this.TAP = false;
-            debug();
         }
         if (this.TAP == true) {
             showDataTap(input);
@@ -938,7 +949,6 @@ public class QL_baocao extends javax.swing.JInternalFrame {
             this.SANPHAM = false;
             this.DICHVU = false;
             this.HANG = false;
-            debug();
         }
         if (this.SANPHAM == true) {
             showDataHangHoa(input);
@@ -953,7 +963,6 @@ public class QL_baocao extends javax.swing.JInternalFrame {
             this.HANG = false;
             this.DICHVU = false;
             this.TAP = false;
-            debug();
         }
         if (this.DICHVU == false && this.HANG == false && this.SANPHAM == false && this.TAP == false) {
             jR_TKdichvu.setSelected(false);
@@ -965,8 +974,6 @@ public class QL_baocao extends javax.swing.JInternalFrame {
             TB_tkHang.setVisible(false);
             TB_tkTap.setVisible(false);
             QL_baocao.this.revalidate();
-            System.err.println("clean");
-            debug();
         }
     }
     
@@ -1249,6 +1256,24 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTextField16KeyPressed
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        Graph grp;
+        if (this.DICHVU) {
+            grp = new Graph(this.data);
+        }
+        if (this.SANPHAM) {
+            grp = new Graph(this.data);
+        }
+        if (this.TAP) {
+            grp = new Graph(rpi.getTapforGraphAll());
+        }
+        if (this.HANG) {
+            grp = new Graph(rpi.getHangforGraphAll());
+        }
+        
+    }//GEN-LAST:event_jButton5MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CttDontap;
@@ -1266,6 +1291,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;

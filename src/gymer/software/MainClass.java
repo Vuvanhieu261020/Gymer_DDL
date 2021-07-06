@@ -124,9 +124,11 @@ public class MainClass {
         
         // dev progress code 
         
-        String pwdDB = JOptionPane.showInputDialog("PASSWORD DATABASE");
-        DButil.setPWD(pwdDB);
+//        String pwdDB = JOptionPane.showInputDialog("PASSWORD DATABASE");
+//        DButil.setPWD(pwdDB);
         LoginForm lg = new LoginForm();
         lg.setVisible(true);
+//        ReportImp rpi = new ReportImp();
+//        Graph gr = new Graph(rpi.getAllDichVuTap());
     }
 }

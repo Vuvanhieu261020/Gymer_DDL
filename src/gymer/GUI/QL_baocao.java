@@ -48,6 +48,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     private GoodsImp svi = new GoodsImp();
     private Goods sv = new Goods();
     private List<RPDetails> data = new ArrayList<RPDetails>();
+    private List<RPDetails> graphdata = new ArrayList<RPDetails>();
     private BillGoodsImp bgi = new BillGoodsImp();
     /**
      * Creates new form QL_baocao
@@ -1135,24 +1136,6 @@ public class QL_baocao extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String date1, date2;
-        Date d1 = jDateChooser2.getDate();
-        Date d2 = jDateChooser1.getDate();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        date1 = df.format(d1);
-        date2 = df.format(d2);
-        if (this.TAP == true) {
-            stateHandler(rpi.getDataTap(date1, date2));
-        }
-        if (this.HANG == true) {
-            stateHandler(rpi.getDataHang(date1, date2));
-        }
-        if (this.DICHVU == true) {
-            stateHandler(rpi.getDichVuTapbyDate(date1, date2));
-        }
-        if (this.SANPHAM == true) {
-            stateHandler(rpi.getAllHangHoabyDate(date1, date2));
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -1234,6 +1217,24 @@ public class QL_baocao extends javax.swing.JInternalFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        String date1, date2;
+        Date d1 = jDateChooser2.getDate();
+        Date d2 = jDateChooser1.getDate();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        date1 = df.format(d1);
+        date2 = df.format(d2);
+        if (this.TAP == true) {           
+            stateHandler(rpi.getDataTap(date1, date2));
+        }
+        if (this.HANG == true) {
+            stateHandler(rpi.getDataHang(date1, date2));
+        }
+        if (this.DICHVU == true) {
+            stateHandler(rpi.getDichVuTapbyDate(date1, date2));
+        }
+        if (this.SANPHAM == true) {
+            stateHandler(rpi.getAllHangHoabyDate(date1, date2));
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void Tb_hang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tb_hang1MouseClicked
@@ -1260,16 +1261,16 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         Graph grp;
         if (this.DICHVU) {
-            grp = new Graph(this.data);
+            grp = new Graph(this.data,1);
         }
         if (this.SANPHAM) {
-            grp = new Graph(this.data);
+            grp = new Graph(this.data,1);
         }
         if (this.TAP) {
-            grp = new Graph(rpi.getTapforGraphAll());
+            grp = new Graph(rpi.getTapforGraphAll(),1);
         }
         if (this.HANG) {
-            grp = new Graph(rpi.getHangforGraphAll());
+            grp = new Graph(rpi.getHangforGraphAll(),1);
         }
         
     }//GEN-LAST:event_jButton5MouseClicked

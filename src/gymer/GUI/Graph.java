@@ -22,11 +22,11 @@ import java.awt.RenderingHints;
  */
 public class Graph {
     private JFrame fr;
-    graphGraphics gp;
+    private graphGraphics gp;
     
-    public Graph(List input) {
+    public Graph(List input, int in) {
         this.fr = new JFrame();
-        this.gp =  new graphGraphics(input);
+        this.gp =  new graphGraphics(input, in);
         fr.add(gp);
         fr.setSize(1750, 900);
         fr.setLocationRelativeTo(null);
@@ -71,9 +71,11 @@ class graphGraphics extends Canvas {
 
     private List<RPDetails> data;
     private Point[] p;
+    private int chooser;
     
-    public graphGraphics(List input) {
+    public graphGraphics(List input, int in) {
         this.data = input;
+        this.chooser = in;
         this.p = new Point[input.size()];
     }
 
@@ -86,8 +88,18 @@ class graphGraphics extends Canvas {
         g2d.drawLine(100, 50, 100, 800);
         g2d.drawLine(100, 800, 1550, 800);
         g2d.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        g2d.drawString("Doanh số", 85, 40);
-        g2d.drawString("Số lượng", 1560, 810);
+        if (chooser == 1){
+                g2d.drawString("Doanh số", 65, 40);
+                g2d.drawString("Số lượng", 1560, 810);
+            }
+        else if (chooser ==2) {
+            g2d.drawString("Lượt ra vào", 65, 40);
+            g2d.drawString("Ngày", 1560, 810);
+        }   
+        else if (chooser ==3 ) {
+            g2d.drawString("Lượt ra vào", 65, 40);
+            g2d.drawString("Tháng", 1560, 810);
+        }
         int number = this.data.size();
         int offset = (int)(1450 / number);
         int offsetY = (int)(750 / number);
@@ -99,7 +111,10 @@ class graphGraphics extends Canvas {
             // X
             g2d.setColor(Color.BLUE);
             g2d.drawLine( i * offset , 790, i * offset , 810);  
-            g2d.drawString(rp.getTenDV() + " bán được " + rp.getSoLuongDichVu() , (i * offset) - 80, 830);
+            if (chooser == 1){
+                g2d.drawString(rp.getTenDV() + " bán được " + rp.getSoLuongDichVu() , (i * offset) - 80, 830);
+            }
+            else {g2d.drawString(rp.getTenDV(), (i * offset) - 80, 830);}
             // Y
             g2d.drawLine(90, PosY[i-1].getY(), 110, PosY[i-1].getY());
             g2d.drawString(rp.getTongTien() + "" , 20, PosY[i-1].getY());

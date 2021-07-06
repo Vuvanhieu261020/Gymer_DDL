@@ -28,10 +28,15 @@ public class ReportImp {
 "where tbl_hoadonhang.SDT like concat('%',?,'%') or tbl_hoadonhang.TenKH like concat('%',?,'%') or tbl_hoadonhang.MaHoaDonHang like concat('%',?,'%') or tbl_nhanvien.Ten like concat('%',?,'%')";
     private static final String RPTAPSTRING = "select tbl_hoadontap.MaHoaDonTap, tbl_hoadontap.Ngay, tbl_dichvu.Ten as TenDV, tbl_khachhang.Ten as TenKH, tbl_khachhang.SDT, tbl_nhanvien.Ten, tbl_hoadontap.MaNV, tbl_hoadontap.TongTien \n" +
 "from tbl_hoadontap inner join tbl_nhanvien on tbl_hoadontap.MaNV = tbl_nhanvien.MaNV inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH inner join tbl_cthdtap on tbl_cthdtap.MaHoaDonTap = tbl_hoadontap.MaHoaDonTap inner join tbl_dichvu on tbl_cthdtap.MaDV = tbl_dichvu.MaDV\n" +
-"where tbl_hoadontap.MaHoaDonTap like concat('%',?,'%') or tbl_khachhang.SDT like concat('%',?,'%') or tbl_khachhang.TenKH like concat('%',?,'%') or tbl_nhanvien.Ten like concat('%',?,'%')";
+"where tbl_hoadontap.MaHoaDonTap like concat('%',?,'%') or tbl_khachhang.SDT like concat('%',?,'%') or tbl_khachhang.Ten like concat('%',?,'%') or tbl_nhanvien.Ten like concat('%',?,'%')";
     private static final String RPTAPGRALL = "select sum(TongTien) as num, Ngay as ngay, count(MaHoaDonTap) as num2 from tbl_hoadontap group by Ngay ";
     private static final String RPHANGGRALL = "select sum(TongTien) as num, Ngay as ngay, count(MaHoaDonHang) as num2 from tbl_hoadonhang group by Ngay ";
-    
+    private static final String RPNGUOITAP = "select count(MaThe) as num, MaThe, date(ThoiDiemSuDung) as ngay\n" +
+"from tbl_ctthe group by ngay limit 30";
+    private static final String RPNGUOITAP_1 = "select count(ThoiDiemSuDung) as num, month(ThoiDiemSuDung) as ngay \n" +
+"from tbl_ctthe where tbl_ctthe.MaThe = ? group by ngay";
+    private static final String RPHDTAPbyDATE = "select sum(TongTien) as num, Ngay as ngay, count(MaHoaDonTap) as num2 from tbl_hoadontap where ngay between ? and ? group by Ngay ";
+    private static final String RPHDHANGbyDATE = "select sum(TongTien) as num, Ngay as ngay, count(MaHoaDonHang) as num2 where ngay between ? and ? from tbl_hoadonhang group by Ngay";
     
     
     public List<RPDetails> getAllTap (){
@@ -387,6 +392,118 @@ public class ReportImp {
         try {
             conn = DButil.getConnection();
             stmt = conn.prepareStatement(RPHANGGRALL);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                RPDetails cs = new RPDetails();
+                cs.setTongTien(rs.getInt("num"));
+                cs.setTenDV(rs.getString("ngay"));
+                cs.setSoLuongDichVu(rs.getInt("num2"));
+                data.add(cs);
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<RPDetails> getHangSoLuotTap (){
+        List<RPDetails> data = new ArrayList<RPDetails>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(RPNGUOITAP);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                RPDetails cs = new RPDetails();
+                cs.setTongTien(rs.getInt("num"));
+                cs.setTenDV(rs.getString("ngay"));
+                data.add(cs);
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<RPDetails> getLuotTap_1 (String input){
+        List<RPDetails> data = new ArrayList<RPDetails>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(RPNGUOITAP_1);
+            stmt.setString(1, input);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                RPDetails cs = new RPDetails();
+                cs.setTongTien(rs.getInt("num"));
+                cs.setTenDV(rs.getString("ngay"));
+                data.add(cs);
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+        
+    }
+    
+    public List<RPDetails> getTapforGraphAllbyDATE (String date1 , String date2){
+        List<RPDetails> data = new ArrayList<RPDetails>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(RPHDTAPbyDATE);
+            stmt.setString(1, date1);
+            stmt.setString(2, date2);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                RPDetails cs = new RPDetails();
+                cs.setTongTien(rs.getInt("num"));
+                cs.setTenDV(rs.getString("ngay"));
+                cs.setSoLuongDichVu(rs.getInt("num2"));
+                data.add(cs);
+            }
+            return data;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        finally {
+            DButil.closeConn(conn);
+            DButil.closeStm(stmt);
+        }
+    }
+    
+    public List<RPDetails> getHangforGraphAllbyDATE (String date1 , String date2){
+        List<RPDetails> data = new ArrayList<RPDetails>();
+        PreparedStatement stmt = null;
+        Connection conn = null;
+        try {
+            conn = DButil.getConnection();
+            stmt = conn.prepareStatement(RPHDHANGbyDATE);
+            stmt.setString(1, date1);
+            stmt.setString(2, date2);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()){
                 RPDetails cs = new RPDetails();

@@ -105,20 +105,20 @@ public class MainClass {
         //System.out.println(DateTime.convertDB("11-02-2000"));
         
         //test Emoloyee
-        /*Employee ep= new  Employee();
-        EmployeeImp epa= new EmployeeImp();
-        ep.setTen("dtbn");
-        ep.setMaNV("1");
-        ep.setAddress("1/1/1/1");
-        ep.setCMND("11111111111");
-        //ep.setHspass("1");
-        //ep.setIdLogin("admin");
-        ep.setSDT("0822203990");
-        ep.setSex(false);
-        ep.setViTri("Quản lý");
-        ep.setYearofBirh(2000);
-        epa.insert(ep,"admin","1");*/
-        //System.out.print(DateTime.getDateandTime());
+//        Employee ep= new  Employee();
+//        EmployeeImp epa= new EmployeeImp();
+//        ep.setTen("ngocdtbnnnn");
+//        ep.setMaNV(KeyDB.genKey());
+//        ep.setAddress("1/1/1/1");
+//        ep.setCMND("11111111111");
+//        //ep.setHspass("1");
+//        //ep.setIdLogin("admin");
+//        ep.setSDT("0822203990");
+//        ep.setSex(false);
+//        ep.setViTri("Quản lý");
+//        ep.setYearofBirh(2000);
+//        epa.insert(ep,"admin","1");
+//        //System.out.print(DateTime.getDateandTime());
         
         
         
@@ -126,8 +126,8 @@ public class MainClass {
         
 //        String pwdDB = JOptionPane.showInputDialog("PASSWORD DATABASE");
 //        DButil.setPWD(pwdDB);
-        LoginForm lg = new LoginForm();
-        lg.setVisible(true);
+          LoginForm lg = new LoginForm();
+          lg.setVisible(true);
 //        ReportImp rpi = new ReportImp();
 //        Graph gr = new Graph(rpi.getAllDichVuTap());
     }

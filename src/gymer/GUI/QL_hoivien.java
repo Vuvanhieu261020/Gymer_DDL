@@ -235,7 +235,6 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
 
         jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
         jTextField2.setBorder(null);
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -384,54 +383,54 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
             tb_hoivien.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        pane2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 870, 330));
+        pane2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 860, 330));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Hội viên");
         jLabel33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         pane2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, -1, -1));
 
         jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setText("0");
         jTextField9.setBorder(null);
         pane2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 58, 32));
 
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Sửa .png"))); // NOI18N
         jLabel36.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel36MouseClicked(evt);
             }
         });
-        pane2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 540, -1, -1));
+        pane2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 540, -1, 40));
 
-        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
+        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Xóa.png"))); // NOI18N
         jLabel39.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel39MouseClicked(evt);
             }
         });
-        pane2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 540, -1, -1));
+        pane2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 540, -1, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonFind.setBackground(new java.awt.Color(255, 255, 255));
         buttonFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_search.png"))); // NOI18N
+        buttonFind.setBorder(null);
         buttonFind.setBorderPainted(false);
+        buttonFind.setContentAreaFilled(false);
         buttonFind.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonFindMouseClicked(evt);
             }
         });
-        jPanel1.add(buttonFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 40, 30));
+        jPanel1.add(buttonFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 40, 30));
 
         txtFind.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtFind.setForeground(new java.awt.Color(0, 0, 0));
+        txtFind.setForeground(new java.awt.Color(153, 153, 153));
         txtFind.setText("Tìm kiếm");
         txtFind.setBorder(null);
         txtFind.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -439,10 +438,10 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
                 txtFindFocusGained(evt);
             }
         });
-        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 35, 200, 20));
+        jPanel1.add(txtFind, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 25, 430, 20));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Rectangle_s.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 290, 70));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/find.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 560, 70));
 
         pane2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 900, 90));
 

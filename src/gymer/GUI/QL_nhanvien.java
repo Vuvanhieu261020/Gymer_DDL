@@ -255,7 +255,6 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
         MaNV.setEditable(false);
         MaNV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        MaNV.setForeground(new java.awt.Color(0, 0, 0));
         MaNV.setBorder(null);
 
         jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/GUI/icon_user_blue.png"))); // NOI18N
@@ -278,7 +277,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel25)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,7 +396,6 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         tb_nhanvien.setGridColor(new java.awt.Color(255, 255, 255));
         tb_nhanvien.setOpaque(false);
         tb_nhanvien.setRowHeight(35);
-        tb_nhanvien.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tb_nhanvien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_nhanvienMouseClicked(evt);
@@ -407,23 +405,23 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 860, 340));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_add.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Thêm.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 550, -1, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 550, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_fix.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Sửa .png"))); // NOI18N
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 550, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 550, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_button_del.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Xóa.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
@@ -432,17 +430,15 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 550, -1, -1));
 
         jTextField9.setFont(new java.awt.Font("Poppins Medium", 1, 24)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(0, 0, 0));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField9.setText("1000");
         jTextField9.setBorder(null);
-        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 540, 70, -1));
+        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 70, -1));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("Nhân viên");
         jLabel33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 580, -1, -1));
+        jPanel3.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 580, -1, -1));
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(102, 102, 102));
@@ -458,10 +454,10 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 30, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 40, 40));
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
         jTextField1.setText("Tìm kiếm");
         jTextField1.setBorder(null);
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -469,10 +465,10 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 jTextField1FocusGained(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 200, 20));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 340, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Rectangle_s.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 270, 60));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/find.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 560, 60));
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 910, 90));
 

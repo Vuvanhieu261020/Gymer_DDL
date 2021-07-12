@@ -169,17 +169,19 @@ public class MainForm extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TB_check = new javax.swing.JTable();
         jLabel28 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel38 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        QLthe = new javax.swing.JLabel();
-        click_the1 = new javax.swing.JLabel();
+        jButton_taothe = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
+        jLabel29 = new javax.swing.JLabel();
+        jButton_banhang = new javax.swing.JButton();
+        jButton_QLthe = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -270,7 +272,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -338,7 +340,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -374,7 +376,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -408,7 +410,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -444,7 +446,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -507,7 +509,7 @@ public class MainForm extends javax.swing.JFrame {
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel20))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jp3.setBackground(new java.awt.Color(23, 35, 54));
@@ -541,7 +543,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jp3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -664,84 +666,52 @@ public class MainForm extends javax.swing.JFrame {
         jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(51, 51, 51));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField3.setBorder(null);
         jTextField3.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField3.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField3FocusLost(evt);
-            }
-        });
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jTextField3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jTextField3PropertyChange(evt);
-            }
-        });
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Mã thẻ");
+        jLabel24.setText("Mã thẻ:");
 
         jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setBorder(null);
+        jTextField2.setOpaque(false);
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Còn lại");
+        jLabel26.setText("Còn lại:");
 
         jTextField4.setEditable(false);
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField4.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField4CaretUpdate(evt);
-            }
-        });
-        jTextField4.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-                jTextField4AncestorRemoved(evt);
-            }
-        });
-        jTextField4.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jTextField4InputMethodTextChanged(evt);
-            }
-        });
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setBorder(null);
+        jTextField4.setOpaque(false);
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("Tên:");
+
+        jTextField5.setEditable(false);
+        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField5.setBorder(null);
+        jTextField5.setOpaque(false);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField3)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
                         .addComponent(jLabel25)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jLabel24)
@@ -750,18 +720,24 @@ public class MainForm extends javax.swing.JFrame {
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jLabel26)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4)))))
-                .addContainerGap(44, Short.MAX_VALUE))
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel25)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel25))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel30)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -769,9 +745,9 @@ public class MainForm extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel26)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(38, 38, 38)
+                .addGap(34, 34, 34)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         DashTab.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 400, 220));
@@ -785,83 +761,103 @@ public class MainForm extends javax.swing.JFrame {
                 "Thời gian"
             }
         ));
+        TB_check.setRowHeight(25);
         jScrollPane1.setViewportView(TB_check);
 
         DashTab.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 1130, 330));
 
         jLabel28.setBackground(new java.awt.Color(23, 35, 54));
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(23, 35, 54));
+        jLabel28.setForeground(new java.awt.Color(102, 102, 102));
         jLabel28.setText("Những lần tập gần nhất");
         DashTab.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 300, 50));
 
-        jPanel8.setBackground(new java.awt.Color(68, 155, 222));
+        jPanel8.setBackground(new java.awt.Color(0, 54, 99));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Bán hàng.png"))); // NOI18N
-        jLabel38.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel38MouseClicked(evt);
-            }
-        });
-        jPanel8.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
-
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 436, 35));
+        jTextField1.setAlignmentX(0.0F);
+        jTextField1.setAlignmentY(0.0F);
+        jTextField1.setAutoscrolls(false);
+        jTextField1.setBorder(null);
+        jTextField1.setOpaque(false);
+        jTextField1.setPreferredSize(new java.awt.Dimension(5, 31));
+        jTextField1.setRequestFocusEnabled(false);
+        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 81, 490, 30));
 
         jLabel27.setBackground(new java.awt.Color(0, 0, 0));
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("KIỂM TRA RA VÀO");
-        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 330, 50));
+        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, 330, 50));
 
-        QLthe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/icon_qlthe.png"))); // NOI18N
-        QLthe.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        QLthe.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton_taothe.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_taothe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/+ Tạo thẻ tập.png"))); // NOI18N
+        jButton_taothe.setBorder(null);
+        jButton_taothe.setBorderPainted(false);
+        jButton_taothe.setContentAreaFilled(false);
+        jButton_taothe.setDefaultCapable(false);
+        jButton_taothe.setFocusPainted(false);
+        jButton_taothe.setFocusable(false);
+        jButton_taothe.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Tao_shadow.png"))); // NOI18N
+        jButton_taothe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                QLtheMouseClicked(evt);
+                jButton_taotheMouseClicked(evt);
             }
         });
-        jPanel8.add(QLthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
-
-        click_the1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Tạo thẻ tập.png"))); // NOI18N
-        click_the1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        click_the1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                click_the1MouseClicked(evt);
-            }
-        });
-        jPanel8.add(click_the1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        jPanel8.add(jButton_taothe, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 150, 40));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/CHECK.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/check.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setDefaultCapable(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Check_shadow.png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 110, -1));
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/find.png"))); // NOI18N
+        jPanel8.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
+
+        jButton_banhang.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_banhang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/sell.png"))); // NOI18N
+        jButton_banhang.setBorder(null);
+        jButton_banhang.setBorderPainted(false);
+        jButton_banhang.setContentAreaFilled(false);
+        jButton_banhang.setDefaultCapable(false);
+        jButton_banhang.setFocusPainted(false);
+        jButton_banhang.setFocusable(false);
+        jButton_banhang.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/sell_shadow.png"))); // NOI18N
+        jButton_banhang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_banhangMouseClicked(evt);
             }
         });
-        jPanel8.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 90, -1));
+        jPanel8.add(jButton_banhang, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 150, 40));
 
-        jSeparator1.setBackground(new java.awt.Color(51, 51, 51));
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel8.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 10, 220));
+        jButton_QLthe.setBackground(new java.awt.Color(255, 255, 255));
+        jButton_QLthe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/QL_the.png"))); // NOI18N
+        jButton_QLthe.setBorder(null);
+        jButton_QLthe.setBorderPainted(false);
+        jButton_QLthe.setContentAreaFilled(false);
+        jButton_QLthe.setDefaultCapable(false);
+        jButton_QLthe.setFocusPainted(false);
+        jButton_QLthe.setFocusable(false);
+        jButton_QLthe.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/QL_the_shadow.png"))); // NOI18N
+        jButton_QLthe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_QLtheMouseClicked(evt);
+            }
+        });
+        jPanel8.add(jButton_QLthe, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 150, 40));
 
         DashTab.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 220));
 
@@ -1091,64 +1087,6 @@ public class MainForm extends javax.swing.JFrame {
         cp.setEmployee(instanceE);
     }//GEN-LAST:event_Change_passMouseClicked
 
-    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
-
-    }//GEN-LAST:event_jTextField3FocusLost
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextField3PropertyChange
-
-    }//GEN-LAST:event_jTextField3PropertyChange
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField4CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField4CaretUpdate
-
-    }//GEN-LAST:event_jTextField4CaretUpdate
-
-    private void jTextField4AncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextField4AncestorRemoved
-
-    }//GEN-LAST:event_jTextField4AncestorRemoved
-
-    private void jTextField4InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField4InputMethodTextChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4InputMethodTextChanged
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
-        Add_sell ad=new Add_sell();
-        ad.setVisible(true);
-        ad.setEmployee(instanceE);
-    }//GEN-LAST:event_jLabel38MouseClicked
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void QLtheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_QLtheMouseClicked
-        // TODO add your handling code here:
-
-        CT_the ma=new CT_the();
-        ma.setVisible(true);
-        
-
-    }//GEN-LAST:event_QLtheMouseClicked
-
-    private void click_the1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_click_the1MouseClicked
-        // TODO add your handling code here:
-        Add_bill ad=new Add_bill();
-        ad.setVisible(true);
-        ad.setEmployee(instanceE);
-    }//GEN-LAST:event_click_the1MouseClicked
-
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.mc = mci.findByID(jTextField1.getText());
@@ -1180,9 +1118,25 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_taotheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_taotheMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Add_bill ad=new Add_bill();
+        ad.setVisible(true);
+        ad.setEmployee(instanceE);
+    }//GEN-LAST:event_jButton_taotheMouseClicked
+
+    private void jButton_banhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_banhangMouseClicked
+        // TODO add your handling code here:
+        Add_sell ad=new Add_sell();
+        ad.setVisible(true);
+        ad.setEmployee(instanceE);
+    }//GEN-LAST:event_jButton_banhangMouseClicked
+
+    private void jButton_QLtheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_QLtheMouseClicked
+        // TODO add your handling code here:
+        CT_the ma=new CT_the();
+        ma.setVisible(true);
+    }//GEN-LAST:event_jButton_QLtheMouseClicked
 
     
     /**
@@ -1199,10 +1153,11 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Change_pass;
     private javax.swing.JPanel DashTab;
-    private javax.swing.JLabel QLthe;
     private javax.swing.JTable TB_check;
-    private javax.swing.JLabel click_the1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton_QLthe;
+    private javax.swing.JButton jButton_banhang;
+    private javax.swing.JButton jButton_taothe;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1225,8 +1180,9 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1242,11 +1198,11 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JPanel jp1;
     private javax.swing.JPanel jp2;
     private javax.swing.JPanel jp3;

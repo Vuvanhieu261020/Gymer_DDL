@@ -281,9 +281,9 @@ public class QL_baocao extends javax.swing.JInternalFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jR_TKsanpham.setBackground(new java.awt.Color(255, 255, 255));
         jR_TKsanpham.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jR_TKsanpham.setText("Thống kê doanh thu sản phẩm");
+        jR_TKsanpham.setBorder(null);
         jR_TKsanpham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jR_TKsanphamMouseClicked(evt);
@@ -296,9 +296,9 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jR_TKsanpham, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, 40));
 
-        jR_TKdichvu.setBackground(new java.awt.Color(255, 255, 255));
         jR_TKdichvu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jR_TKdichvu.setText("Thống kê doanh thu dịch vụ");
+        jR_TKdichvu.setBorder(null);
         jR_TKdichvu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jR_TKdichvuMouseClicked(evt);
@@ -306,9 +306,9 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jR_TKdichvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, 40));
 
-        jR_HDhang.setBackground(new java.awt.Color(255, 255, 255));
         jR_HDhang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jR_HDhang.setText("Báo cáo hóa đơn hàng");
+        jR_HDhang.setBorder(null);
         jR_HDhang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jR_HDhangMouseClicked(evt);
@@ -316,9 +316,9 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         });
         jPanel1.add(jR_HDhang, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 210, 40));
 
-        jR_HDtap.setBackground(new java.awt.Color(255, 255, 255));
         jR_HDtap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jR_HDtap.setText("Báo cáo hóa đơn tập");
+        jR_HDtap.setBorder(null);
         jR_HDtap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jR_HDtapMouseClicked(evt);
@@ -329,13 +329,17 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jTextField16.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField16.setToolTipText("Tìm kiếm");
         jTextField16.setBorder(null);
-        jTextField16.setOpaque(false);
+        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField16ActionPerformed(evt);
+            }
+        });
         jTextField16.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField16KeyPressed(evt);
             }
         });
-        jPanel1.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 75, 490, 30));
+        jPanel1.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 490, 20));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/CHECK.png"))); // NOI18N
@@ -353,22 +357,22 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 65, -1, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 120, -1, 50));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/find.png"))); // NOI18N
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 560, 60));
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 230, 25));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 560, 60));
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 230, 25));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Từ ngày");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Đến ngày");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, -1, 24));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 230, 25));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, -1, 24));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 230, 25));
 
         Pmain.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1230, 190));
 
@@ -1132,6 +1136,10 @@ public class QL_baocao extends javax.swing.JInternalFrame {
     private void jR_TKsanphamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jR_TKsanphamActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jR_TKsanphamActionPerformed
+
+    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField16ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

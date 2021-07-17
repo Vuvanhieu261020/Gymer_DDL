@@ -123,7 +123,7 @@ public class QL_goitap extends javax.swing.JInternalFrame {
         getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 70, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("DANH SÁCH GÓI TẬP");
         jLabel1.setAlignmentY(0.0F);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, -1, 59));

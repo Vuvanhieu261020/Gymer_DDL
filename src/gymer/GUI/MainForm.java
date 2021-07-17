@@ -107,6 +107,7 @@ public class MainForm extends javax.swing.JFrame {
         jTextField2.setText(mcin.getCardID());
         String DIFF = result + " Ngày";
         jTextField4.setText(DIFF);
+        jTextField5.setText(ci.findByID_1(mcin.getMaKH()).getName());
     }
     
     

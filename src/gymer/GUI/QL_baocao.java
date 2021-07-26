@@ -362,7 +362,6 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                     .addGroup(PmainLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(PmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(PmainLayout.createSequentialGroup()
                                     .addComponent(jLabel1)
@@ -382,8 +381,9 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jR_TKdichvu)
                                 .addGap(18, 18, 18)
-                                .addComponent(jR_TKsanpham)))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                                .addComponent(jR_TKsanpham))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         PmainLayout.setVerticalGroup(
             PmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,7 +405,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(PmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Tb_tap, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TB_hang, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)

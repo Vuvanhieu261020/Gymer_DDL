@@ -196,6 +196,11 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField4KeyReleased(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
@@ -203,6 +208,11 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,6 +227,11 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 d(evt);
+            }
+        });
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField7KeyReleased(evt);
             }
         });
 
@@ -517,6 +532,36 @@ public class QL_hoivien extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         txtFind.setText("");
     }//GEN-LAST:event_txtFindFocusGained
+
+    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField4.getText())) {
+            jTextField4.setForeground(Color.red);
+        }
+        else {
+            jTextField4.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField4KeyReleased
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField5.getText())) {
+            jTextField5.setForeground(Color.red);
+        }
+        else {
+            jTextField5.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField7.getText())) {
+            jTextField7.setForeground(Color.red);
+        }
+        else {
+            jTextField7.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField7KeyReleased
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

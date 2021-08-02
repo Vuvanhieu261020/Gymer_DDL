@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import gymer.DAO.*;
 import gymer.entities.*;
 import gymer.utilities.*;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -254,6 +255,11 @@ public class QL_thietbi extends javax.swing.JInternalFrame {
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel27.setText("Số lượng");
@@ -267,6 +273,11 @@ public class QL_thietbi extends javax.swing.JInternalFrame {
         jLabel29.setText("Ngày nhập");
 
         jTextField8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField8KeyReleased(evt);
+            }
+        });
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel30.setText("Giá nhập");
@@ -436,6 +447,26 @@ public class QL_thietbi extends javax.swing.JInternalFrame {
             else JOptionPane.showMessageDialog(null, "Có lỗi trong quá trình xóa vui lòng thử lại");
         }
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField5.getText())) {
+            jTextField5.setForeground(Color.red);
+        }
+        else {
+            jTextField5.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField8.getText())) {
+            jTextField8.setForeground(Color.red);
+        }
+        else {
+            jTextField8.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField8KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

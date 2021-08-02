@@ -185,7 +185,6 @@ public class MainForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1250, 698));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1494, 753));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
@@ -813,6 +812,11 @@ public class MainForm extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
         jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 436, 35));
 
         jLabel27.setBackground(new java.awt.Color(0, 0, 0));
@@ -1183,6 +1187,16 @@ public class MainForm extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField1.getText())) {
+            jTextField1.setForeground(Color.red);
+        }
+        else {
+            jTextField1.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     
     /**

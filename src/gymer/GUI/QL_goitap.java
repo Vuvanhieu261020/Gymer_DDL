@@ -9,6 +9,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import gymer.utilities.*;
 import gymer.DAO.*;
 import gymer.entities.*;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -198,11 +199,21 @@ public class QL_goitap extends javax.swing.JInternalFrame {
         jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel27.setText("Thời gian");
 
         jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField6KeyReleased(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel28.setText("Giá");
@@ -336,6 +347,26 @@ public class QL_goitap extends javax.swing.JInternalFrame {
         }
         showData(eqi.findByString(search));
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField5.getText())) {
+            jTextField5.setForeground(Color.red);
+        }
+        else {
+            jTextField5.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField6.getText())) {
+            jTextField6.setForeground(Color.red);
+        }
+        else {
+            jTextField6.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField6KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

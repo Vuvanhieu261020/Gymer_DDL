@@ -322,6 +322,12 @@ public class Add_sell extends javax.swing.JFrame {
 
     private void jTextField13KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyReleased
         // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField13.getText())) {
+            jTextField13.setForeground(Color.red);
+        }
+        else {
+            jTextField13.setForeground(Color.black);
+        }
         if (Regex.NumericCheck(jTextField13.getText())){
             this.result =  Integer.parseInt(jTextField13.getText().toString());
             if (result > this.Quality) {

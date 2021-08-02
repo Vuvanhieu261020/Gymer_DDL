@@ -315,6 +315,11 @@ public class Add_bill extends javax.swing.JFrame {
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
@@ -510,6 +515,12 @@ public class Add_bill extends javax.swing.JFrame {
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
         // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField4.getText())) {
+            jTextField4.setForeground(Color.red);
+        }
+        else {
+            jTextField4.setForeground(Color.black);
+        }
         this.cs = csi.findBySDT_1(jTextField4.getText());
         if (!this.cs.getID().equals("")){
             setCustoText(this.cs);
@@ -544,6 +555,16 @@ public class Add_bill extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField5.getText())) {
+            jTextField5.setForeground(Color.red);
+        }
+        else {
+            jTextField5.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTextField5KeyReleased
 
     /**
      * @param args the command line arguments

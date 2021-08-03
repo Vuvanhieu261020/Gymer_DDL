@@ -122,7 +122,7 @@ public class Add_sell extends javax.swing.JFrame {
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(102, 102, 102));
         jLabel34.setText("Mã hóa đơn:");
-        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 80, 20));
+        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 90, 20));
 
         jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -209,7 +209,7 @@ public class Add_sell extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Tổng thành tiền");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 100, 30));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 580, 120, 30));
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, 290, 30));
@@ -231,7 +231,7 @@ public class Add_sell extends javax.swing.JFrame {
         jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(102, 102, 102));
         jLabel39.setText("Tên khách hàng:");
-        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 100, 20));
+        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 120, 20));
 
         jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(102, 102, 102));
@@ -240,6 +240,11 @@ public class Add_sell extends javax.swing.JFrame {
         jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 90, 20));
 
         jTextField14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextField14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField14KeyReleased(evt);
+            }
+        });
         jPanel2.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 360, -1));
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -298,6 +303,14 @@ public class Add_sell extends javax.swing.JFrame {
 
     private void jTextField13KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyReleased
         // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField13.getText())) {
+            jTextField13.setForeground(Color.red);
+            jButton3.setVisible(false);
+        }
+        else {
+            jTextField13.setForeground(Color.black);
+            jButton3.setVisible(true);
+        }
         if (Regex.NumericCheck(jTextField13.getText())){
             this.result =  Integer.parseInt(jTextField13.getText().toString());
             if (result > this.Quality) {
@@ -378,6 +391,18 @@ public class Add_sell extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTextField14KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField14.getText())) {
+            jTextField14.setForeground(Color.red);
+            jButton3.setVisible(false);
+        }
+        else {
+            jTextField14.setForeground(Color.black);
+            jButton3.setVisible(true);
+        }
+    }//GEN-LAST:event_jTextField14KeyReleased
 
     /**
      * @param args the command line arguments

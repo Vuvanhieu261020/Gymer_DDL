@@ -209,6 +209,11 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 moved(evt);
             }
         });
+        CMND.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                CMNDKeyReleased(evt);
+            }
+        });
 
         diachi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         diachi.setForeground(new java.awt.Color(51, 51, 51));
@@ -219,6 +224,11 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
         namsinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         namsinh.setForeground(new java.awt.Color(51, 51, 51));
+        namsinh.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                namsinhKeyReleased(evt);
+            }
+        });
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,6 +255,11 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
 
         sdt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sdt.setForeground(new java.awt.Color(51, 51, 51));
+        sdt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                sdtKeyReleased(evt);
+            }
+        });
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
@@ -277,7 +292,7 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel25)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,37 +327,36 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel36)
                                     .addComponent(jLabel38))
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(CMND)
-                                    .addComponent(Ten, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Ten)))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel30)
-                                .addGap(25, 25, 25)
-                                .addComponent(sex, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addComponent(jLabel34)
-                                    .addGap(37, 37, 37)
-                                    .addComponent(diachi, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                                    .addComponent(jLabel37)
-                                    .addGap(54, 54, 54)
-                                    .addComponent(sdt)))
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addComponent(jLabel29)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(namsinh))
-                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel37)
+                                        .addGap(54, 54, 54))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(jLabel34)
+                                        .addGap(36, 36, 36)))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(diachi)
+                                    .addComponent(sdt, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel28)
-                                    .addGap(47, 47, 47)
-                                    .addComponent(BoxVitri, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel30))
+                                .addGap(19, 19, 19)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sex, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BoxVitri, 0, 224, Short.MAX_VALUE)
+                                    .addComponent(namsinh))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -369,14 +383,17 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BoxVitri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namsinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel30))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(namsinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel30)
+                    .addComponent(sex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -587,6 +604,42 @@ public class QL_nhanvien extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         jTextField1.setText("");
     }//GEN-LAST:event_jTextField1FocusGained
+
+    private void CMNDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CMNDKeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(CMND.getText())) {
+            CMND.setForeground(Color.red);
+            jLabel5.setVisible(false);
+        }
+        else {
+            CMND.setForeground(Color.black);
+            jLabel5.setVisible(true);
+        }
+    }//GEN-LAST:event_CMNDKeyReleased
+
+    private void sdtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sdtKeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(sdt.getText())) {
+            sdt.setForeground(Color.red);
+            jLabel5.setVisible(false);
+        }
+        else {
+            sdt.setForeground(Color.black);
+            jLabel5.setVisible(true);
+        }
+    }//GEN-LAST:event_sdtKeyReleased
+
+    private void namsinhKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_namsinhKeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(namsinh.getText())) {
+            namsinh.setForeground(Color.red);
+            jLabel5.setVisible(false);
+        }
+        else {
+            namsinh.setForeground(Color.black);
+            jLabel5.setVisible(true);
+        }
+    }//GEN-LAST:event_namsinhKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -342,7 +342,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jPanel1.add(jTextField16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 490, 20));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/CHECK.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Check_shadow.png"))); // NOI18N
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class CustomerImp implements CustomerDAO{
     
     private static final String DELETE = "update tbl_khachhang set delete_flag='1' where MaKH=?";
-    private static final String DELETECARD = "delete from tbl_The where MaKH=?";
+    private static final String DELETECARD = "delete from tbl_the where MaKH=?";
     private static final String FIND_ALL = "select * from tbl_khachhang where delete_flag='0'";
     private static final String FIND_BY_NAME = "select * from tbl_khachhang where Ten like concat('%',?,'%') and delete_flag='0'";
     private static final String FIND_BY_SDT = "select * from tbl_khachhang where SDT=? and delete_flag='0'";
@@ -100,9 +100,10 @@ public class CustomerImp implements CustomerDAO{
         Connection conn = null;
         try {
             conn = DButil.getConnection();
-            stmt = conn.prepareStatement(DELETE);
-            stmt.setString(1, ID);
             stmt = conn.prepareStatement(DELETECARD);
+            stmt.setString(1, ID);
+            stmt.execute();
+            stmt = conn.prepareStatement(DELETE);
             stmt.setString(1, ID);
             stmt.execute();
             return true;

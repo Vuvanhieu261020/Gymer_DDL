@@ -17,7 +17,7 @@ public class Regex {
     }
     
     public static boolean NumericCheck (String Input){
-        Pattern ptn = Pattern.compile("[0-9]+");
+        Pattern ptn = Pattern.compile("^[0-9]*$");
         Matcher mc = ptn.matcher(Input);
         if (mc.find()){
             return true;

@@ -217,7 +217,7 @@ public class Add_bill extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(102, 102, 102));
         jLabel35.setText("Dịch vụ");
-        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 50, -1));
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 80, -1));
 
         jDateChooser1.setForeground(new java.awt.Color(102, 102, 102));
         jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 340, 358, -1));
@@ -290,6 +290,11 @@ public class Add_bill extends javax.swing.JFrame {
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
         jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 348, -1));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -313,6 +318,11 @@ public class Add_bill extends javax.swing.JFrame {
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7d(evt);
+            }
+        });
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField7KeyReleased(evt);
             }
         });
         jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, 348, -1));
@@ -385,6 +395,14 @@ public class Add_bill extends javax.swing.JFrame {
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
         // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField4.getText())) {
+            jTextField4.setForeground(Color.red);
+            jButton3.setVisible(false);
+        }
+        else {
+            jTextField4.setForeground(Color.black);
+            jButton3.setVisible(true);
+        }
         this.cs = csi.findBySDT_1(jTextField4.getText());
         if (!this.cs.getID().equals("")){
             setCustoText(this.cs);
@@ -419,6 +437,30 @@ public class Add_bill extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField5.getText())) {
+            jTextField5.setForeground(Color.red);
+            jButton3.setVisible(false);
+        }
+        else {
+            jTextField5.setForeground(Color.black);
+            jButton3.setVisible(true);
+        }
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField7.getText())) {
+            jTextField7.setForeground(Color.red);
+            jButton3.setVisible(false);
+        }
+        else {
+            jTextField7.setForeground(Color.black);
+            jButton3.setVisible(true);
+        }
+    }//GEN-LAST:event_jTextField7KeyReleased
 
     /**
      * @param args the command line arguments

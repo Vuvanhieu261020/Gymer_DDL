@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import gymer.DAO.*;
 import gymer.entities.*;
 import gymer.utilities.*;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -166,7 +167,6 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         ));
         jTable1.setRowHeight(25);
         jTable1.setShowGrid(false);
-        jTable1.setShowVerticalLines(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -204,7 +204,6 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
         jTextField1.setText("Tìm kiếm");
         jTextField1.setBorder(null);
-        jTextField1.setOpaque(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -265,6 +264,11 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
                 jTextField5ActionPerformed(evt);
             }
         });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField5KeyReleased(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel27.setText("Giá");
@@ -273,6 +277,11 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
+            }
+        });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField6KeyReleased(evt);
             }
         });
 
@@ -500,6 +509,30 @@ public class QL_sanpham extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField5.getText())) {
+            jTextField5.setForeground(Color.red);
+            jLabel5.setVisible(false);
+        }
+        else {
+            jTextField5.setForeground(Color.black);
+            jLabel5.setVisible(true);
+        }
+    }//GEN-LAST:event_jTextField5KeyReleased
+
+    private void jTextField6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyReleased
+        // TODO add your handling code here:
+        if (!Regex.NumericCheck(jTextField6.getText())) {
+            jTextField6.setForeground(Color.red);
+            jLabel5.setVisible(false);
+        }
+        else {
+            jTextField6.setForeground(Color.black);
+            jLabel5.setVisible(true);
+        }
+    }//GEN-LAST:event_jTextField6KeyReleased
 
     
 

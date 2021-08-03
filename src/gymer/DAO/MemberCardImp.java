@@ -22,11 +22,11 @@ public class MemberCardImp implements MemberCardDAO{
     // khoi tao cac cau lenh SQL phuc vu cho cac ham tuong ung
     
     
-    private static final String DELETE = "delete from tbl_The where MaThe=?";
+    private static final String DELETE = "delete from tbl_the where MaThe=?";
     private static final String DELETE_DT = "delete from tbl_ctthe where MaThe=?";
-    private static final String FIND_BY_MAKH = "select * from tbl_The where MaKH=?";
-    private static final String FIND_ALL = "select * from tbl_The";
-    private static final String FIND_BY_ID = "select * from tbl_The where MaThe=?";
+    private static final String FIND_BY_MAKH = "select * from tbl_the where MaKH=?";
+    private static final String FIND_ALL = "select * from tbl_the";
+    private static final String FIND_BY_ID = "select * from tbl_the where MaThe=?";
     private static final String FIND_BY_NAME = "select * from tbl_the inner join tbl_khachhang on tbl_the.MaKH = tbl_khachhang.MaKH where tbl_khachhang.Ten like concat('%',?,'%')";
     private static final String INSERT = "insert into tbl_the(MaThe, MaKH, TrangThai, NgayBD, MaDV) values(?, ?, ?, ?, ?)";
     private static final String INSERTDT = "insert into tbl_ctthe(MaThe, ThoiDiemSuDung) values(?, ?)";

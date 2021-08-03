@@ -9,10 +9,7 @@ import gymer.database.*;
 import gymer.entities.*;
 import gymer.utilities.*;
 import java.sql.*;
-/**
- *
- * @author luyen
- */
+
 public class ReportImp {
     
     private static final String RPHDTAP_ALL = "select tbl_hoadontap.MaHoaDonTap, tbl_hoadontap.Ngay, tbl_dichvu.Ten as TenDV, tbl_khachhang.Ten as TenKH, tbl_khachhang.SDT, tbl_nhanvien.Ten, tbl_hoadontap.MaNV, tbl_hoadontap.TongTien from tbl_hoadontap inner join tbl_nhanvien on tbl_hoadontap.MaNV = tbl_nhanvien.MaNV inner join tbl_khachhang on tbl_hoadontap.MaKH = tbl_khachhang.MaKH inner join tbl_cthdtap on tbl_cthdtap.MaHoaDonTap = tbl_hoadontap.MaHoaDonTap inner join tbl_dichvu on tbl_cthdtap.MaDV = tbl_dichvu.MaDV";

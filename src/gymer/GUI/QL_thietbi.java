@@ -14,10 +14,7 @@ import gymer.utilities.*;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Linh
- */
+
 public class QL_thietbi extends javax.swing.JInternalFrame {
 
     /**

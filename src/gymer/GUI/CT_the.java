@@ -12,10 +12,7 @@ import gymer.utilities.*;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author Linh
- */
+
 public class CT_the extends javax.swing.JFrame {
 
     

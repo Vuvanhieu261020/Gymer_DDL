@@ -20,10 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-/**
- *
- * @author Linh
- */
+
 public class QL_hoivien extends javax.swing.JInternalFrame {
     private Employee em = new Employee ();
     private CustomerImp eqi = new CustomerImp();

@@ -19,10 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import org.bouncycastle.operator.AADProcessor;
 
-/**
- *
- * @author Linh
- */
+
 public class Add_sell extends javax.swing.JFrame {
     private Employee instanceE = new Employee();
     private GoodsImp gimp = new GoodsImp();
@@ -104,7 +101,7 @@ public class Add_sell extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tạo hóa đơn bán hàng");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 370, 50));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 440, 50));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gymer/Image/Back.png"))); // NOI18N

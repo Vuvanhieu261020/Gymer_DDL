@@ -26,11 +26,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
-import static org.bouncycastle.asn1.cms.CMSObjectIdentifiers.data;
-/**
- *
- * @author Linh
- */
+
 public class QL_baocao extends javax.swing.JInternalFrame {
 
     
@@ -266,7 +262,7 @@ public class QL_baocao extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Báo cáo & Thống kê");
-        Pmain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 41, 380, 53));
+        Pmain.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 41, 450, 53));
 
         jButton5.setBackground(new java.awt.Color(51, 153, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

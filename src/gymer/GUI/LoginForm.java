@@ -11,10 +11,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-/**
- *
- * @author luyen
- */
+
 public class LoginForm extends javax.swing.JFrame {
 
     /**

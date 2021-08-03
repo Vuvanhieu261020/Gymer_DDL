@@ -9,10 +9,7 @@ import gymer.database.DButil;
 import gymer.entities.*;
 import gymer.utilities.*;
 import java.sql.*;
-/**
- *
- * @author luyen
- */
+
 public class BillTrainingImp implements UCRD<BillTraining>, BillTrainingDAO{
 
     

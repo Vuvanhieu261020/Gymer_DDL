@@ -25,10 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-/**
- *
- * @author Linh
- */
+
 public class MainForm extends javax.swing.JFrame {
   
     //String strFind="";

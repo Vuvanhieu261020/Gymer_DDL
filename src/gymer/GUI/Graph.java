@@ -16,10 +16,7 @@ import java.util.List;
 import gymer.entities.*;
 import java.awt.Font;
 import java.awt.RenderingHints;
-/**
- *
- * @author luyen
- */
+
 public class Graph {
     private JFrame fr;
     private graphGraphics gp;

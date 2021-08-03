@@ -9,10 +9,7 @@ import gymer.database.DButil;
 import gymer.entities.*;
 import gymer.utilities.*;
 import java.sql.*;
-/**
- *
- * @author luyen
- */
+
 public class BillGoodsImp implements UCRD<BillGoods>, BillGoodsDAO{
     
     private static final String DELETEBILL = "delete from tbl_hoadonhang where MaHoaDonHang=?";

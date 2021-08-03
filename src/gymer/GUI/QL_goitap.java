@@ -14,10 +14,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Linh
- */
+
 public class QL_goitap extends javax.swing.JInternalFrame {
 
     /**

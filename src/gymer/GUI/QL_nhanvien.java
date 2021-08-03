@@ -14,10 +14,7 @@ import gymer.utilities.*;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JOptionPane;
-/**
- *
- * @author Linh
- */
+
 public class QL_nhanvien extends javax.swing.JInternalFrame {
     DefaultTableModel model;
     Color Color_table;

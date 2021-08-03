@@ -11,10 +11,7 @@ import gymer.DAO.EmployeeImp;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Linh
- */
+
 public class Change_password extends javax.swing.JFrame {
 
     /**

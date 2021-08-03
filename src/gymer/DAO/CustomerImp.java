@@ -17,10 +17,6 @@ import gymer.database.DButil;
 import gymer.entities.MemberCard;
 import java.util.ArrayList;
 
-/**
- *
- * @author luyen
- */
 public class CustomerImp implements CustomerDAO{
     
     private static final String DELETE = "update tbl_khachhang set delete_flag='1' where MaKH=?";
